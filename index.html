@@ -195,7 +195,8 @@ footer{background:var(--field2);color:#c9d6e3;text-align:center;font-size:13px;p
 .gcount{position:absolute;inset-block-end:10px;inset-inline-end:10px;background:rgba(10,30,50,.82);color:#fff;font-size:13px;font-weight:700;padding:5px 11px;border-radius:999px;display:inline-flex;gap:6px;align-items:center}
 .gcount svg{width:14px;height:14px;fill:currentColor}
 .show .thumbs .gbtn img{aspect-ratio:1;object-fit:cover;width:100%}
-.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:20px}
+.show .thumbs.one{grid-template-columns:1fr}.show .thumbs.one .gbtn img{aspect-ratio:16/8;object-position:center 30%}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:20px}
 .ccard{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
 .ccard .paper{background:linear-gradient(180deg,var(--soft),light-dark(#e8eef4,#0b1d30));padding:14px;display:flex;align-items:center;justify-content:center;height:210px}
 .ccard .paper img{max-height:182px;max-width:100%;width:auto;height:auto;object-fit:contain;box-shadow:0 8px 22px -12px rgba(10,30,50,.5);border-radius:3px;background:#fff}
@@ -203,6 +204,7 @@ footer{background:var(--field2);color:#c9d6e3;text-align:center;font-size:13px;p
 .ccard strong{display:block;font-size:15px;line-height:1.45}
 .ccard span{display:block;color:var(--muted);font-size:13.5px;margin-top:4px}
 .ccard time{display:inline-block;margin-top:8px;font-size:13px;font-weight:700;color:var(--accent)}
+.cgroup{grid-column:1/-1;font-size:24px;margin:18px 0 0}.cgroup:first-child{margin-top:0}
 .also{margin-top:28px;color:var(--muted);font-size:15px}
 .also strong{color:var(--ink)}
 .exp-photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:26px;max-width:640px}
@@ -476,7 +478,7 @@ const P = {
    text: {en: "I prepare and present interactive science experiments and educational segments for children, from Space and Astronomy to awareness on Antibiotics, Hygiene and Healthy Nutrition. New episodes are being filmed now.",
           ar: "أُعدّ وأقدّم تجارب علمية تفاعلية وفقرات تعليمية للأطفال، من Space و Astronomy إلى التوعية عن الـ Antibiotics والـ Hygiene والـ Healthy Nutrition. ويجري الآن تصوير حلقات جديدة."}},
   {video: "img/abakera.mp4", poster: "img/abakera-poster.jpg", thumbs: ["img/abakera.webp"], gallery: ["img/abakera-l.webp"],
-   meta: {en: "Al-Qahera Wal Nas TV · 2019", ar: "Al-Qahera Wal Nas TV · 2019"},
+   meta: {en: "Al-Qahera Wal Nas TV · Jan 2019", ar: "Al-Qahera Wal Nas TV · يناير 2019"},
    title: {en: "Contestant on “Al-Abakera”", ar: "متسابقة في برنامج «العباقرة»"},
    text: {en: "Featured on Al-Abakera (The Geniuses), the national knowledge competition hosted by Essam Youssef.",
           ar: "شاركت في برنامج «العباقرة»، مسابقة المعلومات الشهيرة التي يقدّمها عصام يوسف."}}
@@ -487,13 +489,13 @@ const P = {
   {img: "img/gnp.webp", gallery: ["img/gnp-l.webp", "img/gnp-2.webp", "img/certs/gnp.webp"], title: "Global Napi Pharmaceuticals (GNP)", meta: {en: "Summer training · July 2026", ar: "تدريب صيفي · يوليو 2026"},
    text: {en: "Quality Control (QC) at GNP and GAP, and Research & Development (R&D) at GIP.", ar: "Quality Control (QC) في GNP و GAP، و Research & Development (R&D) في GIP."}},
   {img: "img/parkville.webp", gallery: ["img/parkville-l.webp", "img/parkville-3.webp", "img/parkville-2.webp", "img/parkville-4.webp"], title: "Parkville Pharmaceuticals", meta: {en: "Internship · 2026", ar: "Internship · 2026"},
-   text: {en: "Completed my internship and was named a 2026 “Learning Champion”.", ar: "أتممت فترة الـ Internship وحصلت على لقب «Learning Champion» لعام 2026."}},
+   text: {en: "Completed my internship, an enriching experience full of learning, and was named a 2026 “Learning Champion”.", ar: "أتممت فترة الـ Internship، وكانت تجربة غنية بالتعلّم، وحصلت على لقب «Learning Champion» لعام 2026."}},
   {img: "img/eva.webp", gallery: ["img/eva-l.webp"], title: "Eva Cosmetics", meta: {en: "Training", ar: "تدريب"},
    text: {en: "Training in cosmetics and skincare products.", ar: "تدريب في منتجات الـ Cosmetics والـ Skincare."}},
   {img: "img/c57357.webp", gallery: ["img/c57357-l.webp"], title: "57357 Children’s Cancer Hospital", meta: {en: "Clinical training · Feb 2024", ar: "تدريب إكلينيكي · فبراير 2024"},
    text: {en: "14-hour training in the Infection Prevention and Control department, plus a Nutrition course.", ar: "تدريب 14 ساعة في قسم Infection Prevention and Control، بالإضافة إلى Nutrition Course."}},
   {img: "img/baheya-zayed.webp", gallery: ["img/baheya-zayed-l.webp", "img/baheya-2.webp"], title: "Baheya Hospital", meta: {en: "Clinical training", ar: "تدريب إكلينيكي"},
-   text: {en: "Trained at Baheya, the hospital for early detection and treatment of breast cancer, and was invited to the opening of Baheya Zayed.", ar: "تدرّبت في مستشفى بهية للاكتشاف المبكر وعلاج سرطان الثدي، ودُعيت لحضور افتتاح Baheya Zayed."}}
+   text: {en: "Trained at Baheya, the hospital for early detection and treatment of breast cancer, and was later invited to the opening of the second phase of Baheya Zayed Hospital, a proud moment.", ar: "تدرّبت في مستشفى بهية للاكتشاف المبكر وعلاج سرطان الثدي، ثم دُعيت لحضور افتتاح المرحلة الثانية من مستشفى بهية زايد، وكانت لحظة فخر حقيقية."}}
  ],
  experience: [
   {role: {en: "Pharmacist", ar: "Pharmacist"}, where: "Cura Pharmacy", dur: {en: "3.5 years", ar: "3.5 سنوات"}},
@@ -510,33 +512,39 @@ const P = {
   {img: "img/scouts.webp", gallery: ["img/scouts-l.webp", "img/scouts-2.webp"], title: "Scout Leader", meta: {en: "5 years as leader", ar: "5 سنوات كقائدة"},
    text: {en: "My scouting journey started in 3rd grade. Leading for five years taught me leadership, teamwork, resilience and community service.", ar: "بدأت رحلتي في الكشافة من الصف الثالث الابتدائي، وقيادتي لخمس سنوات علّمتني القيادة والعمل الجماعي والصمود وخدمة المجتمع."}},
   {img: "img/wlf.webp", gallery: ["img/wlf-l.webp", "img/wlf-2.webp"], title: "World Literacy Foundation", meta: {en: "Youth Ambassador · 2022 & 2026", ar: "Youth Ambassador · 2022 و 2026"},
-   text: {en: "Completed the Youth Ambassador Program in 2022 and again in 2026.", ar: "أتممت Youth Ambassador Program في 2022 ثم مرة أخرى في 2026."}},
+   text: {en: "Completed the Youth Ambassador Program in 2022, and continued the journey by completing it again in 2026.", ar: "أتممت Youth Ambassador Program في 2022، وواصلت الرحلة بإتمامه مرة أخرى في 2026."}},
   {img: "img/aspire.webp", pos: "top", gallery: ["img/aspire-l.webp", "img/aspire-2.webp"], title: "Aspire Leaders Program", meta: {en: "Aspire Institute · Cohort 4, 2026", ar: "Aspire Institute · Cohort 4، 2026"},
-   text: {en: "An international leadership programme founded at Harvard, connecting a global community of emerging leaders.", ar: "برنامج قيادي دولي تأسس في Harvard، يجمع مجتمعاً عالمياً من القادة الشباب."}},
-  {img: "img/prme.webp", pos: "top", gallery: ["img/prme-l.webp"], title: "PRME COP30 Program", meta: {en: "Selected · 2025", ar: "تم اختياري · 2025"},
-   text: {en: "A four-month virtual programme on climate literacy, with workshops by experts from institutions such as the University of Oxford and MIT Sloan.", ar: "برنامج افتراضي لمدة أربعة أشهر عن الوعي المناخي (Climate Literacy)، بورش عمل يقدّمها خبراء من مؤسسات مثل University of Oxford و MIT Sloan."}},
+   text: {en: "Accepted into Cohort 4 (Oct–Nov 2026) of this international leadership programme founded at Harvard, which connects a global community of emerging leaders to broaden their perspective and create a positive impact in their communities.", ar: "تم قبولي في Cohort 4 (أكتوبر–نوفمبر 2026) لهذا البرنامج القيادي الدولي الذي تأسس في Harvard، ويجمع مجتمعاً عالمياً من القادة الشباب لتوسيع آفاقهم وصناعة أثر إيجابي في مجتمعاتهم."}},
+  {img: "img/prme.webp", pos: "top", gallery: ["img/prme-l.webp"], title: "PRME COP30 Program", meta: {en: "Selected · Jul–Oct 2025", ar: "تم اختياري · يوليو–أكتوبر 2025"},
+   text: {en: "Selected for a four-month virtual programme on climate literacy, with eight interactive workshops led by experts from the University of Oxford, MIT Sloan and Nottingham Trent University, preparing participants for COP30 and future global climate forums.", ar: "تم اختياري لبرنامج افتراضي لمدة أربعة أشهر عن الـ Climate Literacy، يضم ثماني ورش عمل تفاعلية يقدّمها خبراء من University of Oxford و MIT Sloan و Nottingham Trent University، استعداداً للمشاركة في COP30 والمنتديات المناخية العالمية."}},
   {img: "img/redcrescent.webp", gallery: ["img/redcrescent-l.webp", "img/rc-2.webp", "img/rc-3.webp", "img/rc-4.webp"], title: "Egyptian Red Crescent", meta: {en: "Volunteer", ar: "متطوعة"},
    text: {en: "Volunteered with the Egyptian Red Crescent, where I keep strong connections with many of its officials, including at its Emergency Operations Centre.", ar: "تطوعت مع الهلال الأحمر المصري، وتربطني علاقات قوية بعدد من مسؤوليه، ومنها غرفة عمليات الطوارئ."}},
   {video: "img/volunteering.mp4", poster: "img/volunteering-poster.jpg", title: {en: "Humanitarian volunteering", ar: "العمل الإنساني التطوعي"}, meta: {en: "Volunteer", ar: "متطوعة"},
    text: {en: "Humanitarian volunteering gave me a deeper perspective on resilience, community support, and the real impact of showing up where help is needed most.", ar: "منحني العمل الإنساني التطوعي نظرة أعمق للصمود ودعم المجتمع، وللأثر الحقيقي للتواجد حيث نحتاج إلى المساعدة أكثر."}}
  ],
  certs: [
-  {img: "sandoz", t: "Sandoz EG Students Camp, Summer 2026 (15 learning hours)", o: "Sandoz Egypt", d: "2026"},
-  {img: "aacme", t: "Infection Prevention & Quality Control Course", o: "American Association of Continuing Medical Education (AACME)", d: "2026"},
-  {img: "gcp", t: "Good Clinical Practice (GCP)", o: "NIDA Clinical Trials Network · 6-hour course, valid until July 2028", d: "2025"},
-  {img: "ipc57357", t: "Infection Prevention and Control training (14 hours)", o: "57357 Children’s Cancer Hospital Egypt", d: "2024"},
-  {img: "gnp", t: "Summer Training, Certificate of Attendance", o: "Global Napi Pharmaceuticals (GNP)", d: "2026"},
-  {img: "lean", more: ["lean-2"], t: "Lean Six Sigma Foundations", o: "LinkedIn Learning · NASBA CPE credit", d: "2026"},
-  {img: "yellow", t: "Six Sigma Yellow Belt", o: "LinkedIn Learning", d: "2026"},
-  {img: "quality", t: "Quality Management Foundations", o: "LinkedIn Learning", d: "2026"},
-  {img: "marketing", more: ["marketing-2"], t: "Building an Integrated Online Marketing Plan", o: "LinkedIn Learning · PMI® PDUs", d: "2026"},
-  {img: "healthcare", t: "Selling into Industries: Healthcare", o: "LinkedIn Learning", d: "2026"},
-  {img: "thought", t: "How to Become a Thought Leader and Advance Your Career", o: "LinkedIn Learning", d: "2026"},
-  {img: "wlf2026", t: "Youth Ambassador Program", o: "World Literacy Foundation", d: "2026"},
-  {img: "wlf2022", t: "Youth Ambassador Program", o: "World Literacy Foundation", d: "2022"},
-  {img: "bbsp", t: "Brooks Brainery Summer Program, admission", o: "Courses: Brains, Identity & Moral Agency; Human Anatomy and Physiology", d: "2022"}
+  {group: {en: "Pharmaceutical & clinical", ar: "Pharmaceutical & Clinical"}, items: [
+   {img: "sandoz", t: "Sandoz EG Students Camp, Summer 2026 (15 learning hours)", o: "Sandoz Egypt", d: "Jul 2026"},
+   {img: "gnp", t: "Summer Training, Certificate of Attendance (5–9 July 2026)", o: "Global Napi Pharmaceuticals (GNP)", d: "Jul 2026"},
+   {img: "aacme", t: "Infection Prevention & Quality Control Course", o: "American Association of Continuing Medical Education (AACME) · held Sep 2026, issued Nov 2026", d: "Nov 2026"},
+   {img: "gcp", t: "Good Clinical Practice (GCP)", o: "NIDA Clinical Trials Network · 6-hour course, valid until July 2028", d: "Jul 2025"},
+   {img: "ipc57357", t: "Infection Prevention and Control training (14 hours, 5–7 Feb 2024)", o: "57357 Children’s Cancer Hospital Egypt", d: "Feb 2024"}
+  ]},
+  {group: {en: "Quality, management & leadership", ar: "Quality, Management & Leadership"}, items: [
+   {img: "lean", more: ["lean-2"], t: "Lean Six Sigma Foundations", o: "LinkedIn Learning · NASBA CPE credit (2.2)", d: "Sep 2026"},
+   {img: "yellow", t: "Six Sigma Yellow Belt", o: "LinkedIn Learning", d: "Sep 2026"},
+   {img: "quality", t: "Quality Management Foundations", o: "LinkedIn Learning", d: "Sep 2026"},
+   {img: "marketing", more: ["marketing-2"], t: "Building an Integrated Online Marketing Plan", o: "LinkedIn Learning · PMI® PDUs (2.25)", d: "Sep 2026"},
+   {img: "healthcare", t: "Selling into Industries: Healthcare", o: "LinkedIn Learning", d: "Sep 2026"},
+   {img: "thought", t: "How to Become a Thought Leader and Advance Your Career", o: "LinkedIn Learning", d: "Sep 2026"}
+  ]},
+  {group: {en: "Programmes", ar: "Programmes"}, items: [
+   {img: "wlf2026", t: "Youth Ambassador Program 2026", o: "World Literacy Foundation", d: "Oct 2026"},
+   {img: "wlf2022", t: "Youth Ambassador Program 2022", o: "World Literacy Foundation", d: "Aug 2022"},
+   {img: "bbsp", t: "Brooks Brainery Summer Program, admission", o: "Brains, Identity & Moral Agency; Human Anatomy and Physiology (instructors from Harvard University and New York University)", d: "Jun 2022"}
+  ]}
  ],
- certsAlso: ["Nutrition Course · 57357 Children’s Cancer Hospital Egypt", "Limitless Nutrition Course"],
+ certsAlso: ["Nutrition Course (57357 Children’s Cancer Hospital Egypt)", "Limitless Nutrition Course"],
  expPhotos: ["img/cura-l.webp", "img/cura-2.webp"],
 
  /* ---------- VISION TAB ---------- */
@@ -647,16 +655,16 @@ const seen = new Set();
 const show = el => { el.classList.add("in"); el.querySelectorAll("b[data-n]").forEach(count); if (el.dataset.k) seen.add(el.dataset.k); };
 const io = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(e => {
  if (!e.isIntersecting) return; show(e.target); io.unobserve(e.target);
-}), {threshold:.12}) : null;
+}), {threshold:0, rootMargin:"0px 0px -4% 0px"}) : null;
 const watch = () => document.querySelectorAll(".reveal:not(.in)").forEach(el => io ? io.observe(el) : show(el));
 const rv = k => `reveal${seen.has(k) ? " in" : ""}" data-k="${k}`;
 
 const GAL = {};
 const camIco = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm0 2v10h16V7H4zm3 8 3-4 2 3 2-2 3 3H7z"/></svg>';
-const gbtn = (key, i, inner, n) => `<button class="gbtn" type="button" data-g="${key}" data-x="${i}" aria-label="${esc(t(UI.view))}">${inner}${n ? `<span class="gcount">${camIco}${n}</span>` : ""}</button>`;
+const gbtn = (key, i, inner, n) => `<button class="gbtn" type="button" data-g="${key}" data-x="${i}" aria-label="${esc(t(UI.view))}">${inner}${n > 1 ? `<span class="gcount">${camIco}${n}</span>` : ""}</button>`;
 const card = (c, k) => { if (c.gallery) GAL[k] = c.gallery.map(src => ({src, cap: t(c.title)}));
  const im = c.img ? `<img src="${esc(c.img)}" class="${c.pos||""}" alt="${esc(t(c.title))}" loading="lazy">` : "";
- return `<article class="pcard ${rv(k)}">
+ return `<article class="pcard">
  ${c.video ? `<video src="${esc(c.video)}" poster="${esc(c.poster)}" controls preload="none" playsinline aria-label="${esc(t(c.title))}"></video>`
   : c.img ? (c.gallery ? gbtn(k, 0, im, c.gallery.length) : im) : `<div class="noimg" lang="en" dir="ltr">${esc(c.mark)}</div>`}
  <div class="body"><div class="meta">${esc(t(c.meta))}</div><h3>${esc(t(c.title))}</h3><p>${esc(t(c.text))}</p></div></article>`; };
@@ -675,23 +683,23 @@ function render(){
  $("story").innerHTML = P.story.map(x => `<p>${esc(t(x))}</p>`).join("");
  $("facts").innerHTML = P.facts.map(([k,v]) => `<div><dt>${esc(t(k))}</dt><dd>${esc(t(v))}</dd></div>`).join("");
 
- $("shows").innerHTML = P.shows.map((s,i) => `<article class="show ${rv("tv"+i)}">
+ $("shows").innerHTML = P.shows.map((s,i) => `<article class="show">
   <div class="media">${s.video
    ? `<video src="${esc(s.video)}" poster="${esc(s.poster)}" controls preload="none" playsinline aria-label="${esc(t(UI.play))}"></video>`
    : (GAL["tv"+i] = s.gallery.map(src => ({src, cap: t(s.title)})), gbtn("tv"+i, 0, `<img src="${esc(s.main)}" alt="${esc(t(s.title))}" loading="lazy">`, s.gallery.length))}</div>
-  ${s.thumbs ? ((s.video && (GAL["tv"+i] = s.gallery.map(src => ({src, cap: t(s.title)})))), `<div class="thumbs">${s.thumbs.map((src,j) => gbtn("tv"+i, s.video ? j : j+1, `<img src="${esc(src)}" alt="" loading="lazy">`, 0)).join("")}</div>`) : ""}
+  ${s.thumbs ? ((s.video && (GAL["tv"+i] = s.gallery.map(src => ({src, cap: t(s.title)})))), `<div class="thumbs${s.thumbs.length===1?" one":""}">${s.thumbs.map((src,j) => gbtn("tv"+i, s.video ? j : j+1, `<img src="${esc(src)}" alt="" loading="lazy">`, 0)).join("")}</div>`) : ""}
   <div class="txt"><div class="meta">${esc(t(s.meta))}</div><h3>${esc(t(s.title))}</h3><p>${esc(t(s.text))}</p></div></article>`).join("");
 
  $("trainingGrid").innerHTML = P.training.map((c,i) => card(c,"tr"+i)).join("");
  $("expList").innerHTML = P.experience.map(e => `<li><strong>${esc(t(e.role))}</strong><span class="where">${esc(t(e.where))}</span><span class="dur">${esc(t(e.dur))}</span></li>`).join("");
  $("leadGrid").innerHTML = P.leadership.map((c,i) => card(c,"ld"+i)).join("");
- GAL.certs = []; 
- $("certGrid").innerHTML = P.certs.map((c,i) => {
+ GAL.certs = [];
+ $("certGrid").innerHTML = P.certs.map((g,gi) => `<h3 class="cgroup">${esc(t(g.group))}</h3>` + g.items.map((c,i) => {
   const start = GAL.certs.length;
   [c.img].concat(c.more||[]).forEach(k => GAL.certs.push({src: `img/certs/${k}.webp`, cap: c.t}));
-  return `<article class="ccard ${rv("c"+i)}">${gbtn("certs", start, `<div class="paper"><img src="img/certs/${esc(c.img)}-t.webp" alt="${esc(c.t)}" loading="lazy"></div>`, c.more ? c.more.length+1 : 0)}
-   <div class="body" lang="en" dir="ltr"><strong>${esc(c.t)}</strong><span>${esc(c.o)}</span><time>${esc(c.d)}</time></div></article>`; }).join("");
- $("certAlso").innerHTML = `<strong>${esc(t(UI.also))}</strong> <span lang="en" dir="ltr">${P.certsAlso.map(esc).join(" · ")}</span>`;
+  return `<article class="ccard">${gbtn("certs", start, `<div class="paper"><img src="img/certs/${esc(c.img)}-t.webp" alt="${esc(c.t)}" loading="lazy"></div>`, c.more ? c.more.length+1 : 0)}
+   <div class="body" lang="en" dir="ltr"><strong>${esc(c.t)}</strong><span>${esc(c.o)}</span><time>${esc(c.d)}</time></div></article>`; }).join("")).join("");
+ $("certAlso").innerHTML = `<strong>${esc(t(UI.also))}</strong> <span lang="en" dir="ltr">${P.certsAlso.map(esc).join(", ")}</span>`;
  GAL.cura = P.expPhotos.map(src => ({src, cap: t(UI.curaCap)}));
  $("expPhotos").innerHTML = P.expPhotos.map((src,i) => gbtn("cura", i, `<img src="${esc(src)}" alt="Cura Pharmacy" loading="lazy">`, 0)).join("") + `<figcaption>${esc(t(UI.curaCap))}</figcaption>`;
 
