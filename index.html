@@ -201,6 +201,22 @@ footer{background:var(--field2);color:#c9d6e3;text-align:center;font-size:13px;p
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{padding:9px 15px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:14px;font-weight:600}
 [hidden]{display:none!important}
+/* vision invitation */
+.invite{padding:0 max(5vw,16px) clamp(52px,7vw,96px)}
+.invite .box{max-width:1180px;margin:0 auto;background:var(--field);color:#fff;border-radius:24px;padding:clamp(26px,4vw,48px);display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px clamp(20px,3vw,40px);align-items:center;position:relative;overflow:hidden}
+.invite .box::after{content:"";position:absolute;inset-inline-end:-60px;top:-60px;width:240px;height:240px;border-radius:50%;border:2px solid rgba(159,182,207,.25);box-shadow:0 0 0 40px rgba(159,182,207,.06)}
+.invite img{width:92px;height:92px;border-radius:50%;object-fit:cover;border:3px solid var(--mol)}
+.invite h2{font-size:clamp(26px,3.2vw,38px);margin-bottom:8px}
+.invite p{color:var(--on2);margin:0 0 14px;max-width:60ch}
+.invite ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.invite li{padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.1);font-size:13.5px;font-weight:600}
+.invite .btn{position:relative;z-index:1;white-space:nowrap}
+.fab{position:fixed;z-index:20;inset-block-end:18px;inset-inline-end:18px;display:inline-flex;align-items:center;gap:10px;min-height:50px;padding:0 20px 0 8px;border-radius:999px;background:var(--red);color:#fff;text-decoration:none;font-weight:700;font-size:15px;box-shadow:0 14px 34px -12px rgba(10,30,50,.6);transform:translateY(120px);opacity:0;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .3s}
+.fab.on{transform:none;opacity:1}
+.fab img{width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid #fff}
+@media(max-width:900px){.invite .box{grid-template-columns:auto minmax(0,1fr)}.invite .btn{grid-column:1/-1;justify-self:start}}
+@media(max-width:600px){.invite .box{grid-template-columns:minmax(0,1fr)}.invite img{width:72px;height:72px}.fab{inset-inline:14px;justify-content:center;inset-block-end:14px}}
+@media print{.invite,.fab{display:none!important}}
 /* galleries + lightbox */
 .gbtn{all:unset;display:block;position:relative;cursor:zoom-in;width:100%}
 .gbtn:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
@@ -324,6 +340,18 @@ html[dir=rtl] .label{box-shadow:-6px 6px 0 var(--hl)}html[dir=rtl] .hub{box-shad
  </div>
 </section>
 
+<section class="invite" aria-labelledby="inviteH">
+ <div class="box">
+  <img src="img/portrait.webp" alt="" width="92" height="92">
+  <div>
+   <h2 id="inviteH" data-i="invH"></h2>
+   <p data-i="invP"></p>
+   <ul id="invList"></ul>
+  </div>
+  <a class="btn primary" href="#vision" data-i="invBtn"></a>
+ </div>
+</section>
+
 <section class="band alt" id="screen">
  <div class="wrap">
   <h2 class="reveal" data-i="hScreen"></h2>
@@ -436,6 +464,8 @@ html[dir=rtl] .label{box-shadow:-6px 6px 0 var(--hl)}html[dir=rtl] .hub{box-shad
  </div>
 </section>
 </main>
+
+<a class="fab" href="#vision" id="fab" aria-hidden="true" tabindex="-1"><img src="img/portrait.webp" alt=""><span data-i="fab"></span></a>
 
 <dialog class="lb" id="lb" dir="ltr" aria-label="Photo viewer">
  <div class="lb-inner"><img id="lbImg" alt=""><div class="lb-cap" id="lbCap"></div></div>
@@ -605,7 +635,12 @@ const P = {
 };
 
 const UI = {
- tabVision: {en: "My vision", ar: "رؤيتي"}, tabProfile: {en: "Profile", ar: "ملفي"},
+ tabVision: {en: "My vision", ar: "رؤيتي"},
+ invH: {en: "My vision for our Student Union", ar: "رؤيتي لاتحاد الطلبة"},
+ invP: {en: "I would love to serve as General Coordinator of the Faculty of Pharmacy Student Union, and I have written down exactly how I would run it.", ar: "أطمح أن أخدم اتحاد طلبة Faculty of Pharmacy كـ General Coordinator، وكتبت بالتفصيل كيف سأديره."},
+ invBtn: {en: "Read my vision", ar: "اقرأ رؤيتي"},
+ invList: {en: ["4 reasons I’m ready", "The role as I see it", "The Digital Union Hub", "5 plans for students", "Partners"], ar: ["4 أسباب لجاهزيتي", "الدور كما أراه", "The Digital Union Hub", "5 خطط للطلبة", "الشركاء"]},
+ fab: {en: "My vision as General Coordinator", ar: "رؤيتي كـ General Coordinator"}, tabProfile: {en: "Profile", ar: "ملفي"},
  nAbout: {en: "About", ar: "عنّي"}, nScreen: {en: "On screen", ar: "على الشاشة"}, nTraining: {en: "Training", ar: "التدريب"},
  nExp: {en: "Experience", ar: "الخبرات"}, nLead: {en: "Leadership", ar: "القيادة"}, nCerts: {en: "Certificates", ar: "الشهادات"}, nContact: {en: "Contact", ar: "تواصل"},
  kicker: {en: "5th-year Clinical Pharmacy student", ar: "طالبة Clinical Pharmacy في السنة الخامسة"},
@@ -688,6 +723,7 @@ function render(){
  $("factsBox").setAttribute("aria-label", t(UI.facts));
 
  $("statement").textContent = t(P.statement);
+ $("invList").innerHTML = t(UI.invList).map(x => `<li>${esc(x)}</li>`).join("");
  $("stats").innerHTML = P.stats.map((s,i) =>
   `<div class="stat ${rv("s"+i)}"><b data-n="${+s.n}" ${seen.has("s"+i)?'data-done="1"':""}>${seen.has("s"+i)?+s.n:0}</b><span>${esc(t(s.label))}</span></div>`).join("");
  $("story").innerHTML = P.story.map(x => `<p>${esc(t(x))}</p>`).join("");
@@ -760,6 +796,18 @@ $("langBtn").addEventListener("click", () => {
  try { localStorage.setItem("mn-lang", lang); } catch(e) {}
  render();
 });
+
+/* ---- floating vision button ---- */
+const fab = $("fab"), heroEl = $("top");
+const fabUpdate = () => {
+ const onProfile = !$("profile").hidden;
+ const pastHero = heroEl.getBoundingClientRect().bottom < 0;
+ const inv = document.querySelector(".invite").getBoundingClientRect(), clo = $("contact").getBoundingClientRect();
+ const vh = innerHeight, near = r => r.top < vh && r.bottom > 0;
+ const on = onProfile && pastHero && !near(inv) && !near(clo);
+ fab.classList.toggle("on", on); fab.setAttribute("aria-hidden", !on); fab.tabIndex = on ? 0 : -1;
+};
+addEventListener("scroll", fabUpdate, {passive:true}); addEventListener("hashchange", fabUpdate); fabUpdate();
 
 /* ---- lightbox ---- */
 const lb = $("lb"); let cur = [], idx = 0;
