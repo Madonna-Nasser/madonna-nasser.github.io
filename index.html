@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-palette="navy">
+<html lang="ar" dir="rtl" data-palette="navy">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,7 +7,7 @@
 <meta name="description" content="Madonna Nasser — Clinical Pharmacy student at The British University in Egypt.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 <style>
 /* VOICE: formal, warm, assured — a student presenting herself to her Dean.
    IDEA: a pharmacist's world — the dispensing label, the capsule, the molecule.
@@ -44,7 +44,7 @@ button{font:inherit;color:inherit}
 /* nav */
 nav{position:sticky;top:0;z-index:10;background:var(--field2);color:var(--navon)}
 nav .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:6px 20px;padding:12px max(5vw,16px)}
-.brand{font-family:"Instrument Serif",serif;font-size:22px;text-decoration:none;margin-right:auto}
+.brand{font-family:"Instrument Serif",serif;font-size:22px;text-decoration:none;margin-inline-end:auto}
 nav .links{display:flex;flex-wrap:wrap;gap:2px 4px}
 nav .links a{text-decoration:none;font-size:14px;font-weight:600;padding:10px 10px;border-radius:8px;opacity:.85}
 nav .links a:hover{opacity:1;background:rgba(255,255,255,.08)}
@@ -111,7 +111,7 @@ nav .links a:hover{opacity:1;background:rgba(255,255,255,.08)}
 [aria-expanded=true] .t-icon{background:var(--soft)}
 [aria-expanded=true] .t-icon::after{transform:translate(-50%,-50%) rotate(0)}
 .t-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
-.t-body>div{overflow:hidden;padding-left:calc(6.5em + 20px)}
+.t-body>div{overflow:hidden;padding-inline-start:calc(6.5em + 20px)}
 .t-body p{max-width:64ch;color:var(--muted);padding-bottom:22px;margin:0}
 li.open .t-body{grid-template-rows:1fr}
 
@@ -149,6 +149,19 @@ li.open .t-body{grid-template-rows:1fr}
 footer{background:var(--field2);color:var(--navon);text-align:center;font-size:13px;padding:18px}
 .sample{font-size:13px;color:var(--on2);margin-top:22px}
 
+
+/* language switch + Arabic */
+.lang-btn{min-height:40px;padding:0 16px;border-radius:999px;border:1.5px solid var(--ghost);background:transparent;color:var(--navon);font:600 14px "IBM Plex Sans Arabic",Manrope,sans-serif;cursor:pointer}
+.lang-btn:hover{background:var(--ghosth)}
+html[lang=ar] body{font-family:"IBM Plex Sans Arabic",Manrope,system-ui,sans-serif;line-height:1.8}
+html[lang=ar] h2,html[lang=ar] h3,html[lang=ar] .story p:first-of-type,html[lang=ar] .t-when,html[lang=ar] .awards b{font-family:Amiri,"Instrument Serif",serif}
+html[lang=ar] h2{line-height:1.35}html[lang=ar] h3{line-height:1.4}
+html[lang=ar] .story p:first-of-type{line-height:1.6}
+[lang=en]{font-family:inherit}
+html[dir=rtl] h1[dir=ltr]{text-align:right}
+html[lang=ar] h1[lang=en],html[lang=ar] .brand{font-family:"Instrument Serif",Georgia,serif}
+html[lang=ar] .kicker,html[lang=ar] .lede{line-height:1.8}
+
 /* entrance */
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
 .reveal.in{opacity:1;transform:none}
@@ -161,10 +174,10 @@ footer{background:var(--field2);color:var(--navon);text-align:center;font-size:1
  .stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
 }
 @media(max-width:600px){
- nav .links{width:100%;overflow-x:auto;flex-wrap:nowrap}nav .links a{flex:none}
+ nav .links{width:100%;overflow-x:auto;flex-wrap:nowrap;order:2}nav .links a{flex:none}.lang-btn{order:1}
  .t-head{grid-template-columns:minmax(0,1fr) 28px}.t-when{grid-column:1;font-size:22px}
  .t-head .t-title{grid-column:1}.t-icon{grid-row:1/3;grid-column:2}
- .t-body>div{padding-left:0}
+ .t-body>div{padding-inline-start:0}
 }
 @media(prefers-reduced-motion:reduce){
  *,*::before,*::after{animation:none!important;transition:none!important}
@@ -184,10 +197,11 @@ footer{background:var(--field2);color:var(--navon);text-align:center;font-size:1
 
 <nav aria-label="Main">
  <div class="wrap">
-  <a class="brand" href="#top">Madonna Nasser</a>
+  <a class="brand" href="#top" lang="en" dir="ltr">Madonna Nasser</a>
   <div class="links">
-   <a href="#about">About</a><a href="#journey">Journey</a><a href="#impact">Impact</a><a href="#skills">Skills</a><a href="#awards">Recognition</a><a href="#contact">Contact</a>
+   <a href="#about" data-i="nAbout">About</a><a href="#journey" data-i="nJourney">Journey</a><a href="#impact" data-i="nImpact">Impact</a><a href="#skills" data-i="nSkills">Skills</a><a href="#awards" data-i="nAwards">Recognition</a><a href="#contact" data-i="nContact">Contact</a>
   </div>
+  <button class="lang-btn" type="button" id="langBtn" lang="ar">العربية</button>
  </div>
 </nav>
 
@@ -195,14 +209,14 @@ footer{background:var(--field2);color:var(--navon);text-align:center;font-size:1
  <div class="wrap">
   <div>
    <div class="uni"><img src="bue-logo.png" alt="The British University in Egypt" width="672" height="247"></div>
-   <div class="kicker">Clinical Pharmacy student · Faculty of Pharmacy</div>
-   <h1>Madonna Nasser</h1>
+   <div class="kicker" data-i="kicker">Clinical Pharmacy student · Faculty of Pharmacy</div>
+   <h1 lang="en" dir="ltr">Madonna Nasser</h1>
    <p class="lede" id="statement"></p>
    <div class="btns">
-    <a class="btn primary" href="#about">Get to know me</a>
-    <button class="btn ghost" type="button" id="printBtn">Save as PDF</button>
+    <a class="btn primary" href="#about" data-i="bKnow">Get to know me</a>
+    <button class="btn ghost" type="button" id="printBtn" data-i="bPdf">Save as PDF</button>
    </div>
-   <p class="sample" id="sampleNote">Sample wording shown below her name; her real details replace it.</p>
+   <p class="sample" id="sampleNote" data-i="sample">Sample wording shown below her name; her real details replace it.</p>
   </div>
   <div class="pic" aria-hidden="true"><svg id="mol" viewBox="0 0 500 500"></svg></div>
  </div>
@@ -213,34 +227,34 @@ footer{background:var(--field2);color:var(--navon);text-align:center;font-size:1
 <section class="band" id="about">
  <div class="wrap about">
   <div class="story reveal">
-   <h2>Who I am</h2>
+   <h2 data-i="hAbout">Who I am</h2>
    <div id="story"></div>
   </div>
   <aside class="label reveal" aria-label="Quick facts">
-   <div class="label-top"><strong>Rx</strong><span>Dispensed with care</span></div>
+   <div class="label-top"><strong>Rx</strong><span data-i="rxSub">Dispensed with care</span></div>
    <dl id="facts"></dl>
-   <div class="label-foot">Use as directed: talk to her, she listens.</div>
+   <div class="label-foot" data-i="rxFoot">Use as directed: talk to her, she listens.</div>
   </aside>
  </div>
 </section>
 
 <section class="band alt" id="journey">
  <div class="wrap">
-  <h2 class="reveal">My journey so far</h2>
+  <h2 class="reveal" data-i="hJourney">My journey so far</h2>
   <ol class="journey reveal" id="timeline"></ol>
  </div>
 </section>
 
 <section class="band" id="impact">
  <div class="wrap">
-  <h2 class="reveal">Where I give my time</h2>
+  <h2 class="reveal" data-i="hImpact">Where I give my time</h2>
   <div class="cards" id="cards"></div>
  </div>
 </section>
 
 <section class="band alt" id="skills">
  <div class="wrap">
-  <h2 class="reveal">What I bring</h2>
+  <h2 class="reveal" data-i="hSkills">What I bring</h2>
   <div class="skills reveal" id="skillGroups"></div>
   <div class="langs reveal" id="langs"></div>
  </div>
@@ -248,73 +262,90 @@ footer{background:var(--field2);color:var(--navon);text-align:center;font-size:1
 
 <section class="band" id="awards">
  <div class="wrap">
-  <h2 class="reveal">Recognition</h2>
+  <h2 class="reveal" data-i="hAwards">Recognition</h2>
   <ul class="awards reveal" id="awardList"></ul>
  </div>
 </section>
 
 <section class="band contact" id="contact">
  <div class="wrap">
-  <h2>Let's talk</h2>
-  <p>I would be glad to meet, share more about my work, or answer any question.</p>
+  <h2 data-i="hContact">Let's talk</h2>
+  <p data-i="contactP">I would be glad to meet, share more about my work, or answer any question.</p>
   <div class="btns" id="contactBtns"></div>
   <small id="contactText"></small>
  </div>
 </section>
 
-<footer>© <span id="yr"></span> Madonna Nasser · Clinical Pharmacy, The British University in Egypt</footer>
+<footer>© <span id="yr"></span> <span lang="en">Madonna Nasser</span> · <span data-i="foot">Clinical Pharmacy, The British University in Egypt</span></footer>
 
 <script>
 {
-/* ============ EDIT HER DETAILS HERE ============
-   Everything on the page comes from this one object.
+/* ================= EDIT HER DETAILS HERE =================
+   Every text can be plain "text" (same in both languages)
+   or {en: "...", ar: "..."}.
+   Arabic rule: her name, BUE, and all medical / pharmacy terms stay in English inside the Arabic text.
    Set sample:false once the real content is in. */
 const P = {
  sample: true,
  photo: "",            // e.g. "photo.jpg" (upload the image to the repo). Empty = initials.
- statement: "I want every patient to understand their medicine, not just receive it.",
+ statement: {
+  en: "I want every patient to understand their medicine, not just receive it.",
+  ar: "أريد أن يفهم كل مريض دواءه، لا أن يستلمه فقط."
+ },
  stats: [
-  {n: 3.7, dec: 1, label: "Cumulative GPA"},
-  {n: 12, label: "Events organised or hosted"},
-  {n: 150, suffix: "+", label: "Volunteer hours"},
-  {n: 3, label: "Languages"}
+  {n: 3.7, dec: 1, label: {en: "Cumulative GPA", ar: "المعدل التراكمي GPA"}},
+  {n: 12, label: {en: "Events organised or hosted", ar: "فعالية نظّمتها أو قدّمتها"}},
+  {n: 150, suffix: "+", label: {en: "Volunteer hours", ar: "ساعة تطوع"}},
+  {n: 3, label: {en: "Languages", ar: "لغات"}}
  ],
  story: [
-  "I chose clinical pharmacy because I believe the safest medicine is the one a patient truly understands.",
-  "At BUE I have learned that pharmacy is as much about people as it is about pharmacology. Whether I am in a lab, on a hospital ward or speaking at a student event, I try to bring the same thing: clear explanations, patience and genuine care.",
-  "Outside lectures I spend my time on awareness campaigns, student activities and helping new students find their way in the faculty."
+  {en: "I chose clinical pharmacy because I believe the safest medicine is the one a patient truly understands.",
+   ar: "اخترت Clinical Pharmacy لأنني أؤمن بأن أكثر دواء آمن هو الدواء الذي يفهمه المريض فعلاً."},
+  {en: "At BUE I have learned that pharmacy is as much about people as it is about pharmacology. Whether I am in a lab, on a hospital ward or speaking at a student event, I try to bring the same thing: clear explanations, patience and genuine care.",
+   ar: "تعلّمت في BUE أن الصيدلة تتعلق بالناس بقدر ما تتعلق بالـ Pharmacology. سواء كنت في المعمل، أو في أقسام المستشفى، أو أتحدث في فعالية طلابية، أحاول أن أقدّم الشيء نفسه: شرحاً واضحاً، وصبراً، واهتماماً حقيقياً."},
+  {en: "Outside lectures I spend my time on awareness campaigns, student activities and helping new students find their way in the faculty.",
+   ar: "خارج المحاضرات أقضي وقتي في حملات التوعية والأنشطة الطلابية، ومساعدة الطلاب الجدد على إيجاد طريقهم في الكلية."}
  ],
  facts: [
-  ["Name", "Madonna Nasser"],
-  ["Programme", "Clinical Pharmacy (PharmD)"],
-  ["University", "The British University in Egypt"],
-  ["Year", "4th year"],
-  ["Languages", "Arabic, English, French"],
-  ["Based in", "Cairo, Egypt"]
+  [{en: "Name", ar: "الاسم"}, "Madonna Nasser"],
+  [{en: "Programme", ar: "البرنامج"}, "Clinical Pharmacy (PharmD)"],
+  [{en: "University", ar: "الجامعة"}, "The British University in Egypt"],
+  [{en: "Year", ar: "السنة"}, {en: "4th year", ar: "الفرقة الرابعة"}],
+  [{en: "Languages", ar: "اللغات"}, {en: "Arabic, English, French", ar: "العربية، الإنجليزية، الفرنسية"}],
+  [{en: "Based in", ar: "المدينة"}, {en: "Cairo, Egypt", ar: "القاهرة، مصر"}]
  ],
  journey: [
-  {when: "2022", title: "Joined the Faculty of Pharmacy", where: "The British University in Egypt", text: "Started the Clinical Pharmacy programme and joined the faculty's student activities in my first semester."},
-  {when: "2023", title: "Organised a medication awareness campaign", where: "BUE student activity", text: "Helped plan and run a campus campaign on safe use of antibiotics, preparing material and speaking with students and staff."},
-  {when: "2024", title: "Summer training in a hospital pharmacy", where: "Hospital name", text: "Observed clinical pharmacists on the wards, reviewed prescriptions and learned how drug interactions are checked in practice."},
-  {when: "2025", title: "Research project and poster", where: "Faculty of Pharmacy, BUE", text: "Worked with a supervisor on a project and presented the results as a poster at a student conference."},
-  {when: "Now", title: "Fourth year, Clinical Pharmacy", where: "The British University in Egypt", text: "Focusing on clinical rotations and patient counselling while continuing to lead student activities."}
+  {when: "2022", title: {en: "Joined the Faculty of Pharmacy", ar: "التحقت بـ Faculty of Pharmacy"}, where: "The British University in Egypt",
+   text: {en: "Started the Clinical Pharmacy programme and joined the faculty's student activities in my first semester.", ar: "بدأت برنامج Clinical Pharmacy وانضممت إلى الأنشطة الطلابية بالكلية من أول فصل دراسي."}},
+  {when: "2023", title: {en: "Organised a medication awareness campaign", ar: "نظّمت حملة توعية عن Medication Safety"}, where: {en: "BUE student activity", ar: "نشاط طلابي في BUE"},
+   text: {en: "Helped plan and run a campus campaign on safe use of antibiotics, preparing material and speaking with students and staff.", ar: "شاركت في تخطيط وتنفيذ حملة داخل الجامعة عن الاستخدام الآمن للـ Antibiotics، وأعددت المحتوى وتحدثت مع الطلاب والعاملين."}},
+  {when: "2024", title: {en: "Summer training in a hospital pharmacy", ar: "تدريب صيفي في Hospital Pharmacy"}, where: {en: "Hospital name", ar: "اسم المستشفى"},
+   text: {en: "Observed clinical pharmacists on the wards, reviewed prescriptions and learned how drug interactions are checked in practice.", ar: "رافقت الـ Clinical Pharmacists في الأقسام، وراجعت الـ Prescriptions، وتعلّمت كيف تُفحص الـ Drug Interactions عملياً."}},
+  {when: "2025", title: {en: "Research project and poster", ar: "مشروع بحثي و Poster"}, where: "Faculty of Pharmacy, BUE",
+   text: {en: "Worked with a supervisor on a project and presented the results as a poster at a student conference.", ar: "عملت مع مشرف على مشروع بحثي وعرضت النتائج في صورة Poster في مؤتمر طلابي."}},
+  {when: {en: "Now", ar: "الآن"}, title: {en: "Fourth year, Clinical Pharmacy", ar: "الفرقة الرابعة، Clinical Pharmacy"}, where: "The British University in Egypt",
+   text: {en: "Focusing on clinical rotations and patient counselling while continuing to lead student activities.", ar: "أركّز على الـ Clinical Rotations والـ Patient Counselling، مع الاستمرار في قيادة الأنشطة الطلابية."}}
  ],
  impact: [
-  {title: "Student activities", role: "Team member / leader", text: "Planning faculty events, welcoming new students and representing the faculty at university events."},
-  {title: "Health awareness", role: "Campaign organiser", text: "Running awareness days on medication safety and healthy living for students and the community."},
-  {title: "Volunteering", role: "Volunteer", text: "Supporting medical convoys and charity work where pharmacy knowledge helps people directly."},
-  {title: "Peer support", role: "Mentor", text: "Helping younger students with study plans, labs and settling into university life."}
+  {title: {en: "Student activities", ar: "الأنشطة الطلابية"}, role: {en: "Team member / leader", ar: "عضوة / قائدة فريق"}, text: {en: "Planning faculty events, welcoming new students and representing the faculty at university events.", ar: "تنظيم فعاليات الكلية، واستقبال الطلاب الجدد، وتمثيل الكلية في فعاليات الجامعة."}},
+  {title: {en: "Health awareness", ar: "التوعية الصحية"}, role: {en: "Campaign organiser", ar: "منظِّمة حملات"}, text: {en: "Running awareness days on medication safety and healthy living for students and the community.", ar: "تنظيم أيام توعية عن Medication Safety ونمط الحياة الصحي للطلاب والمجتمع."}},
+  {title: {en: "Volunteering", ar: "العمل التطوعي"}, role: {en: "Volunteer", ar: "متطوعة"}, text: {en: "Supporting medical convoys and charity work where pharmacy knowledge helps people directly.", ar: "المشاركة في القوافل الطبية والعمل الخيري حيث تفيد المعرفة الصيدلية الناس مباشرة."}},
+  {title: {en: "Peer support", ar: "دعم الزملاء"}, role: {en: "Mentor", ar: "Mentor"}, text: {en: "Helping younger students with study plans, labs and settling into university life.", ar: "مساعدة الطلاب الأصغر في خطط المذاكرة والمعامل والتأقلم مع الحياة الجامعية."}}
  ],
- skills: {
-  "Clinical": ["Patient counselling", "Drug interaction checks", "Prescription review", "Pharmacology", "Pharmaceutical care"],
-  "People": ["Public speaking", "Event organising", "Teamwork", "Leadership", "Clear communication"],
-  "Digital": ["Microsoft Office", "Canva", "Presentation design", "Social media content"]
- },
- languages: [["Arabic", "Native"], ["English", "Fluent"], ["French", "Intermediate"]],
+ skills: [
+  {group: {en: "Clinical", ar: "Clinical"}, items: ["Patient counselling", "Drug interaction checks", "Prescription review", "Pharmacology", "Pharmaceutical care"]},
+  {group: {en: "People", ar: "مهارات شخصية"}, items: [{en: "Public speaking", ar: "التحدث أمام الجمهور"}, {en: "Event organising", ar: "تنظيم الفعاليات"}, {en: "Teamwork", ar: "العمل الجماعي"}, {en: "Leadership", ar: "القيادة"}, {en: "Clear communication", ar: "التواصل الواضح"}]},
+  {group: {en: "Digital", ar: "مهارات رقمية"}, items: ["Microsoft Office", "Canva", {en: "Presentation design", ar: "تصميم العروض التقديمية"}, {en: "Social media content", ar: "محتوى Social Media"}]}
+ ],
+ languages: [
+  [{en: "Arabic", ar: "العربية"}, {en: "Native", ar: "اللغة الأم"}],
+  [{en: "English", ar: "الإنجليزية"}, {en: "Fluent", ar: "بطلاقة"}],
+  [{en: "French", ar: "الفرنسية"}, {en: "Intermediate", ar: "متوسط"}]
+ ],
  awards: [
   {year: "2025", title: "Dean's List", org: "Faculty of Pharmacy, BUE"},
-  {year: "2024", title: "Certificate of appreciation for student activities", org: "The British University in Egypt"},
-  {year: "2023", title: "Course or training certificate", org: "Issuing organisation"}
+  {year: "2024", title: {en: "Certificate of appreciation for student activities", ar: "شهادة تقدير عن الأنشطة الطلابية"}, org: "The British University in Egypt"},
+  {year: "2023", title: {en: "Course or training certificate", ar: "شهادة دورة أو تدريب"}, org: {en: "Issuing organisation", ar: "الجهة المانحة"}}
  ],
  contact: {
   email: "madonna.nasser@example.com",
@@ -322,57 +353,120 @@ const P = {
   phone: ""
  }
 };
-/* =============================================== */
 
-const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+/* fixed page wording */
+const UI = {
+ nAbout: {en: "About", ar: "عنّي"}, nJourney: {en: "Journey", ar: "مسيرتي"}, nImpact: {en: "Impact", ar: "أنشطتي"},
+ nSkills: {en: "Skills", ar: "مهاراتي"}, nAwards: {en: "Recognition", ar: "التكريمات"}, nContact: {en: "Contact", ar: "تواصل"},
+ kicker: {en: "Clinical Pharmacy student · Faculty of Pharmacy", ar: "طالبة Clinical Pharmacy · Faculty of Pharmacy"},
+ bKnow: {en: "Get to know me", ar: "تعرّف عليّ"}, bPdf: {en: "Save as PDF", ar: "حفظ كـ PDF"},
+ sample: {en: "Sample wording shown below her name; her real details replace it.", ar: "النصوص الحالية مثال فقط، وستُستبدل ببياناتها الحقيقية."},
+ hAbout: {en: "Who I am", ar: "من أنا"}, rxSub: {en: "Dispensed with care", ar: "يُصرف بعناية"},
+ rxFoot: {en: "Use as directed: talk to her, she listens.", ar: "طريقة الاستخدام: تحدّث معها، فهي تُنصت."},
+ hJourney: {en: "My journey so far", ar: "مسيرتي حتى الآن"}, hImpact: {en: "Where I give my time", ar: "أين أمنح وقتي"},
+ hSkills: {en: "What I bring", ar: "ما أقدّمه"}, hAwards: {en: "Recognition", ar: "التكريمات"},
+ hContact: {en: "Let's talk", ar: "لنتحدث"},
+ contactP: {en: "I would be glad to meet, share more about my work, or answer any question.", ar: "يسعدني اللقاء، ومشاركة المزيد عن عملي، أو الإجابة عن أي سؤال."},
+ foot: {en: "Clinical Pharmacy, The British University in Egypt", ar: "Clinical Pharmacy، The British University in Egypt"},
+ email: {en: "Email me", ar: "راسلني"}, langBtn: {en: "العربية", ar: "English"},
+ facts: {en: "Quick facts", ar: "معلومات سريعة"}
+};
+/* ========================================================== */
+
+let lang = "ar";   /* Arabic is the default landing language */
+try { if (localStorage.getItem("mn-lang") === "en") lang = "en"; } catch(e) {}
+const t = v => (v && typeof v === "object" && !Array.isArray(v)) ? (v[lang] ?? v.en) : v;
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const $ = id => document.getElementById(id);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-$("statement").textContent = P.statement;
-if (!P.sample) $("sampleNote").remove();
-$("yr").textContent = new Date().getFullYear();
+const count = el => {
+ const n = +el.dataset.n, dec = +el.dataset.dec, suf = el.dataset.suf;
+ if (reduce || el.dataset.done){ el.textContent = n.toFixed(dec)+suf; return; }
+ el.dataset.done = 1;
+ const t0 = performance.now(), dur = 1400;
+ const step = tm => { const p = Math.min(1,(tm-t0)/dur), v = n*(1-(1-p)**3); el.textContent = v.toFixed(dec)+suf; if (p<1) requestAnimationFrame(step); };
+ requestAnimationFrame(step);
+};
 
-$("stats").innerHTML = P.stats.map(s =>
- `<div class="stat reveal"><b data-n="${+s.n}" data-dec="${s.dec||0}" data-suf="${esc(s.suffix||"")}">0</b><span>${esc(s.label)}</span></div>`).join("");
+/* ---- reveal + counters (play once, never touch scrolling) ---- */
+const show = el => { el.classList.add("in"); el.querySelectorAll("b[data-n]").forEach(count);
+ const sec = el.closest("#stats,#cards"); if (sec) sec.dataset.seen = 1; };
+const io = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(e => {
+ if (!e.isIntersecting) return; show(e.target); io.unobserve(e.target);
+}), {threshold:.15}) : null;
+const watch = () => document.querySelectorAll(".reveal:not(.in)").forEach(el => io ? io.observe(el) : show(el));
 
-$("story").innerHTML = P.story.map(t => `<p>${esc(t)}</p>`).join("");
-$("facts").innerHTML = P.facts.map(([k,v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("");
+function render(){
+ const root = document.documentElement;
+ root.lang = lang; root.dir = lang === "ar" ? "rtl" : "ltr";
+ document.querySelectorAll("[data-i]").forEach(el => { const v = UI[el.dataset.i]; if (v) el.textContent = t(v); });
+ $("langBtn").textContent = t(UI.langBtn);
+ $("langBtn").lang = lang === "ar" ? "en" : "ar";
+ $("langBtn").setAttribute("aria-label", lang === "ar" ? "Switch to English" : "التبديل إلى العربية");
 
-$("timeline").innerHTML = P.journey.map((j,i) => `
- <li class="${i===P.journey.length-1?"open":""}">
-  <button class="t-head" type="button" aria-expanded="${i===P.journey.length-1}" aria-controls="tb${i}">
-   <span class="t-when">${esc(j.when)}</span>
-   <span class="t-title">${esc(j.title)}<span class="t-where">${esc(j.where)}</span></span>
+ $("statement").textContent = t(P.statement);
+ if (!P.sample && $("sampleNote")) $("sampleNote").remove();
+
+ const seen = $("stats").dataset.seen;
+ $("stats").innerHTML = P.stats.map(s =>
+  `<div class="stat reveal${seen?" in":""}"><b dir="ltr" data-n="${+s.n}" data-dec="${s.dec||0}" data-suf="${esc(s.suffix||"")}" ${seen?'data-done="1"':""}>${seen?(+s.n).toFixed(s.dec||0)+esc(s.suffix||""):"0"}</b><span>${esc(t(s.label))}</span></div>`).join("");
+
+ $("story").innerHTML = P.story.map(x => `<p>${esc(t(x))}</p>`).join("");
+ $("facts").innerHTML = P.facts.map(([k,v]) => `<div><dt>${esc(t(k))}</dt><dd>${esc(t(v))}</dd></div>`).join("");
+ document.querySelector(".label").setAttribute("aria-label", t(UI.facts));
+
+ const open = [...document.querySelectorAll("#timeline li")].map(li => li.classList.contains("open"));
+ $("timeline").innerHTML = P.journey.map((j,i) => {
+  const o = open.length ? open[i] : i === P.journey.length-1;
+  return `<li class="${o?"open":""}">
+  <button class="t-head" type="button" aria-expanded="${o}" aria-controls="tb${i}">
+   <span class="t-when">${esc(t(j.when))}</span>
+   <span class="t-title">${esc(t(j.title))}<span class="t-where">${esc(t(j.where))}</span></span>
    <span class="t-icon"></span>
   </button>
-  <div class="t-body" id="tb${i}"><div><p>${esc(j.text)}</p></div></div>
- </li>`).join("");
-$("timeline").addEventListener("click", e => {
- const b = e.target.closest(".t-head"); if (!b) return;
- const li = b.parentElement, open = !li.classList.contains("open");
- li.classList.toggle("open", open); b.setAttribute("aria-expanded", open);
+  <div class="t-body" id="tb${i}"><div><p>${esc(t(j.text))}</p></div></div>
+ </li>`}).join("");
+
+ $("cards").innerHTML = P.impact.map(c =>
+  `<article class="card reveal${$("cards").dataset.seen?" in":""}"><div class="pill"></div><h3>${esc(t(c.title))}</h3><div class="role">${esc(t(c.role))}</div><p>${esc(t(c.text))}</p></article>`).join("");
+
+ $("skillGroups").innerHTML = P.skills.map(g =>
+  `<div><h3>${esc(t(g.group))}</h3><div class="chips">${g.items.map(s=>`<span class="chip">${esc(t(s))}</span>`).join("")}</div></div>`).join("");
+ $("langs").innerHTML = P.languages.map(([l,v]) => `<div class="lang"><strong>${esc(t(l))}</strong><span>${esc(t(v))}</span></div>`).join("");
+
+ $("awardList").innerHTML = P.awards.map(a =>
+  `<li><b>${esc(t(a.year))}</b><div><strong>${esc(t(a.title))}</strong><span>${esc(t(a.org))}</span></div></li>`).join("");
+
+ const C = P.contact, btns = [], txt = [];
+ if (C.email){ btns.push(`<a class="btn primary" href="mailto:${esc(C.email)}">${esc(t(UI.email))}</a>`); txt.push(`<span dir="ltr">${esc(C.email)}</span>`); }
+ if (C.linkedin){ btns.push(`<a class="btn ghost" href="${esc(C.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>`); }
+ if (C.phone){ txt.push(`<span dir="ltr">${esc(C.phone)}</span>`); }
+ $("contactBtns").innerHTML = btns.join("");
+ $("contactText").innerHTML = txt.join(" · ");
+ watch();
+}
+
+render();
+$("yr").textContent = new Date().getFullYear();
+
+
+$("langBtn").addEventListener("click", () => {
+ lang = lang === "en" ? "ar" : "en";
+ try { localStorage.setItem("mn-lang", lang); } catch(e) {}
+ render();
 });
 
-$("cards").innerHTML = P.impact.map(c =>
- `<article class="card reveal"><div class="pill"></div><h3>${esc(c.title)}</h3><div class="role">${esc(c.role)}</div><p>${esc(c.text)}</p></article>`).join("");
-
-$("skillGroups").innerHTML = Object.entries(P.skills).map(([g,list]) =>
- `<div><h3>${esc(g)}</h3><div class="chips">${list.map(s=>`<span class="chip">${esc(s)}</span>`).join("")}</div></div>`).join("");
-$("langs").innerHTML = P.languages.map(([l,v]) => `<div class="lang"><strong>${esc(l)}</strong><span>${esc(v)}</span></div>`).join("");
-
-$("awardList").innerHTML = P.awards.map(a =>
- `<li><b>${esc(a.year)}</b><div><strong>${esc(a.title)}</strong><span>${esc(a.org)}</span></div></li>`).join("");
-
-const C = P.contact, btns = [], txt = [];
-if (C.email){ btns.push(`<a class="btn primary" href="mailto:${esc(C.email)}">Email me</a>`); txt.push(esc(C.email)); }
-if (C.linkedin){ btns.push(`<a class="btn ghost" href="${esc(C.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>`); }
-if (C.phone){ txt.push(esc(C.phone)); }
-$("contactBtns").innerHTML = btns.join("");
-$("contactText").innerHTML = txt.join(" · ");
+$("timeline").addEventListener("click", e => {
+ const b = e.target.closest(".t-head"); if (!b) return;
+ const li = b.parentElement, o = !li.classList.contains("open");
+ li.classList.toggle("open", o); b.setAttribute("aria-expanded", o);
+});
 
 $("printBtn").addEventListener("click", () => { try { document.querySelectorAll(".reveal").forEach(r=>r.classList.add("in")); window.print(); } catch(e){} });
 
 /* ---- molecule portrait ---- */
-const svg = $("mol"), NS = "http://www.w3.org/2000/svg";
+const svg = $("mol");
 const cx = 250, cy = 250, R = 128;
 let out = `<defs><clipPath id="clip"><circle cx="${cx}" cy="${cy}" r="${R-8}"/></clipPath>
  <radialGradient id="glow"><stop offset="0" style="stop-color:var(--glow1)"/><stop offset="1" style="stop-color:var(--glow2)"/></radialGradient></defs>`;
@@ -385,7 +479,6 @@ const hexes = [
  {a:110, d:205, r:34, aro:true},
  {a:170, d:198, r:28, sym:"NH₂"}
 ];
-let delay = 0;
 hexes.forEach((h,i) => {
  const ang = h.a*Math.PI/180, x = cx + h.d*Math.cos(ang), y = cy + h.d*Math.sin(ang);
  const sx = cx + R*Math.cos(ang), sy = cy + R*Math.sin(ang);
@@ -401,12 +494,10 @@ hexes.forEach((h,i) => {
   out += `<text class="sym" style="animation-delay:${1.8+i*.1}s" x="${fx.toFixed(1)}" y="${(fy+4).toFixed(1)}" text-anchor="middle">${esc(h.sym)}</text>`;
  }
 });
-/* capsules */
 const capsule = (x,y,rot,s,d) => `<g class="cap" style="animation-delay:${d}s" transform="translate(${x} ${y}) rotate(${rot}) scale(${s})">
  <rect x="-26" y="-10" width="52" height="20" rx="10" style="fill:var(--capw)"/><path d="M0 -10H-16a10 10 0 0 0 0 20H0Z" style="fill:var(--cap)"/>
  <rect x="-22" y="-6" width="16" height="3" rx="1.5" fill="#fff" opacity=".45"/></g>`;
 out += capsule(78,410,-30,1,2.1) + capsule(430,88,25,.8,2.3) + capsule(345,470,60,.65,2.5);
-/* portrait */
 out += `<circle cx="${cx}" cy="${cy}" r="${R}" fill="none" style="stroke:var(--mol)" stroke-width="2"/>`;
 out += `<circle cx="${cx}" cy="${cy}" r="${R-8}" fill="url(#glow)"/>`;
 if (P.photo){
@@ -414,28 +505,9 @@ if (P.photo){
 } else {
  out += `<text x="${cx}" y="${cy+28}" text-anchor="middle" font-family="Instrument Serif, Georgia, serif" font-size="96" style="fill:var(--mono)">MN</text>`;
 }
+svg.setAttribute("direction","ltr");
 svg.innerHTML = out;
 
-/* ---- reveal + counters (play once, never touch scrolling) ---- */
-const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-const count = el => {
- const n = +el.dataset.n, dec = +el.dataset.dec, suf = el.dataset.suf;
- if (reduce){ el.textContent = n.toFixed(dec)+suf; return; }
- const t0 = performance.now(), dur = 1400;
- const step = t => { const p = Math.min(1,(t-t0)/dur), v = n*(1-(1-p)**3); el.textContent = v.toFixed(dec)+suf; if (p<1) requestAnimationFrame(step); };
- requestAnimationFrame(step);
-};
-if ("IntersectionObserver" in window){
- const io = new IntersectionObserver(es => es.forEach(e => {
-  if (!e.isIntersecting) return;
-  e.target.classList.add("in");
-  e.target.querySelectorAll("b[data-n]").forEach(count);
-  io.unobserve(e.target);
- }), {threshold:.15});
- document.querySelectorAll(".reveal").forEach(el => io.observe(el));
-} else {
- document.querySelectorAll(".reveal").forEach(el => { el.classList.add("in"); el.querySelectorAll("b[data-n]").forEach(count); });
-}
 }
 </script>
 </body>
