@@ -189,6 +189,35 @@ footer{background:var(--field2);color:#c9d6e3;text-align:center;font-size:13px;p
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chip{padding:9px 15px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:14px;font-weight:600}
 [hidden]{display:none!important}
+/* galleries + lightbox */
+.gbtn{all:unset;display:block;position:relative;cursor:zoom-in;width:100%}
+.gbtn:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+.gcount{position:absolute;inset-block-end:10px;inset-inline-end:10px;background:rgba(10,30,50,.82);color:#fff;font-size:13px;font-weight:700;padding:5px 11px;border-radius:999px;display:inline-flex;gap:6px;align-items:center}
+.gcount svg{width:14px;height:14px;fill:currentColor}
+.show .thumbs .gbtn img{aspect-ratio:1;object-fit:cover;width:100%}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:20px}
+.ccard{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.ccard .paper{background:linear-gradient(180deg,var(--soft),light-dark(#e8eef4,#0b1d30));padding:14px;display:flex;align-items:center;justify-content:center;height:210px}
+.ccard .paper img{max-height:182px;max-width:100%;width:auto;height:auto;object-fit:contain;box-shadow:0 8px 22px -12px rgba(10,30,50,.5);border-radius:3px;background:#fff}
+.ccard .body{padding:14px 16px 16px}
+.ccard strong{display:block;font-size:15px;line-height:1.45}
+.ccard span{display:block;color:var(--muted);font-size:13.5px;margin-top:4px}
+.ccard time{display:inline-block;margin-top:8px;font-size:13px;font-weight:700;color:var(--accent)}
+.also{margin-top:28px;color:var(--muted);font-size:15px}
+.also strong{color:var(--ink)}
+.exp-photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:26px;max-width:640px}
+.exp-photos img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px}
+.exp-photos figcaption{grid-column:1/-1;color:var(--muted);font-size:14px}
+dialog.lb{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100vh;color:#fff}
+dialog.lb::backdrop{background:rgba(5,14,26,.92)}
+.lb-inner{position:relative;height:100%;display:grid;grid-template-rows:minmax(0,1fr) auto;align-items:center;justify-items:center;padding:56px 64px 20px}
+.lb-inner img{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px;box-shadow:0 20px 60px -20px #000}
+.lb-cap{padding-top:14px;text-align:center;font-size:15px;max-width:70ch;color:#dbe4ee}
+.lb-cap b{color:#fff;margin-inline-end:10px;font-weight:600}
+.lb button{position:absolute;width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(255,255,255,.35);background:rgba(15,42,68,.75);color:#fff;font-size:22px;line-height:1;cursor:pointer;display:grid;place-items:center}
+.lb button:hover{background:rgba(255,255,255,.15)}
+.lb .x{top:12px;right:12px}.lb .pv{left:10px;top:50%;translate:0 -50%}.lb .nx{right:10px;top:50%;translate:0 -50%}
+@media(max-width:600px){.lb-inner{padding:60px 8px 16px}.lb .pv,.lb .nx{top:auto;bottom:14px;translate:none}.lb .pv{left:14px}.lb .nx{right:14px}.lb-cap{padding-inline:64px}}
 
 /* Arabic */
 html[lang=ar] body{font-family:"IBM Plex Sans Arabic",Manrope,system-ui,sans-serif;line-height:1.8}
@@ -303,6 +332,7 @@ html[dir=rtl] .label{box-shadow:-6px 6px 0 var(--hl)}html[dir=rtl] .hub{box-shad
   <h2 class="reveal" data-i="hExp"></h2>
   <p class="intro reveal" data-i="expIntro"></p>
   <ul class="exp reveal" id="expList"></ul>
+  <figure class="exp-photos reveal" id="expPhotos"></figure>
  </div>
 </section>
 
@@ -317,7 +347,8 @@ html[dir=rtl] .label{box-shadow:-6px 6px 0 var(--hl)}html[dir=rtl] .hub{box-shad
 <section class="band alt" id="certificates">
  <div class="wrap">
   <h2 class="reveal" data-i="hCerts"></h2>
-  <div class="certs reveal" id="certGroups"></div>
+  <div class="cgrid" id="certGrid"></div>
+  <p class="also reveal" id="certAlso"></p>
  </div>
 </section>
 
@@ -393,6 +424,13 @@ html[dir=rtl] .label{box-shadow:-6px 6px 0 var(--hl)}html[dir=rtl] .hub{box-shad
 </section>
 </main>
 
+<dialog class="lb" id="lb" dir="ltr" aria-label="Photo viewer">
+ <div class="lb-inner"><img id="lbImg" alt=""><div class="lb-cap" id="lbCap"></div></div>
+ <button class="x" type="button" id="lbClose" aria-label="Close">✕</button>
+ <button class="pv" type="button" id="lbPrev" aria-label="Previous">‹</button>
+ <button class="nx" type="button" id="lbNext" aria-label="Next">›</button>
+</dialog>
+
 <footer dir="ltr" lang="en">© <span id="yr"></span> Madonna Nasser · Clinical Pharmacy, The British University in Egypt</footer>
 
 <script>
@@ -432,7 +470,7 @@ const P = {
   [{en: "Languages", ar: "اللغات"}, {en: "Arabic, English", ar: "العربية، الإنجليزية"}]
  ],
  shows: [
-  {main: "img/tv-studio.webp", thumbs: ["img/tv-lab.webp", "img/tv-alhayah.webp", "img/tv-kids.webp"],
+  {main: "img/tv-studio.webp", thumbs: ["img/tv-lab.webp", "img/tv-alhayah.webp", "img/tv-kids.webp"], gallery: ["img/tv-studio-l.webp", "img/tv-lab-l.webp", "img/tv-alhayah-l.webp", "img/tv-kids-l.webp"],
    meta: {en: "Al-Hayah TV · since 2023", ar: "Al-Hayah TV · منذ 2023"},
    title: {en: "Science presenter for children", ar: "مقدّمة فقرات علمية للأطفال"},
    text: {en: "I prepare and present interactive science experiments and educational segments for children, from Space and Astronomy to awareness on Antibiotics, Hygiene and Healthy Nutrition. New episodes are being filmed now.",
@@ -446,15 +484,15 @@ const P = {
  training: [
   {img: "", mark: "Sandoz", title: "Sandoz", meta: {en: "Internship", ar: "Internship"},
    text: {en: "Internship at Sandoz, a global leader in generic pharmaceuticals and biosimilars.", ar: "Internship في Sandoz، الشركة العالمية الرائدة في الـ Generic Pharmaceuticals والـ Biosimilars."}},
-  {img: "img/gnp.webp", title: "Global Napi Pharmaceuticals (GNP)", meta: {en: "Summer training · July 2026", ar: "تدريب صيفي · يوليو 2026"},
+  {img: "img/gnp.webp", gallery: ["img/gnp-l.webp", "img/gnp-2.webp", "img/certs/gnp.webp"], title: "Global Napi Pharmaceuticals (GNP)", meta: {en: "Summer training · July 2026", ar: "تدريب صيفي · يوليو 2026"},
    text: {en: "Quality Control (QC) at GNP and GAP, and Research & Development (R&D) at GIP.", ar: "Quality Control (QC) في GNP و GAP، و Research & Development (R&D) في GIP."}},
-  {img: "img/parkville.webp", title: "Parkville Pharmaceuticals", meta: {en: "Internship · 2026", ar: "Internship · 2026"},
+  {img: "img/parkville.webp", gallery: ["img/parkville-l.webp", "img/parkville-3.webp", "img/parkville-2.webp", "img/parkville-4.webp"], title: "Parkville Pharmaceuticals", meta: {en: "Internship · 2026", ar: "Internship · 2026"},
    text: {en: "Completed my internship and was named a 2026 “Learning Champion”.", ar: "أتممت فترة الـ Internship وحصلت على لقب «Learning Champion» لعام 2026."}},
-  {img: "img/eva.webp", title: "Eva Cosmetics", meta: {en: "Training", ar: "تدريب"},
+  {img: "img/eva.webp", gallery: ["img/eva-l.webp"], title: "Eva Cosmetics", meta: {en: "Training", ar: "تدريب"},
    text: {en: "Training in cosmetics and skincare products.", ar: "تدريب في منتجات الـ Cosmetics والـ Skincare."}},
-  {img: "img/c57357.webp", title: "57357 Children’s Cancer Hospital", meta: {en: "Clinical training · Feb 2024", ar: "تدريب إكلينيكي · فبراير 2024"},
+  {img: "img/c57357.webp", gallery: ["img/c57357-l.webp"], title: "57357 Children’s Cancer Hospital", meta: {en: "Clinical training · Feb 2024", ar: "تدريب إكلينيكي · فبراير 2024"},
    text: {en: "14-hour training in the Infection Prevention and Control department, plus a Nutrition course.", ar: "تدريب 14 ساعة في قسم Infection Prevention and Control، بالإضافة إلى Nutrition Course."}},
-  {img: "img/baheya-zayed.webp", title: "Baheya Hospital", meta: {en: "Clinical training", ar: "تدريب إكلينيكي"},
+  {img: "img/baheya-zayed.webp", gallery: ["img/baheya-zayed-l.webp", "img/baheya-2.webp"], title: "Baheya Hospital", meta: {en: "Clinical training", ar: "تدريب إكلينيكي"},
    text: {en: "Trained at Baheya, the hospital for early detection and treatment of breast cancer, and was invited to the opening of Baheya Zayed.", ar: "تدرّبت في مستشفى بهية للاكتشاف المبكر وعلاج سرطان الثدي، ودُعيت لحضور افتتاح Baheya Zayed."}}
  ],
  experience: [
@@ -467,38 +505,37 @@ const P = {
   {role: {en: "Laser Technician", ar: "Laser Technician"}, where: {en: "Beauty clinic", ar: "عيادة تجميل"}, dur: ""}
  ],
  leadership: [
-  {img: "img/union.webp", title: {en: "Student Union · Scientific Committee", ar: "اتحاد الطلبة · Scientific Committee"}, meta: {en: "4 years", ar: "أربع سنوات"},
+  {img: "img/union.webp", gallery: ["img/union-l.webp", "img/union-2.webp"], title: {en: "Student Union · Scientific Committee", ar: "اتحاد الطلبة · Scientific Committee"}, meta: {en: "4 years", ar: "أربع سنوات"},
    text: {en: "Active member for four years; worked with a sponsor on scientific awareness campaigns in the faculty.", ar: "عضوة فعّالة لأربع سنوات، وتعاونت مع راعٍ (Sponsor) في حملات توعية علمية داخل الكلية."}},
-  {img: "img/scouts.webp", title: "Scout Leader", meta: {en: "5 years as leader", ar: "5 سنوات كقائدة"},
+  {img: "img/scouts.webp", gallery: ["img/scouts-l.webp", "img/scouts-2.webp"], title: "Scout Leader", meta: {en: "5 years as leader", ar: "5 سنوات كقائدة"},
    text: {en: "My scouting journey started in 3rd grade. Leading for five years taught me leadership, teamwork, resilience and community service.", ar: "بدأت رحلتي في الكشافة من الصف الثالث الابتدائي، وقيادتي لخمس سنوات علّمتني القيادة والعمل الجماعي والصمود وخدمة المجتمع."}},
-  {img: "img/wlf.webp", title: "World Literacy Foundation", meta: {en: "Youth Ambassador · 2022 & 2026", ar: "Youth Ambassador · 2022 و 2026"},
+  {img: "img/wlf.webp", gallery: ["img/wlf-l.webp", "img/wlf-2.webp"], title: "World Literacy Foundation", meta: {en: "Youth Ambassador · 2022 & 2026", ar: "Youth Ambassador · 2022 و 2026"},
    text: {en: "Completed the Youth Ambassador Program in 2022 and again in 2026.", ar: "أتممت Youth Ambassador Program في 2022 ثم مرة أخرى في 2026."}},
-  {img: "img/aspire.webp", pos: "top", title: "Aspire Leaders Program", meta: {en: "Aspire Institute · Cohort 4, 2026", ar: "Aspire Institute · Cohort 4، 2026"},
+  {img: "img/aspire.webp", pos: "top", gallery: ["img/aspire-l.webp", "img/aspire-2.webp"], title: "Aspire Leaders Program", meta: {en: "Aspire Institute · Cohort 4, 2026", ar: "Aspire Institute · Cohort 4، 2026"},
    text: {en: "An international leadership programme founded at Harvard, connecting a global community of emerging leaders.", ar: "برنامج قيادي دولي تأسس في Harvard، يجمع مجتمعاً عالمياً من القادة الشباب."}},
-  {img: "img/prme.webp", pos: "top", title: "PRME COP30 Program", meta: {en: "Selected · 2025", ar: "تم اختياري · 2025"},
+  {img: "img/prme.webp", pos: "top", gallery: ["img/prme-l.webp"], title: "PRME COP30 Program", meta: {en: "Selected · 2025", ar: "تم اختياري · 2025"},
    text: {en: "A four-month virtual programme on climate literacy, with workshops by experts from institutions such as the University of Oxford and MIT Sloan.", ar: "برنامج افتراضي لمدة أربعة أشهر عن الوعي المناخي (Climate Literacy)، بورش عمل يقدّمها خبراء من مؤسسات مثل University of Oxford و MIT Sloan."}},
-  {img: "img/redcrescent.webp", title: "Egyptian Red Crescent", meta: {en: "Volunteer", ar: "متطوعة"},
-   text: {en: "Volunteered with the Egyptian Red Crescent, where I keep strong connections with many of its officials.", ar: "تطوعت مع الهلال الأحمر المصري، وتربطني علاقات قوية بعدد من مسؤوليه."}},
+  {img: "img/redcrescent.webp", gallery: ["img/redcrescent-l.webp", "img/rc-2.webp", "img/rc-3.webp", "img/rc-4.webp"], title: "Egyptian Red Crescent", meta: {en: "Volunteer", ar: "متطوعة"},
+   text: {en: "Volunteered with the Egyptian Red Crescent, where I keep strong connections with many of its officials, including at its Emergency Operations Centre.", ar: "تطوعت مع الهلال الأحمر المصري، وتربطني علاقات قوية بعدد من مسؤوليه، ومنها غرفة عمليات الطوارئ."}},
   {video: "img/volunteering.mp4", poster: "img/volunteering-poster.jpg", title: {en: "Humanitarian volunteering", ar: "العمل الإنساني التطوعي"}, meta: {en: "Volunteer", ar: "متطوعة"},
    text: {en: "Humanitarian volunteering gave me a deeper perspective on resilience, community support, and the real impact of showing up where help is needed most.", ar: "منحني العمل الإنساني التطوعي نظرة أعمق للصمود ودعم المجتمع، وللأثر الحقيقي للتواجد حيث نحتاج إلى المساعدة أكثر."}}
  ],
  certs: [
-  {group: {en: "Clinical & healthcare", ar: "Clinical & Healthcare"}, items: [
-   {t: "Infection Prevention & Quality Control Course", o: "American Association of Continuing Medical Education (AACME)", d: "2026"},
-   {t: "Good Clinical Practice (GCP)", o: "NIDA Clinical Trials Network · 6-hour course, valid until July 2028", d: "2025"},
-   {t: "Infection Prevention and Control training (14 hours)", o: "57357 Children’s Cancer Hospital Egypt", d: "2024"},
-   {t: "Nutrition Course", o: "57357 Children’s Cancer Hospital Egypt", d: ""},
-   {t: "Limitless Nutrition Course", o: "", d: ""}
-  ]},
-  {group: {en: "Quality, management & leadership", ar: "Quality, Management & Leadership"}, items: [
-   {t: "Lean Six Sigma Foundations", o: "LinkedIn Learning · NASBA CPE credit", d: "2026"},
-   {t: "Six Sigma Yellow Belt", o: "LinkedIn Learning", d: "2026"},
-   {t: "Quality Management Foundations", o: "LinkedIn Learning", d: "2026"},
-   {t: "Building an Integrated Online Marketing Plan", o: "LinkedIn Learning · PMI® PDUs", d: "2026"},
-   {t: "Selling into Industries: Healthcare", o: "LinkedIn Learning", d: "2026"},
-   {t: "How to Become a Thought Leader and Advance Your Career", o: "LinkedIn Learning", d: "2026"}
-  ]}
+  {img: "aacme", t: "Infection Prevention & Quality Control Course", o: "American Association of Continuing Medical Education (AACME)", d: "2026"},
+  {img: "gcp", t: "Good Clinical Practice (GCP)", o: "NIDA Clinical Trials Network · 6-hour course, valid until July 2028", d: "2025"},
+  {img: "ipc57357", t: "Infection Prevention and Control training (14 hours)", o: "57357 Children’s Cancer Hospital Egypt", d: "2024"},
+  {img: "gnp", t: "Summer Training, Certificate of Attendance", o: "Global Napi Pharmaceuticals (GNP)", d: "2026"},
+  {img: "lean", more: ["lean-2"], t: "Lean Six Sigma Foundations", o: "LinkedIn Learning · NASBA CPE credit", d: "2026"},
+  {img: "yellow", t: "Six Sigma Yellow Belt", o: "LinkedIn Learning", d: "2026"},
+  {img: "quality", t: "Quality Management Foundations", o: "LinkedIn Learning", d: "2026"},
+  {img: "marketing", more: ["marketing-2"], t: "Building an Integrated Online Marketing Plan", o: "LinkedIn Learning · PMI® PDUs", d: "2026"},
+  {img: "healthcare", t: "Selling into Industries: Healthcare", o: "LinkedIn Learning", d: "2026"},
+  {img: "thought", t: "How to Become a Thought Leader and Advance Your Career", o: "LinkedIn Learning", d: "2026"},
+  {img: "wlf2026", t: "Youth Ambassador Program", o: "World Literacy Foundation", d: "2026"},
+  {img: "wlf2022", t: "Youth Ambassador Program", o: "World Literacy Foundation", d: "2022"}
  ],
+ certsAlso: ["Nutrition Course · 57357 Children’s Cancer Hospital Egypt", "Limitless Nutrition Course"],
+ expPhotos: ["img/cura-l.webp", "img/cura-2.webp"],
 
  /* ---------- VISION TAB ---------- */
  reasons: [
@@ -534,14 +571,14 @@ const P = {
   {h: "Templates & Media Kit Vault", p: {en: "Union and faculty logos, email formats for pharma companies, hall requests and Silver/Gold sponsorship packages, for one visual identity.", ar: "كل القوالب الثابتة: لوجو الاتحاد والكلية، فورمات إيميلات شركات الأدوية، نماذج طلب القاعات، وعروض الرعاية Silver و Gold، لهوية بصرية موحّدة."}},
   {h: "Post-Event Scorecard", p: {en: "24 hours after each event: real attendance, student satisfaction, fastest committee and three lessons learned.", ar: "بعد كل إيفنت بـ 24 ساعة: عدد الحضور الفعلي، نسبة رضا الطلبة، أسرع لجنة في التنفيذ، وأهم 3 دروس مستفادة."}},
   {h: "Peer Shift & Task Swap Board", p: {en: "A member with an emergency posts their shift, and any available member takes it in one click and earns the points.", ar: "العضو اللي عنده ظرف طارئ يحط الشيفت على البورد، وأي عضو متاح ياخده بضغطة زر ويتحسب له في نقاطه وحضوره."}},
-  {h: "Speaker & VIP CRM", p: {en: "A record of every doctor and speaker who worked with the Union, with student feedback, to invite and thank them again.", ar: "قاعدة بيانات لكل دكتور أو متحدث شارك مع الاتحاد وتقييم تفاعل الطلبة معاه، لتسهيل دعوته مستقبلاً أو شكره رسمياً."}}
+  {h: "Speaker & VIP CRM", p: {en: "A record of every doctor and speaker who worked with the Union (pharma companies, MetLife, the Red Crescent, Baheya, 57357 and doctors abroad), with student feedback, to invite and thank them again.", ar: "قاعدة بيانات لكل دكتور أو متحدث شارك مع الاتحاد (من شركات الأدوية، MetLife، الهلال الأحمر، بهية، 57357، أو شبكة الدكاترة بالخارج) وتقييم تفاعل الطلبة معاه، لتسهيل دعوته مستقبلاً أو شكره رسمياً."}}
  ],
  plans: [
   {h: "Committee of the Month", p: {en: "A transparent monthly points system that measures each committee's commitment and achievements, with certified recognition for the best team.", ar: "نظام نقاط شفاف يقيس التزام وإنجازات كل لجنة شهرياً، لتكريم الفريق الأكثر تميزاً بشهادات موثّقة."}},
   {h: {en: "Summer internship track", ar: "مسار التدريب الصيفي"}, p: {en: "Working directly with HR at Global Napi, Eva Pharma, Sandoz, AstraZeneca, Parkville, Novartis and Sanofi to offer real internships to students.", ar: "تفعيل التواصل المباشر مع إدارات الـ HR في Global Napi و Eva Pharma و Sandoz و AstraZeneca و Parkville و Novartis و Sanofi لتوفير Internships حقيقية للطلبة."}},
-  {h: "MetLife Career Track", p: {en: "Practical workshops with MetLife Egypt on Medical Approvals & Claims, including simulations of insurance prescriptions in pharmacies.", ar: "ورش عمل تطبيقية مع MetLife Egypt عن الـ Medical Approvals & Claims، ومحاكاة التعامل مع روشتات التأمين في الصيدليات."}},
-  {h: {en: "Medical convoys and awareness", ar: "القوافل الطبية والتوعية"}, p: {en: "Field initiatives with Lions and High Team, and early-detection and awareness campaigns on campus with Baheya Hospital and 57357.", ar: "مبادرات ميدانية مع Lions و High Team، وحملات كشف مبكر وتوعية داخل الحرم الجامعي بالشراكة مع مستشفى بهية و 57357."}},
-  {h: {en: "Emergency and first-aid training", ar: "ندوات الطوارئ والإسعافات"}, p: {en: "Hands-on training with the Egyptian Red Crescent and crisis-management specialists, so students can act fast in emergencies.", ar: "تدريبات عملية بالتعاون مع الهلال الأحمر المصري ومتخصصين في إدارة الأزمات، لتأهيل الطلبة للتصرّف السريع في المواقف الطارئة."}}
+  {h: "MetLife Career Track", p: {en: "Through my contact inside MetLife Egypt, practical workshops on Medical Approvals & Claims, including simulations of insurance prescriptions in pharmacies.", ar: "من خلال تواصلي مع أحد العاملين في MetLife Egypt، ورش عمل تطبيقية عن الـ Medical Approvals & Claims، ومحاكاة التعامل مع روشتات التأمين في الصيدليات."}},
+  {h: {en: "Medical convoys and awareness", ar: "القوافل الطبية والتوعية"}, p: {en: "Field initiatives with Lions and High Team for medical convoys and refugee support, early-detection and awareness campaigns on campus with Baheya Hospital and 57357, and the Cultural Centre’s chemotherapy convoy with its mammography unit.", ar: "مبادرات ميدانية مع Lions و High Team للقوافل الطبية ودعم اللاجئين، وحملات كشف مبكر وتوعية داخل الحرم الجامعي بالشراكة مع مستشفى بهية و 57357، وقافلة كيمي التابعة للمركز الثقافي ووحدة الماموجرام الخاصة بها."}},
+  {h: {en: "Emergency and first-aid training", ar: "ندوات الطوارئ والإسعافات"}, p: {en: "Hands-on training with the Egyptian Red Crescent and crisis-management specialists, so students can act fast in emergencies. I will also try to arrange a seminar with Nasser Military Academy.", ar: "تدريبات عملية بالتعاون مع الهلال الأحمر المصري ومتخصصين في إدارة الأزمات، لتأهيل الطلبة للتصرّف السريع في المواقف الطارئة، وسأحاول التواصل مع أكاديمية ناصر العسكرية لتنظيم ندوة عن هذا الموضوع."}}
  ],
  contact: {email: "Madonna235581@bue.edu.eg", linkedin: "https://www.linkedin.com/in/madonna-n-adly-a284403a1", phone: "+201202667355", phoneShown: "+20 120 266 7355"},
  partners: ["Global Napi", "Eva Pharma", "Sandoz", "AstraZeneca", "Parkville", "Novartis", "Sanofi", "MetLife Egypt", "Baheya Hospital", "57357", "Egyptian Red Crescent", "Lions", "High Team"]
@@ -584,7 +621,7 @@ const UI = {
  vCloseH: {en: "Together, one team", ar: "معاً، فريق واحد"},
  vCloseP: {en: "The Union's success is the work of all of us. I'm ready to give it my best.", ar: "نجاح الاتحاد هو مجهودنا كلنا، وأنا مستعدة أقدّم أقوى ما عندي."},
  foot: {en: "Clinical Pharmacy, The British University in Egypt", ar: "Clinical Pharmacy، The British University in Egypt"},
- facts: {en: "Quick facts", ar: "معلومات سريعة"}, play: {en: "Play the clip", ar: "شاهد المقطع"}, email: {en: "Email", ar: "البريد الإلكتروني"}, call: {en: "Call", ar: "اتصال"}
+ facts: {en: "Quick facts", ar: "معلومات سريعة"}, play: {en: "Play the clip", ar: "شاهد المقطع"}, photos: {en: "photos", ar: "صور"}, view: {en: "View photos", ar: "عرض الصور"}, also: {en: "Also completed:", ar: "دورات أخرى:"}, curaCap: {en: "At Cura Pharmacy’s bazaar, as Beauty Section Manager.", ar: "في بازار Cura Pharmacy كمديرة لقسم التجميل."}, viewCert: {en: "View certificate", ar: "عرض الشهادة"}, email: {en: "Email", ar: "البريد الإلكتروني"}, call: {en: "Call", ar: "اتصال"}
 };
 /* ===================================================================== */
 
@@ -612,10 +649,15 @@ const io = "IntersectionObserver" in window ? new IntersectionObserver(es => es.
 const watch = () => document.querySelectorAll(".reveal:not(.in)").forEach(el => io ? io.observe(el) : show(el));
 const rv = k => `reveal${seen.has(k) ? " in" : ""}" data-k="${k}`;
 
-const card = (c, k) => `<article class="pcard ${rv(k)}">
+const GAL = {};
+const camIco = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm0 2v10h16V7H4zm3 8 3-4 2 3 2-2 3 3H7z"/></svg>';
+const gbtn = (key, i, inner, n) => `<button class="gbtn" type="button" data-g="${key}" data-x="${i}" aria-label="${esc(t(UI.view))}">${inner}${n ? `<span class="gcount">${camIco}${n}</span>` : ""}</button>`;
+const card = (c, k) => { if (c.gallery) GAL[k] = c.gallery.map(src => ({src, cap: t(c.title)}));
+ const im = c.img ? `<img src="${esc(c.img)}" class="${c.pos||""}" alt="${esc(t(c.title))}" loading="lazy">` : "";
+ return `<article class="pcard ${rv(k)}">
  ${c.video ? `<video src="${esc(c.video)}" poster="${esc(c.poster)}" controls preload="none" playsinline aria-label="${esc(t(c.title))}"></video>`
-  : c.img ? `<img src="${esc(c.img)}" class="${c.pos||""}" alt="${esc(t(c.title))}" loading="lazy">` : `<div class="noimg" lang="en" dir="ltr">${esc(c.mark)}</div>`}
- <div class="body"><div class="meta">${esc(t(c.meta))}</div><h3>${esc(t(c.title))}</h3><p>${esc(t(c.text))}</p></div></article>`;
+  : c.img ? (c.gallery ? gbtn(k, 0, im, c.gallery.length) : im) : `<div class="noimg" lang="en" dir="ltr">${esc(c.mark)}</div>`}
+ <div class="body"><div class="meta">${esc(t(c.meta))}</div><h3>${esc(t(c.title))}</h3><p>${esc(t(c.text))}</p></div></article>`; };
 
 function render(){
  const root = document.documentElement;
@@ -634,15 +676,22 @@ function render(){
  $("shows").innerHTML = P.shows.map((s,i) => `<article class="show ${rv("tv"+i)}">
   <div class="media">${s.video
    ? `<video src="${esc(s.video)}" poster="${esc(s.poster)}" controls preload="none" playsinline aria-label="${esc(t(UI.play))}"></video>`
-   : `<img src="${esc(s.main)}" alt="${esc(t(s.title))}" loading="lazy">`}</div>
-  ${s.thumbs ? `<div class="thumbs">${s.thumbs.map(src => `<img src="${esc(src)}" alt="" loading="lazy">`).join("")}</div>` : ""}
+   : (GAL["tv"+i] = s.gallery.map(src => ({src, cap: t(s.title)})), gbtn("tv"+i, 0, `<img src="${esc(s.main)}" alt="${esc(t(s.title))}" loading="lazy">`, s.gallery.length))}</div>
+  ${s.thumbs ? `<div class="thumbs">${s.thumbs.map((src,j) => gbtn("tv"+i, j+1, `<img src="${esc(src)}" alt="" loading="lazy">`, 0)).join("")}</div>` : ""}
   <div class="txt"><div class="meta">${esc(t(s.meta))}</div><h3>${esc(t(s.title))}</h3><p>${esc(t(s.text))}</p></div></article>`).join("");
 
  $("trainingGrid").innerHTML = P.training.map((c,i) => card(c,"tr"+i)).join("");
  $("expList").innerHTML = P.experience.map(e => `<li><strong>${esc(t(e.role))}</strong><span class="where">${esc(t(e.where))}</span><span class="dur">${esc(t(e.dur))}</span></li>`).join("");
  $("leadGrid").innerHTML = P.leadership.map((c,i) => card(c,"ld"+i)).join("");
- $("certGroups").innerHTML = P.certs.map(g => `<div><h3>${esc(t(g.group))}</h3><ul>${g.items.map(c =>
-  `<li><div><strong lang="en" dir="ltr">${esc(c.t)}</strong><span lang="en" dir="ltr">${esc(c.o)}</span></div><time>${esc(c.d)}</time></li>`).join("")}</ul></div>`).join("");
+ GAL.certs = []; 
+ $("certGrid").innerHTML = P.certs.map((c,i) => {
+  const start = GAL.certs.length;
+  [c.img].concat(c.more||[]).forEach(k => GAL.certs.push({src: `img/certs/${k}.webp`, cap: c.t}));
+  return `<article class="ccard ${rv("c"+i)}">${gbtn("certs", start, `<div class="paper"><img src="img/certs/${esc(c.img)}-t.webp" alt="${esc(c.t)}" loading="lazy"></div>`, c.more ? c.more.length+1 : 0)}
+   <div class="body" lang="en" dir="ltr"><strong>${esc(c.t)}</strong><span>${esc(c.o)}</span><time>${esc(c.d)}</time></div></article>`; }).join("");
+ $("certAlso").innerHTML = `<strong>${esc(t(UI.also))}</strong> <span lang="en" dir="ltr">${P.certsAlso.map(esc).join(" · ")}</span>`;
+ GAL.cura = P.expPhotos.map(src => ({src, cap: t(UI.curaCap)}));
+ $("expPhotos").innerHTML = P.expPhotos.map((src,i) => gbtn("cura", i, `<img src="${esc(src)}" alt="Cura Pharmacy" loading="lazy">`, 0)).join("") + `<figcaption>${esc(t(UI.curaCap))}</figcaption>`;
 
  $("reasons").innerHTML = P.reasons.map((r,i) => `<div class="reason"><span class="n">${i+1}</span><h3>${esc(t(r.h))}</h3><p>${esc(t(r.p))}</p></div>`).join("");
  $("duties").innerHTML = P.duties.map(d => `<li><div><strong>${esc(t(d.h))}</strong><span>${esc(t(d.p))}</span></div></li>`).join("");
@@ -691,6 +740,24 @@ $("langBtn").addEventListener("click", () => {
  try { localStorage.setItem("mn-lang", lang); } catch(e) {}
  render();
 });
+
+/* ---- lightbox ---- */
+const lb = $("lb"); let cur = [], idx = 0;
+const lbShow = () => { const it = cur[idx]; $("lbImg").src = it.src; $("lbImg").alt = it.cap;
+ $("lbCap").innerHTML = `<b>${idx+1} / ${cur.length}</b>${esc(it.cap)}`; $("lbCap").dir = "auto";
+ $("lbPrev").hidden = $("lbNext").hidden = cur.length < 2; };
+const lbOpen = (key, i) => { cur = GAL[key] || []; if (!cur.length) return; idx = i; lbShow();
+ if (lb.showModal) lb.showModal(); else lb.setAttribute("open",""); };
+const lbStep = d => { idx = (idx + d + cur.length) % cur.length; lbShow(); };
+document.addEventListener("click", e => { const b = e.target.closest("[data-g]"); if (b) lbOpen(b.dataset.g, +b.dataset.x); });
+$("lbClose").addEventListener("click", () => lb.close());
+$("lbPrev").addEventListener("click", () => lbStep(-1));
+$("lbNext").addEventListener("click", () => lbStep(1));
+lb.addEventListener("click", e => { if (e.target === lb || e.target.classList.contains("lb-inner")) lb.close(); });
+lb.addEventListener("keydown", e => { if (e.key === "ArrowRight") lbStep(1); if (e.key === "ArrowLeft") lbStep(-1); });
+let tx = null;
+lb.addEventListener("touchstart", e => { tx = e.touches[0].clientX; }, {passive:true});
+lb.addEventListener("touchend", e => { if (tx === null) return; const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) lbStep(dx < 0 ? 1 : -1); tx = null; });
 
 /* ---- molecule portrait ---- */
 const cx = 250, cy = 250, R = 128;
