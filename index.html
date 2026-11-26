@@ -103,12 +103,12 @@ nav .links a:hover{opacity:1;background:rgba(255,255,255,.08)}
 .label-foot{margin-top:12px;font-size:13px;color:var(--muted)}
 
 /* on screen */
-.screen{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:22px}
+.screen{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:22px;align-items:start}
 .show{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
 .show .media{position:relative;background:#000}
 .show .media img,.show .media video{width:100%;aspect-ratio:16/10;object-fit:cover}
-.show .thumbs{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:var(--line)}
-.show .thumbs img{aspect-ratio:4/5;object-fit:cover;width:100%}
+.show .thumbs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;background:var(--line)}
+.show .thumbs img{aspect-ratio:1;object-fit:cover;width:100%}
 .show .txt{padding:22px 24px}
 .meta{font-size:14px;font-weight:700;color:var(--accent);margin-bottom:8px}
 .show p{color:var(--muted);margin:0}
@@ -116,7 +116,8 @@ nav .links a:hover{opacity:1;background:rgba(255,255,255,.08)}
 /* photo cards */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:20px}
 .pcard{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
-.pcard img{width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--soft)}
+.pcard img,.pcard video{width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--soft)}
+.pcard img.top{object-position:top}.pcard video{background:#000;object-fit:contain}
 .pcard .noimg{aspect-ratio:4/3;display:grid;place-items:center;background:var(--field);color:#fff;font-family:"Instrument Serif",serif;font-size:34px;padding:16px;text-align:center}
 .pcard .body{padding:18px 20px 22px}
 .pcard h3{font-size:22px;margin-bottom:4px}
@@ -409,7 +410,7 @@ const P = {
   [{en: "Languages", ar: "اللغات"}, {en: "Arabic, English", ar: "العربية، الإنجليزية"}]
  ],
  shows: [
-  {main: "img/tv-studio.webp", thumbs: ["img/tv-lab.webp", "img/tv-alhayah.webp"],
+  {main: "img/tv-studio.webp", thumbs: ["img/tv-lab.webp", "img/tv-alhayah.webp", "img/tv-kids.webp"],
    meta: {en: "Al-Hayah TV · since 2023", ar: "Al-Hayah TV · منذ 2023"},
    title: {en: "Science presenter for children", ar: "مقدّمة فقرات علمية للأطفال"},
    text: {en: "I prepare and present interactive science experiments and educational segments for children, from Space and Astronomy to awareness on Antibiotics, Hygiene and Healthy Nutrition. New episodes are being filmed now.",
@@ -450,12 +451,14 @@ const P = {
    text: {en: "My scouting journey started in 3rd grade. Leading for five years taught me leadership, teamwork, resilience and community service.", ar: "بدأت رحلتي في الكشافة من الصف الثالث الابتدائي، وقيادتي لخمس سنوات علّمتني القيادة والعمل الجماعي والصمود وخدمة المجتمع."}},
   {img: "img/wlf.webp", title: "World Literacy Foundation", meta: {en: "Youth Ambassador · 2022 & 2026", ar: "Youth Ambassador · 2022 و 2026"},
    text: {en: "Completed the Youth Ambassador Program in 2022 and again in 2026.", ar: "أتممت Youth Ambassador Program في 2022 ثم مرة أخرى في 2026."}},
-  {img: "", mark: "Aspire", title: "Aspire Leaders Program", meta: {en: "Aspire Institute · Cohort 4, 2026", ar: "Aspire Institute · Cohort 4، 2026"},
+  {img: "img/aspire.webp", pos: "top", title: "Aspire Leaders Program", meta: {en: "Aspire Institute · Cohort 4, 2026", ar: "Aspire Institute · Cohort 4، 2026"},
    text: {en: "An international leadership program founded at Harvard, connecting a global community of emerging leaders.", ar: "برنامج قيادي دولي تأسس في Harvard، يجمع مجتمعاً عالمياً من القادة الشباب."}},
-  {img: "", mark: "PRME · COP30", title: "PRME COP30 Program", meta: {en: "Selected · 2025", ar: "تم اختياري · 2025"},
+  {img: "img/prme.webp", pos: "top", title: "PRME COP30 Program", meta: {en: "Selected · 2025", ar: "تم اختياري · 2025"},
    text: {en: "Four-month virtual program on climate literacy, with workshops by experts from institutions such as the University of Oxford and MIT Sloan.", ar: "برنامج افتراضي لمدة أربعة أشهر عن الوعي المناخي (Climate Literacy)، بورش عمل يقدّمها خبراء من مؤسسات مثل University of Oxford و MIT Sloan."}},
   {img: "img/redcrescent.webp", title: "Egyptian Red Crescent", meta: {en: "Volunteer", ar: "متطوعة"},
-   text: {en: "Volunteered with the Egyptian Red Crescent, where I keep strong connections with many of its officials.", ar: "تطوعت مع الهلال الأحمر المصري، وتربطني علاقات قوية بعدد من مسؤوليه."}}
+   text: {en: "Volunteered with the Egyptian Red Crescent, where I keep strong connections with many of its officials.", ar: "تطوعت مع الهلال الأحمر المصري، وتربطني علاقات قوية بعدد من مسؤوليه."}},
+  {video: "img/volunteering.mp4", poster: "img/volunteering-poster.jpg", title: {en: "Humanitarian volunteering", ar: "العمل الإنساني التطوعي"}, meta: {en: "Volunteer", ar: "متطوعة"},
+   text: {en: "Humanitarian volunteering gave me a deeper perspective on resilience, community support, and the real impact of showing up where help is needed most.", ar: "منحني العمل الإنساني التطوعي نظرة أعمق للصمود ودعم المجتمع، وللأثر الحقيقي للتواجد حيث نحتاج إلى المساعدة أكثر."}}
  ],
  certs: [
   {group: {en: "Clinical & healthcare", ar: "Clinical & Healthcare"}, items: [
@@ -587,7 +590,8 @@ const watch = () => document.querySelectorAll(".reveal:not(.in)").forEach(el => 
 const rv = k => `reveal${seen.has(k) ? " in" : ""}" data-k="${k}`;
 
 const card = (c, k) => `<article class="pcard ${rv(k)}">
- ${c.img ? `<img src="${esc(c.img)}" alt="${esc(t(c.title))}" loading="lazy">` : `<div class="noimg" lang="en" dir="ltr">${esc(c.mark)}</div>`}
+ ${c.video ? `<video src="${esc(c.video)}" poster="${esc(c.poster)}" controls preload="none" playsinline></video>`
+  : c.img ? `<img src="${esc(c.img)}" class="${c.pos||""}" alt="${esc(t(c.title))}" loading="lazy">` : `<div class="noimg" lang="en" dir="ltr">${esc(c.mark)}</div>`}
  <div class="body"><div class="meta">${esc(t(c.meta))}</div><h3>${esc(t(c.title))}</h3><p>${esc(t(c.text))}</p></div></article>`;
 
 function render(){
