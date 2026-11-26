@@ -87,6 +87,8 @@ nav .links a:hover{opacity:1;background:rgba(255,255,255,.08)}
 .btn.primary{background:var(--red);color:#fff}
 .btn.ghost{border-color:var(--ghost);color:#fff;background:transparent}
 .btn.ghost:hover{background:rgba(255,255,255,.1)}
+.btn.cvbtn{color:#fff;background:transparent;border-color:transparent;padding:0 10px;gap:8px;text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(255,255,255,.4)}
+.btn.cvbtn svg{width:18px;height:18px;fill:currentColor}
 .pic{position:relative;aspect-ratio:1;max-width:520px;width:100%;justify-self:center}
 .pic svg{width:100%;height:100%;display:block;overflow:visible}
 .bond{fill:none;stroke:var(--mol);stroke-width:2.2;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.6s ease forwards}
@@ -325,6 +327,7 @@ html[dir=rtl] .label{box-shadow:-6px 6px 0 var(--hl)}html[dir=rtl] .hub{box-shad
    <div class="btns">
     <a class="btn primary" href="#about" data-i="bKnow"></a>
     <a class="btn ghost" href="#vision" data-i="bVision"></a>
+    <a class="btn cvbtn" href="Madonna-Nasser-Adly-CV.pdf" download data-cv><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a1 1 0 0 1 1 1v9.6l3.3-3.3 1.4 1.4L12 17.4l-5.7-5.7 1.4-1.4 3.3 3.3V4a1 1 0 0 1 1-1zM5 19h14v2H5z"/></svg><span data-i="bCV"></span></a>
    </div>
   </div>
   <div class="pic" aria-hidden="true"><svg id="mol" viewBox="0 0 500 500" direction="ltr"></svg></div>
@@ -664,7 +667,7 @@ const UI = {
  nExp: {en: "Experience", ar: "الخبرات"}, nLead: {en: "Leadership", ar: "القيادة"}, nCerts: {en: "Certificates", ar: "الشهادات"}, nContact: {en: "Contact", ar: "تواصل"},
  kicker: {en: "5th-year Clinical Pharmacy student", ar: "طالبة Clinical Pharmacy في السنة الخامسة"},
 
- bKnow: {en: "Get to know me", ar: "تعرّف عليّ"}, bVision: {en: "My vision as General Coordinator", ar: "رؤيتي كـ General Coordinator"},
+ bKnow: {en: "Get to know me", ar: "تعرّف عليّ"}, bCV: {en: "Download CV (PDF)", ar: "تحميل السيرة الذاتية (PDF)"}, bVision: {en: "My vision as General Coordinator", ar: "رؤيتي كـ General Coordinator"},
  bProfile: {en: "Back to my profile", ar: "العودة إلى ملفي"},
  hAbout: {en: "Who I am", ar: "من أنا"}, rxSub: {en: "Dispensed with care", ar: "يُصرف بعناية"},
  rxFoot: {en: "Refills: unlimited curiosity.", ar: "قابل لإعادة الصرف: فضول لا ينتهي."},
@@ -785,7 +788,8 @@ function render(){
   `<a href="mailto:${esc(C.email)}">${ico.mail}${esc(t(UI.email))}</a>` +
   `<a href="${esc(C.linkedin)}" target="_blank" rel="noopener">${ico.li}LinkedIn</a>` +
   `<a href="https://wa.me/${esc(C.phone.replace(/\D/g,""))}" target="_blank" rel="noopener">${ico.wa}WhatsApp</a>` +
-  `<a href="#" data-copy role="button">${ico.mail}${esc(t(UI.copy))}</a>`);
+  `<a href="#" data-copy role="button">${ico.mail}${esc(t(UI.copy))}</a>` +
+  `<a href="Madonna-Nasser-Adly-CV.pdf" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a1 1 0 0 1 1 1v9.6l3.3-3.3 1.4 1.4L12 17.4l-5.7-5.7 1.4-1.4 3.3 3.3V4a1 1 0 0 1 1-1zM5 19h14v2H5z"/></svg>${esc(t(UI.bCV))}</a>`);
  document.querySelectorAll("[data-contact-text]").forEach(el => el.innerHTML =
   `<a href="mailto:${esc(C.email)}" style="color:inherit">${esc(C.email)}</a> · <a href="tel:${esc(C.phone)}" style="color:inherit">${esc(C.phoneShown)}</a>`);
  $("langBtn").setAttribute("aria-label", lang === "ar" ? "Switch to English" : "التبديل إلى العربية");
