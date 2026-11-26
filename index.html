@@ -7,7 +7,13 @@
 <meta name="description" content="Madonna Nasser — 5th-year Clinical Pharmacy student at The British University in Egypt.">
 <meta property="og:title" content="Madonna Nasser">
 <meta property="og:description" content="5th-year Clinical Pharmacy student · The British University in Egypt">
-<meta property="og:image" content="img/portrait.webp">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://madonna-nasser.github.io/">
+<meta property="og:image" content="https://madonna-nasser.github.io/img/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a1e32">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f2a44'/%3E%3Cg transform='rotate(-35 32 32)'%3E%3Crect x='12' y='24' width='40' height='16' rx='8' fill='%23fff'/%3E%3Cpath d='M32 24H20a8 8 0 0 0 0 16h12z' fill='%23d9232b'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
@@ -44,6 +50,7 @@ nav{position:sticky;top:0;z-index:10;background:var(--field2);color:#e9eef4}
 nav .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:10px max(5vw,16px)}
 .brand{font-family:"Instrument Serif",serif;font-size:22px;text-decoration:none;margin-inline-end:auto}
 nav .links{display:flex;flex-wrap:wrap;gap:2px;order:1}.tab-btn{order:2}.lang-btn{order:3}
+nav .links{scrollbar-width:none}nav .links::-webkit-scrollbar{display:none}
 nav .links a{text-decoration:none;font-size:14px;font-weight:600;padding:10px 9px;border-radius:8px;opacity:.85}
 nav .links a:hover{opacity:1;background:rgba(255,255,255,.08)}
 .tab-btn,.lang-btn{min-height:40px;padding:0 16px;border-radius:999px;font-weight:700;font-size:14px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}
@@ -115,6 +122,7 @@ nav .links a:hover{opacity:1;background:rgba(255,255,255,.08)}
 
 /* photo cards */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:20px}
+.grid.g3{grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr))}
 .pcard{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
 .pcard img,.pcard video{width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--soft)}
 .pcard img.top{object-position:top}.pcard video{background:#000;object-fit:contain}
@@ -144,12 +152,17 @@ nav .links a:hover{opacity:1;background:rgba(255,255,255,.08)}
 .closing h2{font-size:clamp(36px,5vw,60px);margin-bottom:14px}
 .closing p{color:var(--on2);max-width:52ch;margin:0 auto 28px}
 .closing .btns{justify-content:center}
+.contact{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:26px}
+.contact a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;border:1.5px solid var(--ghost);color:#fff;text-decoration:none;font-weight:600;font-size:15px}
+.contact a:hover{background:rgba(255,255,255,.1)}
+.contact svg{width:18px;height:18px;fill:currentColor}
+.contact-text{margin-top:16px;color:var(--on2);font-size:14px}
 footer{background:var(--field2);color:#c9d6e3;text-align:center;font-size:13px;padding:18px}
 
 /* vision tab */
 .vhero{background:var(--field);color:#fff}
 .vhero .wrap{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:center}
-.vhero img{width:clamp(110px,16vw,180px);aspect-ratio:1;border-radius:50%;object-fit:cover;border:3px solid var(--mol)}
+.vhero img{width:clamp(110px,16vw,180px);height:auto;aspect-ratio:1;border-radius:50%;object-fit:cover;border:3px solid var(--mol)}
 .vhero h1{font-size:clamp(40px,6vw,72px);margin-bottom:14px}
 .vhero p{color:var(--on2);font-size:18px;max-width:58ch;margin:0}
 .reasons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
@@ -198,7 +211,12 @@ html[dir=rtl] .label{box-shadow:-6px 6px 0 var(--hl)}html[dir=rtl] .hub{box-shad
  .certs,.reasons,.duties{grid-template-columns:minmax(0,1fr)}
 }
 @media(max-width:600px){
- nav .links{width:100%;overflow-x:auto;flex-wrap:nowrap;order:4}nav .links a{flex:none}
+ html{scroll-padding-top:120px}
+ nav .wrap{padding-block:8px}
+ nav .links{width:100%;overflow-x:auto;flex-wrap:nowrap;order:4;margin-inline:-6px;mask-image:linear-gradient(to left,transparent,#000 36px);-webkit-mask-image:linear-gradient(to left,transparent,#000 36px)}nav .links a{flex:none}
+ html[dir=rtl] nav .links{mask-image:linear-gradient(to right,transparent,#000 36px);-webkit-mask-image:linear-gradient(to right,transparent,#000 36px)}
+ .pic{max-width:290px;margin-bottom:-6px}.uni{padding:8px 12px;margin-bottom:16px}.uni img{height:40px}
+ .hero{padding-top:20px}.hero h1{font-size:clamp(52px,15vw,72px)}
  .exp li{grid-template-columns:minmax(0,1fr) auto}.exp .where{grid-column:1;grid-row:2}
  .vhero .wrap{grid-template-columns:minmax(0,1fr)}
  .label dl>div{grid-template-columns:7em minmax(0,1fr)}
@@ -224,7 +242,7 @@ html[dir=rtl] .label{box-shadow:-6px 6px 0 var(--hl)}html[dir=rtl] .hub{box-shad
   <a class="tab-btn" href="#vision" id="visionTab" data-i="tabVision">My vision</a>
   <button class="lang-btn" type="button" id="langBtn" lang="en">English</button>
   <div class="links">
-   <a href="#about" data-i="nAbout">About</a><a href="#screen" data-i="nScreen">On screen</a><a href="#training" data-i="nTraining">Training</a><a href="#experience" data-i="nExp">Experience</a><a href="#leadership" data-i="nLead">Leadership</a><a href="#certificates" data-i="nCerts">Certificates</a>
+   <a href="#about" data-i="nAbout">About</a><a href="#screen" data-i="nScreen">On screen</a><a href="#training" data-i="nTraining">Training</a><a href="#experience" data-i="nExp">Experience</a><a href="#leadership" data-i="nLead">Leadership</a><a href="#certificates" data-i="nCerts">Certificates</a><a href="#contact" data-i="nContact">Contact</a>
   </div>
  </div>
 </nav>
@@ -276,7 +294,7 @@ html[dir=rtl] .label{box-shadow:-6px 6px 0 var(--hl)}html[dir=rtl] .hub{box-shad
  <div class="wrap">
   <h2 class="reveal" data-i="hTraining"></h2>
   <p class="intro reveal" data-i="trainingIntro"></p>
-  <div class="grid" id="trainingGrid"></div>
+  <div class="grid g3" id="trainingGrid"></div>
  </div>
 </section>
 
@@ -303,11 +321,13 @@ html[dir=rtl] .label{box-shadow:-6px 6px 0 var(--hl)}html[dir=rtl] .hub{box-shad
  </div>
 </section>
 
-<section class="band closing">
+<section class="band closing" id="contact">
  <div class="wrap">
   <h2 data-i="closeH"></h2>
   <p data-i="closeP"></p>
   <div class="btns"><a class="btn primary" href="#vision" data-i="bVision"></a></div>
+  <div class="contact" data-contact></div>
+  <div class="contact-text" data-contact-text dir="ltr"></div>
  </div>
 </section>
 </main>
@@ -367,11 +387,13 @@ html[dir=rtl] .label{box-shadow:-6px 6px 0 var(--hl)}html[dir=rtl] .hub{box-shad
   <h2 data-i="vCloseH"></h2>
   <p data-i="vCloseP"></p>
   <div class="btns"><a class="btn ghost" href="#top" data-i="bProfile"></a></div>
+  <div class="contact" data-contact></div>
+  <div class="contact-text" data-contact-text dir="ltr"></div>
  </div>
 </section>
 </main>
 
-<footer>© <span id="yr"></span> <span lang="en">Madonna Nasser</span> · <span data-i="foot"></span></footer>
+<footer dir="ltr" lang="en">© <span id="yr"></span> Madonna Nasser · Clinical Pharmacy, The British University in Egypt</footer>
 
 <script>
 {
@@ -383,8 +405,8 @@ html[dir=rtl] .label{box-shadow:-6px 6px 0 var(--hl)}html[dir=rtl] .hub{box-shad
 const P = {
  photo: "img/portrait.webp",
  statement: {
-  en: "I bridge clinical knowledge, organisation and real industry partnerships, and I love making science simple for everyone.",
-  ar: "أجمع بين المعرفة الإكلينيكية والتنظيم وشراكات حقيقية مع الصناعة، وأحب أن أجعل العلم بسيطاً للجميع."
+  en: "Pharmacist in training, science presenter on Al-Hayah TV, and four years of Student Union leadership.",
+  ar: "صيدلانية تحت التدريب، ومقدّمة فقرات علمية على Al-Hayah TV، وأربع سنوات من العمل القيادي في اتحاد الطلبة."
  },
  stats: [
   {n: 5, label: {en: "Years in community pharmacy", ar: "سنوات في Community Pharmacy"}},
@@ -394,7 +416,7 @@ const P = {
  ],
  story: [
   {en: "I am a fifth-year pharmacy student at BUE on an academic excellence scholarship, and for five years I have worked in community pharmacy alongside my studies.",
-   ar: "أنا طالبة في السنة الخامسة بكلية الصيدلة في BUE بمنحة التفوق الأكاديمي (Academic Excellence Scholarship)، وأعمل منذ خمس سنوات في Community Pharmacy بجانب دراستي."},
+   ar: "أنا طالبة في السنة الخامسة بكلية الصيدلة في BUE بمنحة التفوق الأكاديمي، وأعمل منذ خمس سنوات في Community Pharmacy بجانب دراستي."},
   {en: "For four years I have served on the Student Union's Scientific Committee. Outside the faculty I am a Scout Leader, a Youth Ambassador for the World Literacy Foundation, and a participant in the Harvard-founded Aspire Leaders Program.",
    ar: "على مدار أربع سنوات كنت عضوة في Scientific Committee باتحاد الطلبة. وخارج الكلية أنا Scout Leader، و Youth Ambassador في World Literacy Foundation، ومشاركة في Aspire Leaders Program الذي تأسس في Harvard."},
   {en: "Since 2023 I have presented science segments for children on Al-Hayah TV. Whether I am behind a pharmacy counter, in front of a camera or leading a team, my aim is the same: make science clear, useful and close to people.",
@@ -415,7 +437,7 @@ const P = {
    title: {en: "Science presenter for children", ar: "مقدّمة فقرات علمية للأطفال"},
    text: {en: "I prepare and present interactive science experiments and educational segments for children, from Space and Astronomy to awareness on Antibiotics, Hygiene and Healthy Nutrition. New episodes are being filmed now.",
           ar: "أُعدّ وأقدّم تجارب علمية تفاعلية وفقرات تعليمية للأطفال، من Space و Astronomy إلى التوعية عن الـ Antibiotics والـ Hygiene والـ Healthy Nutrition. ويجري الآن تصوير حلقات جديدة."}},
-  {video: "img/abakera.mp4", poster: "img/abakera.webp",
+  {video: "img/abakera.mp4", poster: "img/abakera-poster.jpg",
    meta: {en: "Al-Qahera Wal Nas TV · 2019", ar: "Al-Qahera Wal Nas TV · 2019"},
    title: {en: "Contestant on “Al-Abakera”", ar: "متسابقة في برنامج «العباقرة»"},
    text: {en: "Featured on Al-Abakera (The Geniuses), the national knowledge competition hosted by Essam Youssef.",
@@ -424,7 +446,7 @@ const P = {
  training: [
   {img: "", mark: "Sandoz", title: "Sandoz", meta: {en: "Internship", ar: "Internship"},
    text: {en: "Internship at Sandoz, a global leader in generic pharmaceuticals and biosimilars.", ar: "Internship في Sandoz، الشركة العالمية الرائدة في الـ Generic Pharmaceuticals والـ Biosimilars."}},
-  {img: "img/gnp.webp", title: "Global Napi Pharmaceuticals (GNP)", meta: {en: "Summer training · 2026", ar: "تدريب صيفي · 2026"},
+  {img: "img/gnp.webp", title: "Global Napi Pharmaceuticals (GNP)", meta: {en: "Summer training · July 2026", ar: "تدريب صيفي · يوليو 2026"},
    text: {en: "Quality Control (QC) at GNP and GAP, and Research & Development (R&D) at GIP.", ar: "Quality Control (QC) في GNP و GAP، و Research & Development (R&D) في GIP."}},
   {img: "img/parkville.webp", title: "Parkville Pharmaceuticals", meta: {en: "Internship · 2026", ar: "Internship · 2026"},
    text: {en: "Completed my internship and was named a 2026 “Learning Champion”.", ar: "أتممت فترة الـ Internship وحصلت على لقب «Learning Champion» لعام 2026."}},
@@ -452,9 +474,9 @@ const P = {
   {img: "img/wlf.webp", title: "World Literacy Foundation", meta: {en: "Youth Ambassador · 2022 & 2026", ar: "Youth Ambassador · 2022 و 2026"},
    text: {en: "Completed the Youth Ambassador Program in 2022 and again in 2026.", ar: "أتممت Youth Ambassador Program في 2022 ثم مرة أخرى في 2026."}},
   {img: "img/aspire.webp", pos: "top", title: "Aspire Leaders Program", meta: {en: "Aspire Institute · Cohort 4, 2026", ar: "Aspire Institute · Cohort 4، 2026"},
-   text: {en: "An international leadership program founded at Harvard, connecting a global community of emerging leaders.", ar: "برنامج قيادي دولي تأسس في Harvard، يجمع مجتمعاً عالمياً من القادة الشباب."}},
+   text: {en: "An international leadership programme founded at Harvard, connecting a global community of emerging leaders.", ar: "برنامج قيادي دولي تأسس في Harvard، يجمع مجتمعاً عالمياً من القادة الشباب."}},
   {img: "img/prme.webp", pos: "top", title: "PRME COP30 Program", meta: {en: "Selected · 2025", ar: "تم اختياري · 2025"},
-   text: {en: "Four-month virtual program on climate literacy, with workshops by experts from institutions such as the University of Oxford and MIT Sloan.", ar: "برنامج افتراضي لمدة أربعة أشهر عن الوعي المناخي (Climate Literacy)، بورش عمل يقدّمها خبراء من مؤسسات مثل University of Oxford و MIT Sloan."}},
+   text: {en: "A four-month virtual programme on climate literacy, with workshops by experts from institutions such as the University of Oxford and MIT Sloan.", ar: "برنامج افتراضي لمدة أربعة أشهر عن الوعي المناخي (Climate Literacy)، بورش عمل يقدّمها خبراء من مؤسسات مثل University of Oxford و MIT Sloan."}},
   {img: "img/redcrescent.webp", title: "Egyptian Red Crescent", meta: {en: "Volunteer", ar: "متطوعة"},
    text: {en: "Volunteered with the Egyptian Red Crescent, where I keep strong connections with many of its officials.", ar: "تطوعت مع الهلال الأحمر المصري، وتربطني علاقات قوية بعدد من مسؤوليه."}},
   {video: "img/volunteering.mp4", poster: "img/volunteering-poster.jpg", title: {en: "Humanitarian volunteering", ar: "العمل الإنساني التطوعي"}, meta: {en: "Volunteer", ar: "متطوعة"},
@@ -466,7 +488,7 @@ const P = {
    {t: "Good Clinical Practice (GCP)", o: "NIDA Clinical Trials Network", d: "2025"},
    {t: "Infection Prevention and Control training (14 hours)", o: "57357 Children’s Cancer Hospital Egypt", d: "2024"},
    {t: "Nutrition Course", o: "57357 Children’s Cancer Hospital Egypt", d: ""},
-   {t: "Limitless Nutrition Course", o: "Limitless", d: ""}
+   {t: "Limitless Nutrition Course", o: "", d: ""}
   ]},
   {group: {en: "Quality, management & leadership", ar: "Quality, Management & Leadership"}, items: [
    {t: "Lean Six Sigma Foundations", o: "LinkedIn Learning · NASBA CPE credit", d: "2026"},
@@ -521,19 +543,20 @@ const P = {
   {h: {en: "Medical convoys and awareness", ar: "القوافل الطبية والتوعية"}, p: {en: "Field initiatives with Lions and High Team, and early-detection and awareness campaigns on campus with Baheya Hospital and 57357.", ar: "مبادرات ميدانية مع Lions و High Team، وحملات كشف مبكر وتوعية داخل الحرم الجامعي بالشراكة مع مستشفى بهية و 57357."}},
   {h: {en: "Emergency and first-aid training", ar: "ندوات الطوارئ والإسعافات"}, p: {en: "Hands-on training with the Egyptian Red Crescent and crisis-management specialists, so students can act fast in emergencies.", ar: "تدريبات عملية بالتعاون مع الهلال الأحمر المصري ومتخصصين في إدارة الأزمات، لتأهيل الطلبة للتصرّف السريع في المواقف الطارئة."}}
  ],
+ contact: {email: "Madonna235581@bue.edu.eg", linkedin: "https://www.linkedin.com/in/madonna-n-adly-a284403a1", phone: "+201202667355", phoneShown: "+20 120 266 7355"},
  partners: ["Global Napi", "Eva Pharma", "Sandoz", "AstraZeneca", "Parkville", "Novartis", "Sanofi", "MetLife Egypt", "Baheya Hospital", "57357", "Egyptian Red Crescent", "Lions", "High Team"]
 };
 
 const UI = {
- tabVision: {en: "My vision", ar: "رؤيتي"}, tabProfile: {en: "Profile", ar: "الملف الشخصي"},
+ tabVision: {en: "My vision", ar: "رؤيتي"}, tabProfile: {en: "Profile", ar: "ملفي"},
  nAbout: {en: "About", ar: "عنّي"}, nScreen: {en: "On screen", ar: "على الشاشة"}, nTraining: {en: "Training", ar: "التدريب"},
- nExp: {en: "Experience", ar: "الخبرات"}, nLead: {en: "Leadership", ar: "القيادة"}, nCerts: {en: "Certificates", ar: "الشهادات"},
- kicker: {en: "5th-year Clinical Pharmacy student · Faculty of Pharmacy", ar: "طالبة Clinical Pharmacy في السنة الخامسة · Faculty of Pharmacy"},
- badge: {en: "Academic Excellence Scholarship", ar: "منحة التفوق الأكاديمي · Academic Excellence"},
+ nExp: {en: "Experience", ar: "الخبرات"}, nLead: {en: "Leadership", ar: "القيادة"}, nCerts: {en: "Certificates", ar: "الشهادات"}, nContact: {en: "Contact", ar: "تواصل"},
+ kicker: {en: "5th-year Clinical Pharmacy student", ar: "طالبة Clinical Pharmacy في السنة الخامسة"},
+ badge: {en: "Academic Excellence Scholarship", ar: "منحة التفوق الأكاديمي"},
  bKnow: {en: "Get to know me", ar: "تعرّف عليّ"}, bVision: {en: "My vision as General Coordinator", ar: "رؤيتي كـ General Coordinator"},
  bProfile: {en: "Back to my profile", ar: "العودة إلى ملفي"},
  hAbout: {en: "Who I am", ar: "من أنا"}, rxSub: {en: "Dispensed with care", ar: "يُصرف بعناية"},
- rxFoot: {en: "Use as directed: talk to her, she listens.", ar: "طريقة الاستخدام: تحدّث معها، فهي تُنصت."},
+ rxFoot: {en: "Refills: unlimited curiosity.", ar: "قابل لإعادة الصرف: فضول لا ينتهي."},
  hScreen: {en: "On screen", ar: "على الشاشة"},
  screenIntro: {en: "Making science simple and fun, on national television.", ar: "أجعل العلم بسيطاً وممتعاً، على شاشات التلفزيون."},
  hTraining: {en: "Industry and clinical training", ar: "التدريب في الصناعة والمستشفيات"},
@@ -544,8 +567,8 @@ const UI = {
  leadIntro: {en: "Leading teams, representing young people, and showing up where help is needed.", ar: "قيادة الفرق، وتمثيل الشباب، والتواجد حيث نحتاج إلى المساعدة."},
  hCerts: {en: "Courses and certificates", ar: "الدورات والشهادات"},
  closeH: {en: "Ready to serve the Union", ar: "مستعدة لخدمة الاتحاد"},
- closeP: {en: "See how I would run the Student Union as General Coordinator.", ar: "تعرّف على خطتي لإدارة اتحاد الطلبة كـ General Coordinator."},
- vKicker: {en: "Student Union · Faculty of Pharmacy, BUE", ar: "اتحاد الطلبة · Faculty of Pharmacy، BUE"},
+ closeP: {en: "See how I would run the Student Union as General Coordinator, or get in touch directly.", ar: "تعرّف على خطتي لإدارة اتحاد الطلبة كـ General Coordinator، أو تواصل معي مباشرة."},
+ vKicker: {en: "Faculty of Pharmacy Student Union, BUE", ar: "اتحاد طلبة Faculty of Pharmacy في BUE"},
  vTitle: {en: "My vision as General Coordinator", ar: "رؤيتي كـ General Coordinator"},
  vIntro: {en: "Clinical knowledge, organisational discipline and real industry partnerships, ready to move our Student Union forward from day one.", ar: "معرفة إكلينيكية، وانضباط تنظيمي، وشراكات حقيقية مع الصناعة، جاهزة للارتقاء باتحاد الطلبة من اليوم الأول."},
  vWhy: {en: "Why I'm ready for this role", ar: "ليه أنا مناسبة للمنصب"},
@@ -561,7 +584,7 @@ const UI = {
  vCloseH: {en: "Together, one team", ar: "معاً، فريق واحد"},
  vCloseP: {en: "The Union's success is the work of all of us. I'm ready to give it my best.", ar: "نجاح الاتحاد هو مجهودنا كلنا، وأنا مستعدة أقدّم أقوى ما عندي."},
  foot: {en: "Clinical Pharmacy, The British University in Egypt", ar: "Clinical Pharmacy، The British University in Egypt"},
- facts: {en: "Quick facts", ar: "معلومات سريعة"}, play: {en: "Play the clip", ar: "شاهد المقطع"}
+ facts: {en: "Quick facts", ar: "معلومات سريعة"}, play: {en: "Play the clip", ar: "شاهد المقطع"}, email: {en: "Email", ar: "البريد الإلكتروني"}, call: {en: "Call", ar: "اتصال"}
 };
 /* ===================================================================== */
 
@@ -590,7 +613,7 @@ const watch = () => document.querySelectorAll(".reveal:not(.in)").forEach(el => 
 const rv = k => `reveal${seen.has(k) ? " in" : ""}" data-k="${k}`;
 
 const card = (c, k) => `<article class="pcard ${rv(k)}">
- ${c.video ? `<video src="${esc(c.video)}" poster="${esc(c.poster)}" controls preload="none" playsinline></video>`
+ ${c.video ? `<video src="${esc(c.video)}" poster="${esc(c.poster)}" controls preload="none" playsinline aria-label="${esc(t(c.title))}"></video>`
   : c.img ? `<img src="${esc(c.img)}" class="${c.pos||""}" alt="${esc(t(c.title))}" loading="lazy">` : `<div class="noimg" lang="en" dir="ltr">${esc(c.mark)}</div>`}
  <div class="body"><div class="meta">${esc(t(c.meta))}</div><h3>${esc(t(c.title))}</h3><p>${esc(t(c.text))}</p></div></article>`;
 
@@ -626,6 +649,19 @@ function render(){
  $("features").innerHTML = P.features.map(f => `<div class="feat"><strong lang="en" dir="ltr">${esc(f.h)}</strong><span>${esc(t(f.p))}</span></div>`).join("");
  $("plans").innerHTML = P.plans.map(p => `<div class="plan"><h3>${esc(t(p.h))}</h3><p>${esc(t(p.p))}</p></div>`).join("");
  $("partners").innerHTML = P.partners.map(x => `<span class="chip">${esc(x)}</span>`).join("");
+ const C = P.contact;
+ const ico = {
+  mail: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 2.2V17h16V7.2l-8 5.3-8-5.3zM5.3 7 12 11.4 18.7 7H5.3z"/></svg>',
+  li: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.3c0-1.3 0-2.9-1.8-2.9s-2.1 1.4-2.1 2.8V21h-4z"/></svg>',
+  wa: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.7-.3-1.9-.9-2.9-2.6-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4 1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>'
+ };
+ document.querySelectorAll("[data-contact]").forEach(el => el.innerHTML =
+  `<a href="mailto:${esc(C.email)}">${ico.mail}${esc(t(UI.email))}</a>` +
+  `<a href="${esc(C.linkedin)}" target="_blank" rel="noopener">${ico.li}LinkedIn</a>` +
+  `<a href="https://wa.me/${esc(C.phone.replace(/\D/g,""))}" target="_blank" rel="noopener">${ico.wa}WhatsApp</a>`);
+ document.querySelectorAll("[data-contact-text]").forEach(el => el.innerHTML =
+  `<a href="mailto:${esc(C.email)}" style="color:inherit">${esc(C.email)}</a> · <a href="tel:${esc(C.phone)}" style="color:inherit">${esc(C.phoneShown)}</a>`);
+ $("langBtn").setAttribute("aria-label", lang === "ar" ? "Switch to English" : "التبديل إلى العربية");
  setTab(false);
  watch();
 }
