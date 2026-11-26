@@ -141,7 +141,14 @@ nav .links a:hover{opacity:1;background:rgba(255,255,255,.08)}
 .pcard .noimg{aspect-ratio:4/3;display:grid;place-items:center;background:var(--field);color:#fff;font-family:"Instrument Serif",serif;font-size:34px;padding:16px;text-align:center}
 .pcard .body{padding:18px 20px 22px}
 .pcard h3{font-size:22px;margin-bottom:4px}
-.pcard p{color:var(--muted);font-size:15px;margin:0}
+.pcard p{color:var(--muted);font-size:16px;margin:0}
+.pcard .body{display:flex;flex-direction:column;flex:1}
+.pts{list-style:none;margin:6px 0 16px;padding:0;display:grid;gap:8px}
+.pts li{position:relative;padding-inline-start:18px;color:var(--muted);font-size:15.5px;line-height:1.55}
+.pts li::before{content:"";position:absolute;inset-inline-start:0;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.viewbtn{all:unset;box-sizing:border-box;margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border-radius:999px;border:1.5px solid var(--line);font-size:14px;font-weight:700;color:var(--hl);cursor:pointer}
+.viewbtn:hover{background:var(--soft)}.viewbtn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.viewbtn svg{width:16px;height:16px;fill:currentColor}
 
 /* experience */
 .exp{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
@@ -193,7 +200,7 @@ footer{background:var(--field2);color:#c9d6e3;text-align:center;font-size:13px;p
 .features{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:14px;margin-top:20px}
 .feat{border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--soft)}
 .feat strong{display:block;font-size:15.5px;margin-bottom:4px}
-.feat span{color:var(--muted);font-size:14.5px;line-height:1.55}
+.feat span{color:var(--muted);font-size:15.5px;line-height:1.6}
 .plans{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:20px}
 .plan{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px}
 .plan h3{font-size:23px;margin-bottom:8px}
@@ -230,7 +237,7 @@ footer{background:var(--field2);color:#c9d6e3;text-align:center;font-size:13px;p
 .ccard .paper img{max-height:182px;max-width:100%;width:auto;height:auto;object-fit:contain;box-shadow:0 8px 22px -12px rgba(10,30,50,.5);border-radius:3px;background:#fff}
 .ccard .body{padding:14px 16px 16px}
 .ccard strong{display:block;font-size:15px;line-height:1.45}
-.ccard span{display:block;color:var(--muted);font-size:13.5px;margin-top:4px}
+.ccard span{display:block;color:var(--muted);font-size:14.5px;margin-top:4px}
 .ccard time{display:inline-block;margin-top:8px;font-size:13px;font-weight:700;color:var(--accent)}
 .cgroup{grid-column:1/-1;font-size:24px;margin:18px 0 0}.cgroup:first-child{margin-top:0}
 .also{margin-top:28px;color:var(--muted);font-size:15px}
@@ -498,8 +505,8 @@ const P = {
  story: [
   {en: "I am a fifth-year Clinical Pharmacy student at BUE, and for five years I have worked in community pharmacy alongside my studies.",
    ar: "أنا طالبة Clinical Pharmacy في السنة الخامسة في BUE، وأعمل منذ خمس سنوات في Community Pharmacy بجانب دراستي."},
-  {en: "For four years I have served on the Student Union's Scientific Committee. Outside the faculty I am a Scout Leader, a Youth Ambassador for the World Literacy Foundation, and a participant in the Harvard-founded Aspire Leaders Program.",
-   ar: "على مدار أربع سنوات كنت عضوة في Scientific Committee باتحاد الطلبة. وخارج الكلية أنا Scout Leader، و Youth Ambassador في World Literacy Foundation، ومشاركة في Aspire Leaders Program الذي تأسس في Harvard."},
+  {en: "For four years I have served on the Student Union's Scientific Committee. Outside the faculty I am a Scout Leader, a Youth Ambassador for the World Literacy Foundation, and a participant in the Aspire Leaders Program, an online leadership programme founded at Harvard.",
+   ar: "على مدار أربع سنوات كنت عضوة في Scientific Committee باتحاد الطلبة. وخارج الكلية أنا Scout Leader، و Youth Ambassador في World Literacy Foundation، ومشاركة في Aspire Leaders Program، وهو برنامج قيادي أونلاين تأسس في Harvard."},
   {en: "Since 2023 I have presented science segments for children on Al-Hayah TV. Whether I am behind a pharmacy counter, in front of a camera or leading a team, my aim is the same: make science clear, useful and close to people.",
    ar: "ومنذ 2023 أقدّم فقرات علمية للأطفال على قناة Al-Hayah TV. سواء كنت خلف كاونتر الصيدلية، أو أمام الكاميرا، أو أقود فريقاً، هدفي واحد: أن يكون العلم واضحاً ومفيداً وقريباً من الناس."}
  ],
@@ -524,18 +531,23 @@ const P = {
           ar: "شاركت في برنامج «العباقرة»، مسابقة المعلومات الشهيرة التي يقدّمها عصام يوسف."}}
  ],
  training: [
-  {img: "img/sandoz.webp", gallery: ["img/certs/sandoz.webp"], title: "Sandoz", meta: {en: "Students Camp · July 2026", ar: "Students Camp · يوليو 2026"},
-   text: {en: "15 learning hours at the Sandoz EG Students Camp, for third- and fourth-year pharmacy students, at a global leader in generic pharmaceuticals and biosimilars.", ar: "15 ساعة تعلّم في Sandoz EG Students Camp لطلاب الصيدلة في السنة الثالثة والرابعة، في Sandoz الشركة العالمية الرائدة في الـ Generic Pharmaceuticals والـ Biosimilars."}},
+  {img: "img/sandoz.webp", gallery: ["img/certs/sandoz.webp"], cert: true, title: "Sandoz", meta: {en: "Students Camp · July 2026", ar: "Students Camp · يوليو 2026"},
+   points: [{en: "15 learning hours at the Sandoz EG Students Camp (26–30 July 2026)", ar: "15 ساعة تعلّم في Sandoz EG Students Camp (26–30 يوليو 2026)"},
+            {en: "A programme for third- and fourth-year pharmacy students at a global leader in generics and biosimilars", ar: "برنامج لطلاب الصيدلة في السنة الثالثة والرابعة لدى شركة عالمية رائدة في الـ Generics والـ Biosimilars"}]},
   {img: "img/gnp.webp", gallery: ["img/gnp-l.webp", "img/gnp-2.webp", "img/certs/gnp.webp"], title: "Global Napi Pharmaceuticals (GNP)", meta: {en: "Summer training · July 2026", ar: "تدريب صيفي · يوليو 2026"},
-   text: {en: "Quality Control (QC) at GNP and GAP, and Research & Development (R&D) at GIP.", ar: "Quality Control (QC) في GNP و GAP، و Research & Development (R&D) في GIP."}},
+   points: [{en: "Quality Control (QC) at GNP and GAP", ar: "Quality Control (QC) في GNP و GAP"},
+            {en: "Research & Development (R&D) at GIP", ar: "Research & Development (R&D) في GIP"}]},
   {img: "img/parkville.webp", gallery: ["img/parkville-l.webp", "img/parkville-3.webp", "img/parkville-2.webp", "img/parkville-4.webp"], title: "Parkville Pharmaceuticals", meta: {en: "Internship · 2026", ar: "Internship · 2026"},
-   text: {en: "Completed my internship, an enriching experience full of learning, and was named a 2026 “Learning Champion”.", ar: "أتممت فترة الـ Internship، وكانت تجربة غنية بالتعلّم، وحصلت على لقب «Learning Champion» لعام 2026."}},
+   points: [{en: "Completed my internship, an enriching experience full of learning", ar: "أتممت الـ Internship، وكانت تجربة غنية بالتعلّم"},
+            {en: "Named a 2026 “Learning Champion”", ar: "حصلت على لقب «Learning Champion» لعام 2026"}]},
   {img: "img/eva.webp", gallery: ["img/eva-l.webp"], title: "Eva Cosmetics", meta: {en: "Training", ar: "تدريب"},
-   text: {en: "Training in cosmetics and skincare products.", ar: "تدريب في منتجات الـ Cosmetics والـ Skincare."}},
-  {img: "img/c57357.webp", gallery: ["img/c57357-l.webp"], title: "57357 Children’s Cancer Hospital", meta: {en: "Clinical training · Feb 2024", ar: "تدريب إكلينيكي · فبراير 2024"},
-   text: {en: "14-hour training in the Infection Prevention and Control department, plus a Nutrition course.", ar: "تدريب 14 ساعة في قسم Infection Prevention and Control، بالإضافة إلى Nutrition Course."}},
+   points: [{en: "Training in cosmetics and skincare products", ar: "تدريب في منتجات الـ Cosmetics والـ Skincare"}]},
+  {img: "img/c57357.webp", gallery: ["img/c57357-l.webp"], cert: true, title: "57357 Children’s Cancer Hospital", meta: {en: "Clinical training · Feb 2024", ar: "تدريب إكلينيكي · فبراير 2024"},
+   points: [{en: "14-hour training in the Infection Prevention and Control department (5–7 Feb 2024)", ar: "تدريب 14 ساعة في قسم Infection Prevention and Control (5–7 فبراير 2024)"},
+            {en: "Also completed a Nutrition Course", ar: "أتممت أيضاً Nutrition Course"}]},
   {img: "img/baheya-zayed.webp", gallery: ["img/baheya-zayed-l.webp", "img/baheya-2.webp"], title: "Baheya Hospital", meta: {en: "Clinical training", ar: "تدريب إكلينيكي"},
-   text: {en: "Trained at Baheya, the hospital for early detection and treatment of breast cancer, and was later invited to the opening of the second phase of Baheya Zayed Hospital, a proud moment.", ar: "تدرّبت في مستشفى بهية للاكتشاف المبكر وعلاج سرطان الثدي، ثم دُعيت لحضور افتتاح المرحلة الثانية من مستشفى بهية زايد، وكانت لحظة فخر حقيقية."}}
+   points: [{en: "Trained at Baheya, the hospital for early detection and treatment of breast cancer", ar: "تدرّبت في مستشفى بهية للاكتشاف المبكر وعلاج سرطان الثدي"},
+            {en: "Invited to the opening of the second phase of Baheya Zayed Hospital", ar: "دُعيت لحضور افتتاح المرحلة الثانية من مستشفى بهية زايد"}]}
  ],
  experience: [
   {role: {en: "Pharmacist", ar: "Pharmacist"}, where: "Cura Pharmacy", dur: {en: "3.5 years", ar: "3.5 سنوات"}},
@@ -547,20 +559,27 @@ const P = {
   {role: {en: "Laser Technician", ar: "Laser Technician"}, where: {en: "Beauty clinic", ar: "عيادة تجميل"}, dur: ""}
  ],
  leadership: [
-  {img: "img/union.webp", gallery: ["img/union-l.webp", "img/union-2.webp"], title: {en: "Student Union · Scientific Committee", ar: "اتحاد الطلبة · Scientific Committee"}, meta: {en: "4 years", ar: "أربع سنوات"},
-   text: {en: "Active member for four years; worked with a sponsor on scientific awareness campaigns in the faculty.", ar: "عضوة فعّالة لأربع سنوات، وتعاونت مع راعٍ (Sponsor) في حملات توعية علمية داخل الكلية."}},
+  {img: "img/union.webp", gallery: ["img/union-l.webp", "img/union-2.webp"], title: {en: "Student Union · Scientific Committee", ar: "اتحاد الطلبة · Scientific Committee"}, meta: {en: "4 years", ar: "4 سنوات"},
+   points: [{en: "Active member of the Scientific Committee for four years", ar: "عضوة فعّالة في Scientific Committee لمدة أربع سنوات"},
+            {en: "Worked with a sponsor on scientific awareness campaigns in the faculty", ar: "تعاونت مع راعٍ (Sponsor) في حملات توعية علمية داخل الكلية"}]},
   {img: "img/scouts.webp", gallery: ["img/scouts-l.webp", "img/scouts-2.webp"], title: "Scout Leader", meta: {en: "5 years as leader", ar: "5 سنوات كقائدة"},
-   text: {en: "My scouting journey started in 3rd grade. Leading for five years taught me leadership, teamwork, resilience and community service.", ar: "بدأت رحلتي في الكشافة من الصف الثالث الابتدائي، وقيادتي لخمس سنوات علّمتني القيادة والعمل الجماعي والصمود وخدمة المجتمع."}},
-  {img: "img/wlf.webp", gallery: ["img/wlf-l.webp", "img/wlf-2.webp"], title: "World Literacy Foundation", meta: {en: "Youth Ambassador · 2022 & 2026", ar: "Youth Ambassador · 2022 و 2026"},
-   text: {en: "Completed the Youth Ambassador Program in 2022, and continued the journey by completing it again in 2026.", ar: "أتممت Youth Ambassador Program في 2022، وواصلت الرحلة بإتمامه مرة أخرى في 2026."}},
-  {img: "img/aspire.webp", pos: "top", gallery: ["img/aspire-l.webp", "img/aspire-2.webp"], title: "Aspire Leaders Program", meta: {en: "Aspire Institute · Cohort 4, 2026", ar: "Aspire Institute · Cohort 4، 2026"},
-   text: {en: "Accepted into Cohort 4 (Oct–Nov 2026) of this international leadership programme founded at Harvard, which connects a global community of emerging leaders to broaden their perspective and create a positive impact in their communities.", ar: "تم قبولي في Cohort 4 (أكتوبر–نوفمبر 2026) لهذا البرنامج القيادي الدولي الذي تأسس في Harvard، ويجمع مجتمعاً عالمياً من القادة الشباب لتوسيع آفاقهم وصناعة أثر إيجابي في مجتمعاتهم."}},
-  {img: "img/prme.webp", pos: "top", gallery: ["img/prme-l.webp"], title: "PRME COP30 Program", meta: {en: "Selected · Jul–Oct 2025", ar: "تم اختياري · يوليو–أكتوبر 2025"},
-   text: {en: "Selected for a four-month virtual programme on climate literacy, with eight interactive workshops led by experts from the University of Oxford, MIT Sloan and Nottingham Trent University, preparing participants for COP30 and future global climate forums.", ar: "تم اختياري لبرنامج افتراضي لمدة أربعة أشهر عن الـ Climate Literacy، يضم ثماني ورش عمل تفاعلية يقدّمها خبراء من University of Oxford و MIT Sloan و Nottingham Trent University، استعداداً للمشاركة في COP30 والمنتديات المناخية العالمية."}},
+   points: [{en: "In scouting since 3rd grade, and a Scout Leader for the past five years", ar: "في الكشافة منذ الصف الثالث الابتدائي، و Scout Leader منذ خمس سنوات"},
+            {en: "Taught me leadership, teamwork, resilience and community service", ar: "علّمتني القيادة والعمل الجماعي والصمود وخدمة المجتمع"}]},
+  {img: "img/wlf.webp", gallery: ["img/wlf-l.webp", "img/wlf-2.webp"], cert: true, title: "World Literacy Foundation", meta: {en: "Youth Ambassador · 2022 & 2026", ar: "Youth Ambassador · 2022 و 2026"},
+   points: [{en: "Completed the Youth Ambassador Program in 2022", ar: "أتممت Youth Ambassador Program في 2022"},
+            {en: "Completed it again in 2026, continuing the journey", ar: "أتممته مرة أخرى في 2026 استكمالاً للرحلة"}]},
+  {img: "img/aspire.webp", pos: "top", gallery: ["img/aspire-l.webp", "img/aspire-2.webp"], title: "Aspire Leaders Program", meta: {en: "Online leadership programme · Cohort 4, 2026", ar: "برنامج قيادي أونلاين · Cohort 4، 2026"},
+   points: [{en: "An online leadership programme by Aspire Institute, founded at Harvard", ar: "برنامج قيادي أونلاين من Aspire Institute الذي تأسس في Harvard"},
+            {en: "Accepted into Cohort 4 (Oct–Nov 2026), joining a global community of emerging leaders", ar: "تم قبولي في Cohort 4 (أكتوبر–نوفمبر 2026) ضمن مجتمع عالمي من القادة الشباب"}]},
+  {img: "img/prme.webp", pos: "top", gallery: ["img/prme-l.webp"], title: "PRME COP30 Program", meta: {en: "Online programme · Jul–Oct 2025", ar: "برنامج أونلاين · يوليو–أكتوبر 2025"},
+   points: [{en: "Selected for a four-month online programme on climate literacy", ar: "تم اختياري لبرنامج أونلاين لمدة أربعة أشهر عن الـ Climate Literacy"},
+            {en: "Eight workshops led by experts from the University of Oxford, MIT Sloan and Nottingham Trent University", ar: "ثماني ورش عمل يقدّمها خبراء من University of Oxford و MIT Sloan و Nottingham Trent University"}]},
   {img: "img/redcrescent.webp", gallery: ["img/redcrescent-l.webp", "img/rc-2.webp", "img/rc-3.webp", "img/rc-4.webp"], title: "Egyptian Red Crescent", meta: {en: "Volunteer", ar: "متطوعة"},
-   text: {en: "Volunteered with the Egyptian Red Crescent, where I keep strong connections with many of its officials, including at its Emergency Operations Centre.", ar: "تطوعت مع الهلال الأحمر المصري، وتربطني علاقات قوية بعدد من مسؤوليه، ومنها غرفة عمليات الطوارئ."}},
+   points: [{en: "Volunteer with the Egyptian Red Crescent", ar: "متطوعة في الهلال الأحمر المصري"},
+            {en: "Strong connections with many of its officials, including at its Emergency Operations Centre", ar: "تربطني علاقات قوية بعدد من مسؤوليه، ومنها غرفة عمليات الطوارئ"}]},
   {video: "img/volunteering.mp4", poster: "img/volunteering-poster.jpg", title: {en: "Humanitarian volunteering", ar: "العمل الإنساني التطوعي"}, meta: {en: "Volunteer", ar: "متطوعة"},
-   text: {en: "Humanitarian volunteering gave me a deeper perspective on resilience, community support, and the real impact of showing up where help is needed most.", ar: "منحني العمل الإنساني التطوعي نظرة أعمق للصمود ودعم المجتمع، وللأثر الحقيقي للتواجد حيث نحتاج إلى المساعدة أكثر."}}
+   points: [{en: "Volunteering with communities and families in need", ar: "التطوع مع المجتمعات والأسر الأكثر احتياجاً"},
+            {en: "A deeper perspective on resilience, community support, and showing up where help is needed most", ar: "نظرة أعمق للصمود ودعم المجتمع، وللتواجد حيث نحتاج إلى المساعدة أكثر"}]}
  ],
  certs: [
   {group: {en: "Pharmaceutical & clinical", ar: "Pharmaceutical & Clinical"}, items: [
@@ -676,7 +695,7 @@ const UI = {
  vCloseH: {en: "Together, one team", ar: "معاً، فريق واحد"},
  vCloseP: {en: "The Union's success is the work of all of us. I'm ready to give it my best.", ar: "نجاح الاتحاد هو مجهودنا كلنا، وأنا مستعدة أقدّم أقوى ما عندي."},
  foot: {en: "Clinical Pharmacy, The British University in Egypt", ar: "Clinical Pharmacy، The British University in Egypt"},
- facts: {en: "Quick facts", ar: "معلومات سريعة"}, play: {en: "Play the clip", ar: "شاهد المقطع"}, photos: {en: "photos", ar: "صور"}, view: {en: "View photos", ar: "عرض الصور"}, also: {en: "Also completed:", ar: "دورات أخرى:"}, curaCap: {en: "At Cura Pharmacy’s bazaar, as Beauty Section Manager.", ar: "في بازار Cura Pharmacy كمديرة لقسم التجميل."}, viewCert: {en: "View certificate", ar: "عرض الشهادة"}, email: {en: "Email", ar: "البريد الإلكتروني"}, call: {en: "Call", ar: "اتصال"}
+ facts: {en: "Quick facts", ar: "معلومات سريعة"}, play: {en: "Play the clip", ar: "شاهد المقطع"}, photos: {en: "photos", ar: "صور"}, view: {en: "View photos", ar: "عرض الصور"}, also: {en: "Also completed:", ar: "دورات أخرى:"}, curaCap: {en: "At Cura Pharmacy’s bazaar, as Beauty Section Manager.", ar: "في بازار Cura Pharmacy كمديرة لقسم التجميل."}, viewCert: {en: "View certificate", ar: "عرض الشهادة"}, copy: {en: "Copy email", ar: "نسخ الإيميل"}, copied: {en: "Email copied", ar: "تم نسخ الإيميل"}, email: {en: "Email", ar: "البريد الإلكتروني"}, call: {en: "Call", ar: "اتصال"}
 };
 /* ===================================================================== */
 
@@ -712,7 +731,9 @@ const card = (c, k) => { if (c.gallery) GAL[k] = c.gallery.map(src => ({src, cap
  return `<article class="pcard">
  ${c.video ? `<video src="${esc(c.video)}" poster="${esc(c.poster)}" controls preload="none" playsinline aria-label="${esc(t(c.title))}"></video>`
   : c.img ? (c.gallery ? gbtn(k, 0, im, c.gallery.length) : im) : `<div class="noimg" lang="en" dir="ltr">${esc(c.mark)}</div>`}
- <div class="body"><div class="meta">${esc(t(c.meta))}</div><h3>${esc(t(c.title))}</h3><p>${esc(t(c.text))}</p></div></article>`; };
+ <div class="body"><div class="meta">${esc(t(c.meta))}</div><h3>${esc(t(c.title))}</h3>
+ ${c.points ? `<ul class="pts">${c.points.map(p => `<li>${esc(t(p))}</li>`).join("")}</ul>` : `<p>${esc(t(c.text))}</p>`}
+ ${c.gallery ? `<button class="viewbtn" type="button" data-g="${k}" data-x="0">${camIco}${esc(t(c.cert ? UI.viewCert : UI.view))}${c.gallery.length > 1 ? ` (${c.gallery.length})` : ""}</button>` : ""}</div></article>`; };
 
 function render(){
  const root = document.documentElement;
@@ -763,7 +784,8 @@ function render(){
  document.querySelectorAll("[data-contact]").forEach(el => el.innerHTML =
   `<a href="mailto:${esc(C.email)}">${ico.mail}${esc(t(UI.email))}</a>` +
   `<a href="${esc(C.linkedin)}" target="_blank" rel="noopener">${ico.li}LinkedIn</a>` +
-  `<a href="https://wa.me/${esc(C.phone.replace(/\D/g,""))}" target="_blank" rel="noopener">${ico.wa}WhatsApp</a>`);
+  `<a href="https://wa.me/${esc(C.phone.replace(/\D/g,""))}" target="_blank" rel="noopener">${ico.wa}WhatsApp</a>` +
+  `<a href="#" data-copy role="button">${ico.mail}${esc(t(UI.copy))}</a>`);
  document.querySelectorAll("[data-contact-text]").forEach(el => el.innerHTML =
   `<a href="mailto:${esc(C.email)}" style="color:inherit">${esc(C.email)}</a> · <a href="tel:${esc(C.phone)}" style="color:inherit">${esc(C.phoneShown)}</a>`);
  $("langBtn").setAttribute("aria-label", lang === "ar" ? "Switch to English" : "التبديل إلى العربية");
@@ -795,6 +817,13 @@ $("langBtn").addEventListener("click", () => {
  lang = lang === "en" ? "ar" : "en";
  try { localStorage.setItem("mn-lang", lang); } catch(e) {}
  render();
+});
+
+/* ---- copy email ---- */
+document.addEventListener("click", e => {
+ const b = e.target.closest("[data-copy]"); if (!b) return; e.preventDefault();
+ const done = () => { const old = b.innerHTML; b.textContent = "✓ " + t(UI.copied); setTimeout(() => { b.innerHTML = old; }, 1800); };
+ try { navigator.clipboard.writeText(P.contact.email).then(done, () => { prompt("", P.contact.email); }); } catch(err) { prompt("", P.contact.email); }
 });
 
 /* ---- floating vision button ---- */
