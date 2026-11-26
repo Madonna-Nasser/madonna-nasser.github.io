@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Madonna Nasser</title>
+<meta name="description" content="Madonna Nasser — Clinical Pharmacy student at The British University in Egypt.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: formal, warm, assured — a student presenting herself to her Dean.
+   IDEA: a pharmacist's world — the dispensing label, the capsule, the molecule.
+   PICTURE: her portrait at the centre of a molecule that draws itself on load.
+   COLOUR and TYPE: deep pharmacy teal field, clean white, capsule-coral accent; Instrument Serif + Manrope.
+   LAYOUT: teal hero band, then calm white sections; label-style fact card; expandable journey. */
+:root{color-scheme:light dark;
+ --bg:light-dark(#ffffff,#071b1a);--ink:light-dark(#0f2322,#e7f2f0);--muted:light-dark(#4f6664,#9fb9b6);
+ --field:light-dark(#0c5551,#0b3634);--field2:light-dark(#0a4744,#082a29);--soft:light-dark(#eef6f4,#0d2826);
+ --line:light-dark(#d6e6e3,#1d3d3b);--accent:light-dark(#d9232b,#ff5a5f);--card:light-dark(#ffffff,#0b2322)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Manrope,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;line-height:1.05;text-wrap:balance;margin:0}
+h2{font-size:clamp(32px,4.4vw,48px);margin-bottom:28px}
+h3{font-size:24px}
+p{margin:0 0 14px}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto}
+.band{padding:clamp(48px,7vw,104px) max(5vw,16px)}
+.alt{background:var(--soft)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:10;background:var(--field2);color:#fff}
+nav .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:6px 20px;padding:12px max(5vw,16px)}
+.brand{font-family:"Instrument Serif",serif;font-size:22px;text-decoration:none;margin-right:auto}
+nav .links{display:flex;flex-wrap:wrap;gap:2px 4px}
+nav .links a{text-decoration:none;font-size:14px;font-weight:600;padding:10px 10px;border-radius:8px;opacity:.85}
+nav .links a:hover{opacity:1;background:rgba(255,255,255,.08)}
+
+/* hero */
+.hero{background:var(--field);color:#fff;padding-top:clamp(36px,5vw,72px);padding-bottom:clamp(40px,6vw,88px)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.uni{display:inline-block;background:#fff;border-radius:14px;padding:10px 16px;margin-bottom:22px;box-shadow:0 10px 30px -14px rgba(0,0,0,.5)}
+.uni img{display:block;height:clamp(44px,5vw,58px);width:auto}
+.kicker{font-size:15px;font-weight:600;color:#bfe3de;margin-bottom:18px}
+.hero h1{font-size:clamp(56px,9vw,112px);line-height:.95;margin-bottom:22px}
+.hero h1 em{font-style:italic;color:#ffd9d2}
+.lede{font-size:clamp(18px,2vw,21px);max-width:34ch;color:#e4f3f0;margin-bottom:30px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{background:var(--accent);color:#fff}
+.btn.ghost{border-color:rgba(255,255,255,.5);color:#fff;background:transparent}
+.btn.ghost:hover{background:rgba(255,255,255,.1)}
+.pic{position:relative;aspect-ratio:1;max-width:520px;width:100%;justify-self:center}
+.pic svg{width:100%;height:100%;display:block;overflow:visible}
+.bond{fill:none;stroke:#8fd3c9;stroke-width:2.2;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.6s ease forwards}
+.ring{fill:none;stroke:#bfe9e2;stroke-width:1.6;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.2s ease forwards}
+.atom{fill:#fff;opacity:0;animation:pop .5s ease forwards}
+.atom.hot{fill:var(--accent)}
+.sym{font:600 13px Manrope,sans-serif;fill:#d9f1ed;opacity:0;animation:pop .6s ease forwards}
+.cap{opacity:0;animation:pop .8s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{to{opacity:1}}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-bottom:1px solid var(--line)}
+.stat{padding:30px 20px;text-align:center;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(40px,5vw,56px);line-height:1;color:var(--field);white-space:nowrap}
+:root[data-theme=dark] .stat b{color:#8fd3c9}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .stat b{color:#8fd3c9}}
+.stat span{font-size:14px;color:var(--muted)}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:start}
+.story p{font-size:17px;max-width:62ch}
+.story p:first-of-type{font-family:"Instrument Serif",serif;font-size:clamp(24px,2.6vw,30px);line-height:1.3;color:var(--ink)}
+.label{background:var(--card);border:1.5px solid var(--ink);border-radius:14px;padding:22px 24px;box-shadow:6px 6px 0 var(--field)}
+.label-top{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1.5px solid var(--ink);padding-bottom:10px;margin-bottom:6px}
+.label-top strong{font-family:"Instrument Serif",serif;font-size:34px;font-weight:400;line-height:1}
+.label-top span{font-size:13px;color:var(--muted)}
+.label dl{margin:0}
+.label dl>div{display:grid;grid-template-columns:7.5em minmax(0,1fr);gap:10px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:15px}
+.label dl>div:last-child{border-bottom:0}
+.label dt{color:var(--muted)}
+.label dd{margin:0;font-weight:600}
+.label-foot{margin-top:12px;font-size:13px;color:var(--muted)}
+
+/* journey */
+.journey{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.journey li{border-bottom:1px solid var(--line)}
+.t-head{all:unset;box-sizing:border-box;display:grid;grid-template-columns:6.5em minmax(0,1fr) 28px;gap:16px;align-items:center;width:100%;padding:20px 4px;cursor:pointer}
+.t-head:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+.t-when{font-family:"Instrument Serif",serif;font-size:28px;color:var(--accent);white-space:nowrap}
+.t-title{font-weight:700;font-size:18px}
+.t-where{display:block;font-weight:500;font-size:14px;color:var(--muted)}
+.t-icon{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);position:relative;transition:transform .3s,background .3s}
+.t-icon::before,.t-icon::after{content:"";position:absolute;left:50%;top:50%;width:11px;height:1.8px;background:var(--ink);transform:translate(-50%,-50%)}
+.t-icon::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .3s}
+[aria-expanded=true] .t-icon{background:var(--soft)}
+[aria-expanded=true] .t-icon::after{transform:translate(-50%,-50%) rotate(0)}
+.t-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+.t-body>div{overflow:hidden;padding-left:calc(6.5em + 20px)}
+.t-body p{max-width:64ch;color:var(--muted);padding-bottom:22px;margin:0}
+li.open .t-body{grid-template-rows:1fr}
+
+/* impact */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 30px -18px rgba(8,50,48,.45)}
+.pill{width:46px;height:20px;border-radius:999px;background:linear-gradient(90deg,var(--accent) 50%,var(--field) 50%);margin-bottom:18px}
+.card h3{margin-bottom:6px}
+.role{font-size:14px;font-weight:700;color:var(--accent);margin-bottom:10px}
+.card p{font-size:15px;color:var(--muted);margin:0}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.skills h3{margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:8px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:14px;font-weight:600}
+.langs{margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:14px}
+.lang{display:flex;justify-content:space-between;gap:10px;padding:14px 18px;border-radius:12px;background:var(--card);border:1px solid var(--line)}
+.lang span{color:var(--muted);font-size:14px}
+
+/* awards */
+.awards{list-style:none;padding:0;margin:0;display:grid;gap:0}
+.awards li{display:grid;grid-template-columns:5em minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+.awards b{font-family:"Instrument Serif",serif;font-weight:400;font-size:24px;color:var(--accent)}
+.awards strong{display:block;font-size:17px}
+.awards span{color:var(--muted);font-size:14px}
+
+/* contact */
+.contact{background:var(--field);color:#fff;text-align:center}
+.contact h2{font-size:clamp(40px,6vw,72px);margin-bottom:14px}
+.contact p{color:#d6eee9;max-width:48ch;margin:0 auto 30px}
+.contact .btns{justify-content:center}
+.contact small{display:block;margin-top:26px;color:#bfe3de;font-size:14px;word-break:break-word}
+footer{background:var(--field2);color:#bfe3de;text-align:center;font-size:13px;padding:18px}
+.sample{font-size:13px;color:#bfe3de;margin-top:22px}
+
+/* entrance */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:860px){
+ .hero .wrap,.about{grid-template-columns:minmax(0,1fr)}
+ .pic{max-width:380px;order:-1}
+ .skills{grid-template-columns:minmax(0,1fr)}
+ .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+}
+@media(max-width:600px){
+ nav .links{width:100%;overflow-x:auto;flex-wrap:nowrap}nav .links a{flex:none}
+ .t-head{grid-template-columns:minmax(0,1fr) 28px}.t-when{grid-column:1;font-size:22px}
+ .t-head .t-title{grid-column:1}.t-icon{grid-row:1/3;grid-column:2}
+ .t-body>div{padding-left:0}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{animation:none!important;transition:none!important}
+ .bond,.ring{stroke-dashoffset:0}.atom,.sym,.cap{opacity:1}.reveal{opacity:1;transform:none}
+ html{scroll-behavior:auto}
+}
+@media print{
+ nav,.btns,.pic,.sample,footer{display:none!important}
+ body{background:#fff;color:#000}
+ .hero,.contact{background:#fff;color:#000}.hero h1 em{color:#000}.lede,.kicker,.contact p,.contact small{color:#333}
+ .band{padding:18px 0}.reveal{opacity:1;transform:none}
+ li .t-body{grid-template-rows:1fr!important}.card{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<nav aria-label="Main">
+ <div class="wrap">
+  <a class="brand" href="#top">Madonna Nasser</a>
+  <div class="links">
+   <a href="#about">About</a><a href="#journey">Journey</a><a href="#impact">Impact</a><a href="#skills">Skills</a><a href="#awards">Recognition</a><a href="#contact">Contact</a>
+  </div>
+ </div>
+</nav>
+
+<header class="band hero" id="top">
+ <div class="wrap">
+  <div>
+   <div class="uni"><img src="bue-logo.png" alt="The British University in Egypt" width="672" height="247"></div>
+   <div class="kicker">Clinical Pharmacy student · Faculty of Pharmacy</div>
+   <h1>Madonna <em>Nasser</em></h1>
+   <p class="lede" id="statement"></p>
+   <div class="btns">
+    <a class="btn primary" href="#about">Get to know me</a>
+    <button class="btn ghost" type="button" id="printBtn">Save as PDF</button>
+   </div>
+   <p class="sample" id="sampleNote">Sample wording shown below her name; her real details replace it.</p>
+  </div>
+  <div class="pic" aria-hidden="true"><svg id="mol" viewBox="0 0 500 500"></svg></div>
+ </div>
+</header>
+
+<section class="wrap stats" id="stats" aria-label="Highlights"></section>
+
+<section class="band" id="about">
+ <div class="wrap about">
+  <div class="story reveal">
+   <h2>Who I am</h2>
+   <div id="story"></div>
+  </div>
+  <aside class="label reveal" aria-label="Quick facts">
+   <div class="label-top"><strong>Rx</strong><span>Dispensed with care</span></div>
+   <dl id="facts"></dl>
+   <div class="label-foot">Use as directed: talk to her, she listens.</div>
+  </aside>
+ </div>
+</section>
+
+<section class="band alt" id="journey">
+ <div class="wrap">
+  <h2 class="reveal">My journey so far</h2>
+  <ol class="journey reveal" id="timeline"></ol>
+ </div>
+</section>
+
+<section class="band" id="impact">
+ <div class="wrap">
+  <h2 class="reveal">Where I give my time</h2>
+  <div class="cards" id="cards"></div>
+ </div>
+</section>
+
+<section class="band alt" id="skills">
+ <div class="wrap">
+  <h2 class="reveal">What I bring</h2>
+  <div class="skills reveal" id="skillGroups"></div>
+  <div class="langs reveal" id="langs"></div>
+ </div>
+</section>
+
+<section class="band" id="awards">
+ <div class="wrap">
+  <h2 class="reveal">Recognition</h2>
+  <ul class="awards reveal" id="awardList"></ul>
+ </div>
+</section>
+
+<section class="band contact" id="contact">
+ <div class="wrap">
+  <h2>Let's talk</h2>
+  <p>I would be glad to meet, share more about my work, or answer any question.</p>
+  <div class="btns" id="contactBtns"></div>
+  <small id="contactText"></small>
+ </div>
+</section>
+
+<footer>© <span id="yr"></span> Madonna Nasser · Clinical Pharmacy, The British University in Egypt</footer>
+
+<script>
+{
+/* ============ EDIT HER DETAILS HERE ============
+   Everything on the page comes from this one object.
+   Set sample:false once the real content is in. */
+const P = {
+ sample: true,
+ photo: "",            // e.g. "photo.jpg" (upload the image to the repo). Empty = initials.
+ statement: "I want every patient to understand their medicine, not just receive it.",
+ stats: [
+  {n: 3.7, dec: 1, label: "Cumulative GPA"},
+  {n: 12, label: "Events organised or hosted"},
+  {n: 150, suffix: "+", label: "Volunteer hours"},
+  {n: 3, label: "Languages"}
+ ],
+ story: [
+  "I chose clinical pharmacy because I believe the safest medicine is the one a patient truly understands.",
+  "At BUE I have learned that pharmacy is as much about people as it is about pharmacology. Whether I am in a lab, on a hospital ward or speaking at a student event, I try to bring the same thing: clear explanations, patience and genuine care.",
+  "Outside lectures I spend my time on awareness campaigns, student activities and helping new students find their way in the faculty."
+ ],
+ facts: [
+  ["Name", "Madonna Nasser"],
+  ["Programme", "Clinical Pharmacy (PharmD)"],
+  ["University", "The British University in Egypt"],
+  ["Year", "4th year"],
+  ["Languages", "Arabic, English, French"],
+  ["Based in", "Cairo, Egypt"]
+ ],
+ journey: [
+  {when: "2022", title: "Joined the Faculty of Pharmacy", where: "The British University in Egypt", text: "Started the Clinical Pharmacy programme and joined the faculty's student activities in my first semester."},
+  {when: "2023", title: "Organised a medication awareness campaign", where: "BUE student activity", text: "Helped plan and run a campus campaign on safe use of antibiotics, preparing material and speaking with students and staff."},
+  {when: "2024", title: "Summer training in a hospital pharmacy", where: "Hospital name", text: "Observed clinical pharmacists on the wards, reviewed prescriptions and learned how drug interactions are checked in practice."},
+  {when: "2025", title: "Research project and poster", where: "Faculty of Pharmacy, BUE", text: "Worked with a supervisor on a project and presented the results as a poster at a student conference."},
+  {when: "Now", title: "Fourth year, Clinical Pharmacy", where: "The British University in Egypt", text: "Focusing on clinical rotations and patient counselling while continuing to lead student activities."}
+ ],
+ impact: [
+  {title: "Student activities", role: "Team member / leader", text: "Planning faculty events, welcoming new students and representing the faculty at university events."},
+  {title: "Health awareness", role: "Campaign organiser", text: "Running awareness days on medication safety and healthy living for students and the community."},
+  {title: "Volunteering", role: "Volunteer", text: "Supporting medical convoys and charity work where pharmacy knowledge helps people directly."},
+  {title: "Peer support", role: "Mentor", text: "Helping younger students with study plans, labs and settling into university life."}
+ ],
+ skills: {
+  "Clinical": ["Patient counselling", "Drug interaction checks", "Prescription review", "Pharmacology", "Pharmaceutical care"],
+  "People": ["Public speaking", "Event organising", "Teamwork", "Leadership", "Clear communication"],
+  "Digital": ["Microsoft Office", "Canva", "Presentation design", "Social media content"]
+ },
+ languages: [["Arabic", "Native"], ["English", "Fluent"], ["French", "Intermediate"]],
+ awards: [
+  {year: "2025", title: "Dean's List", org: "Faculty of Pharmacy, BUE"},
+  {year: "2024", title: "Certificate of appreciation for student activities", org: "The British University in Egypt"},
+  {year: "2023", title: "Course or training certificate", org: "Issuing organisation"}
+ ],
+ contact: {
+  email: "madonna.nasser@example.com",
+  linkedin: "https://www.linkedin.com/in/",
+  phone: ""
+ }
+};
+/* =============================================== */
+
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const $ = id => document.getElementById(id);
+
+$("statement").textContent = P.statement;
+if (!P.sample) $("sampleNote").remove();
+$("yr").textContent = new Date().getFullYear();
+
+$("stats").innerHTML = P.stats.map(s =>
+ `<div class="stat reveal"><b data-n="${+s.n}" data-dec="${s.dec||0}" data-suf="${esc(s.suffix||"")}">0</b><span>${esc(s.label)}</span></div>`).join("");
+
+$("story").innerHTML = P.story.map(t => `<p>${esc(t)}</p>`).join("");
+$("facts").innerHTML = P.facts.map(([k,v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("");
+
+$("timeline").innerHTML = P.journey.map((j,i) => `
+ <li class="${i===P.journey.length-1?"open":""}">
+  <button class="t-head" type="button" aria-expanded="${i===P.journey.length-1}" aria-controls="tb${i}">
+   <span class="t-when">${esc(j.when)}</span>
+   <span class="t-title">${esc(j.title)}<span class="t-where">${esc(j.where)}</span></span>
+   <span class="t-icon"></span>
+  </button>
+  <div class="t-body" id="tb${i}"><div><p>${esc(j.text)}</p></div></div>
+ </li>`).join("");
+$("timeline").addEventListener("click", e => {
+ const b = e.target.closest(".t-head"); if (!b) return;
+ const li = b.parentElement, open = !li.classList.contains("open");
+ li.classList.toggle("open", open); b.setAttribute("aria-expanded", open);
+});
+
+$("cards").innerHTML = P.impact.map(c =>
+ `<article class="card reveal"><div class="pill"></div><h3>${esc(c.title)}</h3><div class="role">${esc(c.role)}</div><p>${esc(c.text)}</p></article>`).join("");
+
+$("skillGroups").innerHTML = Object.entries(P.skills).map(([g,list]) =>
+ `<div><h3>${esc(g)}</h3><div class="chips">${list.map(s=>`<span class="chip">${esc(s)}</span>`).join("")}</div></div>`).join("");
+$("langs").innerHTML = P.languages.map(([l,v]) => `<div class="lang"><strong>${esc(l)}</strong><span>${esc(v)}</span></div>`).join("");
+
+$("awardList").innerHTML = P.awards.map(a =>
+ `<li><b>${esc(a.year)}</b><div><strong>${esc(a.title)}</strong><span>${esc(a.org)}</span></div></li>`).join("");
+
+const C = P.contact, btns = [], txt = [];
+if (C.email){ btns.push(`<a class="btn primary" href="mailto:${esc(C.email)}">Email me</a>`); txt.push(esc(C.email)); }
+if (C.linkedin){ btns.push(`<a class="btn ghost" href="${esc(C.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>`); }
+if (C.phone){ txt.push(esc(C.phone)); }
+$("contactBtns").innerHTML = btns.join("");
+$("contactText").innerHTML = txt.join(" · ");
+
+$("printBtn").addEventListener("click", () => { try { document.querySelectorAll(".reveal").forEach(r=>r.classList.add("in")); window.print(); } catch(e){} });
+
+/* ---- molecule portrait ---- */
+const svg = $("mol"), NS = "http://www.w3.org/2000/svg";
+const cx = 250, cy = 250, R = 128;
+let out = `<defs><clipPath id="clip"><circle cx="${cx}" cy="${cy}" r="${R-8}"/></clipPath>
+ <radialGradient id="glow"><stop offset="0" stop-color="#1b7a73"/><stop offset="1" stop-color="#0a4744"/></radialGradient></defs>`;
+const hexPts = (x,y,r) => Array.from({length:6},(_,k)=>{const a=Math.PI/180*(60*k+30);return [x+r*Math.cos(a), y+r*Math.sin(a)]});
+const hexes = [
+ {a:-140, d:196, r:34, aro:true, sym:"OH"},
+ {a:-75, d:200, r:28, sym:"N"},
+ {a:-20, d:205, r:36, aro:true},
+ {a:40, d:196, r:30, sym:"O"},
+ {a:110, d:205, r:34, aro:true},
+ {a:170, d:198, r:28, sym:"NH₂"}
+];
+let delay = 0;
+hexes.forEach((h,i) => {
+ const ang = h.a*Math.PI/180, x = cx + h.d*Math.cos(ang), y = cy + h.d*Math.sin(ang);
+ const sx = cx + R*Math.cos(ang), sy = cy + R*Math.sin(ang);
+ const ex = cx + (h.d-h.r)*Math.cos(ang), ey = cy + (h.d-h.r)*Math.sin(ang);
+ out += `<path class="bond" pathLength="1" style="animation-delay:${.3+i*.15}s" d="M${sx.toFixed(1)} ${sy.toFixed(1)}L${ex.toFixed(1)} ${ey.toFixed(1)}"/>`;
+ const pts = hexPts(x,y,h.r);
+ out += `<path class="bond" pathLength="1" style="animation-delay:${.7+i*.15}s" d="M${pts.map(p=>p.map(v=>v.toFixed(1)).join(" ")).join("L")}Z"/>`;
+ if (h.aro) out += `<circle class="ring" pathLength="1" style="animation-delay:${1.2+i*.15}s" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(h.r*.55).toFixed(1)}"/>`;
+ pts.forEach((p,k) => { if (k%2===0) out += `<circle class="atom${k===0&&i%2?" hot":""}" style="animation-delay:${1.4+i*.12}s" cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="3.6"/>`; });
+ if (h.sym){
+  const fx = cx + (h.d+h.r+20)*Math.cos(ang), fy = cy + (h.d+h.r+20)*Math.sin(ang);
+  out += `<line class="bond" pathLength="1" style="animation-delay:${1.5+i*.12}s" x1="${(cx+(h.d+h.r)*Math.cos(ang)).toFixed(1)}" y1="${(cy+(h.d+h.r)*Math.sin(ang)).toFixed(1)}" x2="${(cx+(h.d+h.r+10)*Math.cos(ang)).toFixed(1)}" y2="${(cy+(h.d+h.r+10)*Math.sin(ang)).toFixed(1)}"/>`;
+  out += `<text class="sym" style="animation-delay:${1.8+i*.1}s" x="${fx.toFixed(1)}" y="${(fy+4).toFixed(1)}" text-anchor="middle">${esc(h.sym)}</text>`;
+ }
+});
+/* capsules */
+const capsule = (x,y,rot,s,d) => `<g class="cap" style="animation-delay:${d}s" transform="translate(${x} ${y}) rotate(${rot}) scale(${s})">
+ <rect x="-26" y="-10" width="52" height="20" rx="10" fill="#ffffff"/><path d="M0 -10H-16a10 10 0 0 0 0 20H0Z" fill="#d9232b"/>
+ <rect x="-22" y="-6" width="16" height="3" rx="1.5" fill="#fff" opacity=".45"/></g>`;
+out += capsule(78,410,-30,1,2.1) + capsule(430,88,25,.8,2.3) + capsule(345,470,60,.65,2.5);
+/* portrait */
+out += `<circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="#8fd3c9" stroke-width="2"/>`;
+out += `<circle cx="${cx}" cy="${cy}" r="${R-8}" fill="url(#glow)"/>`;
+if (P.photo){
+ out += `<image href="${esc(P.photo)}" x="${cx-R+8}" y="${cy-R+8}" width="${2*(R-8)}" height="${2*(R-8)}" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip)"/>`;
+} else {
+ out += `<text x="${cx}" y="${cy+28}" text-anchor="middle" font-family="Instrument Serif, Georgia, serif" font-size="96" fill="#ffffff">MN</text>`;
+}
+svg.innerHTML = out;
+
+/* ---- reveal + counters (play once, never touch scrolling) ---- */
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const count = el => {
+ const n = +el.dataset.n, dec = +el.dataset.dec, suf = el.dataset.suf;
+ if (reduce){ el.textContent = n.toFixed(dec)+suf; return; }
+ const t0 = performance.now(), dur = 1400;
+ const step = t => { const p = Math.min(1,(t-t0)/dur), v = n*(1-(1-p)**3); el.textContent = v.toFixed(dec)+suf; if (p<1) requestAnimationFrame(step); };
+ requestAnimationFrame(step);
+};
+if ("IntersectionObserver" in window){
+ const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  e.target.classList.add("in");
+  e.target.querySelectorAll("b[data-n]").forEach(count);
+  io.unobserve(e.target);
+ }), {threshold:.15});
+ document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+} else {
+ document.querySelectorAll(".reveal").forEach(el => { el.classList.add("in"); el.querySelectorAll("b[data-n]").forEach(count); });
+}
+}
+</script>
+</body>
+</html>
