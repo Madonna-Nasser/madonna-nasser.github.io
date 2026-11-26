@@ -475,7 +475,7 @@ const P = {
    title: {en: "Science presenter for children", ar: "مقدّمة فقرات علمية للأطفال"},
    text: {en: "I prepare and present interactive science experiments and educational segments for children, from Space and Astronomy to awareness on Antibiotics, Hygiene and Healthy Nutrition. New episodes are being filmed now.",
           ar: "أُعدّ وأقدّم تجارب علمية تفاعلية وفقرات تعليمية للأطفال، من Space و Astronomy إلى التوعية عن الـ Antibiotics والـ Hygiene والـ Healthy Nutrition. ويجري الآن تصوير حلقات جديدة."}},
-  {video: "img/abakera.mp4", poster: "img/abakera-poster.jpg",
+  {video: "img/abakera.mp4", poster: "img/abakera-poster.jpg", thumbs: ["img/abakera.webp"], gallery: ["img/abakera-l.webp"],
    meta: {en: "Al-Qahera Wal Nas TV · 2019", ar: "Al-Qahera Wal Nas TV · 2019"},
    title: {en: "Contestant on “Al-Abakera”", ar: "متسابقة في برنامج «العباقرة»"},
    text: {en: "Featured on Al-Abakera (The Geniuses), the national knowledge competition hosted by Essam Youssef.",
@@ -677,7 +677,7 @@ function render(){
   <div class="media">${s.video
    ? `<video src="${esc(s.video)}" poster="${esc(s.poster)}" controls preload="none" playsinline aria-label="${esc(t(UI.play))}"></video>`
    : (GAL["tv"+i] = s.gallery.map(src => ({src, cap: t(s.title)})), gbtn("tv"+i, 0, `<img src="${esc(s.main)}" alt="${esc(t(s.title))}" loading="lazy">`, s.gallery.length))}</div>
-  ${s.thumbs ? `<div class="thumbs">${s.thumbs.map((src,j) => gbtn("tv"+i, j+1, `<img src="${esc(src)}" alt="" loading="lazy">`, 0)).join("")}</div>` : ""}
+  ${s.thumbs ? ((s.video && (GAL["tv"+i] = s.gallery.map(src => ({src, cap: t(s.title)})))), `<div class="thumbs">${s.thumbs.map((src,j) => gbtn("tv"+i, s.video ? j : j+1, `<img src="${esc(src)}" alt="" loading="lazy">`, 0)).join("")}</div>`) : ""}
   <div class="txt"><div class="meta">${esc(t(s.meta))}</div><h3>${esc(t(s.title))}</h3><p>${esc(t(s.text))}</p></div></article>`).join("");
 
  $("trainingGrid").innerHTML = P.training.map((c,i) => card(c,"tr"+i)).join("");
