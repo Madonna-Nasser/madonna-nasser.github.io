@@ -1,195 +1,217 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" data-palette="navy">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Madonna Nasser</title>
-<meta name="description" content="Madonna Nasser — Clinical Pharmacy student at The British University in Egypt.">
+<meta name="description" content="Madonna Nasser — 5th-year Clinical Pharmacy student at The British University in Egypt.">
+<meta property="og:title" content="Madonna Nasser">
+<meta property="og:description" content="5th-year Clinical Pharmacy student · The British University in Egypt">
+<meta property="og:image" content="img/portrait.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 <style>
-/* VOICE: formal, warm, assured — a student presenting herself to her Dean.
+/* VOICE: formal, warm, assured — a student presenting herself to her faculty.
    IDEA: a pharmacist's world — the dispensing label, the capsule, the molecule.
    PICTURE: her portrait at the centre of a molecule that draws itself on load.
-   COLOUR and TYPE: deep pharmacy teal field, clean white, capsule-coral accent; Instrument Serif + Manrope.
-   LAYOUT: teal hero band, then calm white sections; label-style fact card; expandable journey. */
+   COLOUR and TYPE: midnight navy field, white, BUE red accent; Instrument Serif / Amiri + Manrope / IBM Plex Sans Arabic.
+   LAYOUT: two tabs (Profile, Vision); navy hero, calm white bands, photo cards. */
 :root{color-scheme:light dark;
- --bg:light-dark(#ffffff,#071b1a);--ink:light-dark(#0f2322,#e7f2f0);--muted:light-dark(#4f6664,#9fb9b6);
- --field:light-dark(#0c5551,#0b3634);--field2:light-dark(#0a4744,#082a29);--soft:light-dark(#eef6f4,#0d2826);
- --line:light-dark(#d6e6e3,#1d3d3b);--accent:light-dark(#d9232b,#ff5a5f);--card:light-dark(#ffffff,#0b2322)}
+ --bg:light-dark(#ffffff,#08182a);--ink:light-dark(#13263a,#eaf0f6);--muted:light-dark(#526376,#a3b3c4);
+ --field:#0f2a44;--field2:#0a1e32;--soft:light-dark(#f3f6f9,#0d2236);--line:light-dark(#dde5ee,#1e3550);
+ --accent:light-dark(#c81f27,#ff5a5f);--card:light-dark(#ffffff,#0c2135);--hl:light-dark(#0f2a44,#a9c1db);
+ --on:#fff;--on2:#c9d6e3;--mol:#9fb6cf;--red:#d9232b;--ghost:rgba(255,255,255,.45)}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
-
-/* palettes (switch with data-palette on <html>) */
-:root{--on:#fff;--on2:#c9d6e3;--navon:#e9eef4;--mol:#9fb6cf;--hl:#0f2a44;--glow1:#1f4570;--glow2:#0f2a44;--cap:#d9232b;--capw:#fff;--mono:#fff;--ghost:rgba(255,255,255,.45);--ghosth:rgba(255,255,255,.1);--btn:#d9232b;--btnon:#fff}
-:root[data-palette=navy]{--hl:light-dark(#0f2a44,#a9c1db);--ink:light-dark(#13263a,#eaf0f6);--muted:light-dark(#526376,#a3b3c4);--field:#0f2a44;--field2:#0a1e32;--accent:#c81f27;--soft:light-dark(#f3f6f9,#0d2236);--line:light-dark(#dde5ee,#1e3550);--bg:light-dark(#fff,#08182a);--card:light-dark(#fff,#0c2135)}
-:root[data-palette=blush]{--field:#063737;--field2:#042929;--accent:#a8465c;--soft:light-dark(#fbf1f3,#0a2a2a);--line:light-dark(#f0dde1,#1a3c3c);--bg:light-dark(#fff,#041f1f);--card:light-dark(#fff,#082a2a);
- --on2:#e8c9cf;--navon:#f3e1e5;--mol:#e8c9cf;--hl:light-dark(#063737,#e8c9cf);--ink:light-dark(#0b2626,#eef4f3);--muted:light-dark(#4d6262,#a9bdbb);--glow1:#0f5656;--glow2:#063737;--cap:#e8c9cf;--btn:#e8c9cf;--btnon:#063737}
-:root[data-palette=pearl]{--field:#efecf4;--field2:#2f1934;--accent:#6e2c5e;--soft:light-dark(#f7f5fa,#1d1220);--line:light-dark(#e5dfeb,#3a2840);--bg:light-dark(#fff,#160d18);--card:light-dark(#fff,#21152a);
- --on:#2a1830;--on2:#6c5a72;--navon:#efe6f2;--mol:#9b80a3;--hl:light-dark(#6e2c5e,#d6b3cd);--ink:light-dark(#2a1830,#f1e9f3);--muted:light-dark(#66566b,#b9a8be);--glow1:#8a4a7a;--glow2:#5a2250;--cap:#6e2c5e;--capw:#fff;--mono:#fff;--ghost:rgba(42,24,48,.35);--ghosth:rgba(42,24,48,.06);--btn:#6e2c5e;--btnon:#fff}
 *{box-sizing:border-box;min-width:0}
-html{scroll-behavior:smooth;scroll-padding-top:72px}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Manrope,system-ui,sans-serif;overflow-x:clip}
-h1,h2,h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;line-height:1.05;text-wrap:balance;margin:0}
-h2{font-size:clamp(32px,4.4vw,48px);margin-bottom:28px}
+h1,h2,h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;line-height:1.08;text-wrap:balance;margin:0}
+h2{font-size:clamp(32px,4.4vw,48px);margin-bottom:12px}
 h3{font-size:24px}
 p{margin:0 0 14px}
 a{color:inherit}
-.wrap{max-width:1180px;margin:0 auto}
-.band{padding:clamp(48px,7vw,104px) max(5vw,16px)}
-.alt{background:var(--soft)}
+img{display:block;max-width:100%}
 button{font:inherit;color:inherit}
 :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1180px;margin:0 auto}
+.band{padding:clamp(52px,7vw,104px) max(5vw,16px)}
+.alt{background:var(--soft)}
+.intro{color:var(--muted);font-size:17px;max-width:62ch;margin-bottom:34px}
 
 /* nav */
-nav{position:sticky;top:0;z-index:10;background:var(--field2);color:var(--navon)}
-nav .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:6px 20px;padding:12px max(5vw,16px)}
+nav{position:sticky;top:0;z-index:10;background:var(--field2);color:#e9eef4}
+nav .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:10px max(5vw,16px)}
 .brand{font-family:"Instrument Serif",serif;font-size:22px;text-decoration:none;margin-inline-end:auto}
-nav .links{display:flex;flex-wrap:wrap;gap:2px 4px}
-nav .links a{text-decoration:none;font-size:14px;font-weight:600;padding:10px 10px;border-radius:8px;opacity:.85}
+nav .links{display:flex;flex-wrap:wrap;gap:2px;order:1}.tab-btn{order:2}.lang-btn{order:3}
+nav .links a{text-decoration:none;font-size:14px;font-weight:600;padding:10px 9px;border-radius:8px;opacity:.85}
 nav .links a:hover{opacity:1;background:rgba(255,255,255,.08)}
+.tab-btn,.lang-btn{min-height:40px;padding:0 16px;border-radius:999px;font-weight:700;font-size:14px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}
+.tab-btn{background:var(--red);color:#fff;border:0}
+.tab-btn[aria-current=page]{background:#fff;color:var(--field)}
+.lang-btn{border:1.5px solid var(--ghost);background:transparent;color:#e9eef4;font-family:"IBM Plex Sans Arabic",Manrope,sans-serif}
+.lang-btn:hover{background:rgba(255,255,255,.1)}
 
 /* hero */
 .hero{background:var(--field);color:var(--on);padding-top:clamp(36px,5vw,72px);padding-bottom:clamp(40px,6vw,88px)}
 .hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
 .uni{display:inline-block;background:#fff;border-radius:14px;padding:10px 16px;margin-bottom:22px;box-shadow:0 10px 30px -14px rgba(0,0,0,.5)}
-.uni img{display:block;height:clamp(44px,5vw,58px);width:auto}
-.kicker{font-size:15px;font-weight:600;color:var(--on2);margin-bottom:18px}
-.hero h1{font-size:clamp(56px,9vw,112px);line-height:.95;margin-bottom:22px}
-.hero h1 em{font-style:italic}
-.lede{font-size:clamp(18px,2vw,21px);max-width:34ch;color:var(--on);opacity:.92;margin-bottom:30px}
+.uni img{height:clamp(44px,5vw,58px);width:auto}
+.kicker{font-size:15px;font-weight:600;color:var(--on2);margin-bottom:16px}
+.hero h1{font-size:clamp(56px,9vw,112px);line-height:.95;margin-bottom:18px}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.1);font-size:14px;font-weight:600;margin-bottom:20px}
+.badge::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--red)}
+.lede{font-size:clamp(18px,2vw,21px);max-width:36ch;margin-bottom:28px;opacity:.94}
 .btns{display:flex;flex-wrap:wrap;gap:12px}
 .btn{display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .2s,background .2s}
 .btn:hover{transform:translateY(-2px)}
-.btn.primary{background:var(--btn);color:var(--btnon)}
-.btn.ghost{border-color:var(--ghost);color:var(--on);background:transparent}
-.btn.ghost:hover{background:var(--ghosth)}
+.btn.primary{background:var(--red);color:#fff}
+.btn.ghost{border-color:var(--ghost);color:#fff;background:transparent}
+.btn.ghost:hover{background:rgba(255,255,255,.1)}
 .pic{position:relative;aspect-ratio:1;max-width:520px;width:100%;justify-self:center}
 .pic svg{width:100%;height:100%;display:block;overflow:visible}
 .bond{fill:none;stroke:var(--mol);stroke-width:2.2;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.6s ease forwards}
 .ring{fill:none;stroke:var(--mol);opacity:.8;stroke-width:1.6;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.2s ease forwards}
-.atom{fill:var(--on);opacity:0;animation:pop .5s ease forwards}
-.atom.hot{fill:var(--cap)}
+.atom{fill:#fff;opacity:0;animation:pop .5s ease forwards}
+.atom.hot{fill:var(--red)}
 .sym{font:600 13px Manrope,sans-serif;fill:var(--on2);opacity:0;animation:pop .6s ease forwards}
-.cap{opacity:0;animation:pop .8s ease forwards}
+.cap,.face{opacity:0;animation:pop .9s ease forwards}
 @keyframes draw{to{stroke-dashoffset:0}}
 @keyframes pop{to{opacity:1}}
 
 /* stats */
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-bottom:1px solid var(--line)}
-.stat{padding:30px 20px;text-align:center;border-right:1px solid var(--line)}
-.stat:last-child{border-right:0}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid var(--line)}
+.stat{padding:30px 16px;text-align:center;border-inline-end:1px solid var(--line)}
+.stat:last-child{border-inline-end:0}
 .stat b{display:block;font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(40px,5vw,56px);line-height:1;color:var(--hl);white-space:nowrap}
 .stat span{font-size:14px;color:var(--muted)}
 
 /* about */
 .about{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:start}
+.story h2{margin-bottom:24px}
 .story p{font-size:17px;max-width:62ch}
-.story p:first-of-type{font-family:"Instrument Serif",serif;font-size:clamp(24px,2.6vw,30px);line-height:1.3;color:var(--ink)}
+.story p:first-of-type{font-family:"Instrument Serif",serif;font-size:clamp(23px,2.5vw,29px);line-height:1.3}
 .label{background:var(--card);border:1.5px solid var(--ink);border-radius:14px;padding:22px 24px;box-shadow:6px 6px 0 var(--hl)}
 .label-top{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1.5px solid var(--ink);padding-bottom:10px;margin-bottom:6px}
 .label-top strong{font-family:"Instrument Serif",serif;font-size:34px;font-weight:400;line-height:1}
 .label-top span{font-size:13px;color:var(--muted)}
 .label dl{margin:0}
-.label dl>div{display:grid;grid-template-columns:7.5em minmax(0,1fr);gap:10px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:15px}
+.label dl>div{display:grid;grid-template-columns:8em minmax(0,1fr);gap:10px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:15px}
 .label dl>div:last-child{border-bottom:0}
 .label dt{color:var(--muted)}
 .label dd{margin:0;font-weight:600}
 .label-foot{margin-top:12px;font-size:13px;color:var(--muted)}
 
-/* journey */
-.journey{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
-.journey li{border-bottom:1px solid var(--line)}
-.t-head{all:unset;box-sizing:border-box;display:grid;grid-template-columns:6.5em minmax(0,1fr) 28px;gap:16px;align-items:center;width:100%;padding:20px 4px;cursor:pointer}
-.t-head:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
-.t-when{font-family:"Instrument Serif",serif;font-size:28px;color:var(--accent);white-space:nowrap}
-.t-title{font-weight:700;font-size:18px}
-.t-where{display:block;font-weight:500;font-size:14px;color:var(--muted)}
-.t-icon{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);position:relative;transition:transform .3s,background .3s}
-.t-icon::before,.t-icon::after{content:"";position:absolute;left:50%;top:50%;width:11px;height:1.8px;background:var(--ink);transform:translate(-50%,-50%)}
-.t-icon::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .3s}
-[aria-expanded=true] .t-icon{background:var(--soft)}
-[aria-expanded=true] .t-icon::after{transform:translate(-50%,-50%) rotate(0)}
-.t-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
-.t-body>div{overflow:hidden;padding-inline-start:calc(6.5em + 20px)}
-.t-body p{max-width:64ch;color:var(--muted);padding-bottom:22px;margin:0}
-li.open .t-body{grid-template-rows:1fr}
+/* on screen */
+.screen{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:22px}
+.show{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+.show .media{position:relative;background:#000}
+.show .media img,.show .media video{width:100%;aspect-ratio:16/10;object-fit:cover}
+.show .thumbs{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:var(--line)}
+.show .thumbs img{aspect-ratio:4/5;object-fit:cover;width:100%}
+.show .txt{padding:22px 24px}
+.meta{font-size:14px;font-weight:700;color:var(--accent);margin-bottom:8px}
+.show p{color:var(--muted);margin:0}
 
-/* impact */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:18px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;transition:transform .25s,box-shadow .25s}
-.card:hover{transform:translateY(-4px);box-shadow:0 14px 30px -18px rgba(8,50,48,.45)}
-.pill{width:46px;height:20px;border-radius:999px;background:linear-gradient(90deg,var(--accent) 50%,var(--field) 50%);margin-bottom:18px}
-.card h3{margin-bottom:6px}
-.role{font-size:14px;font-weight:700;color:var(--accent);margin-bottom:10px}
-.card p{font-size:15px;color:var(--muted);margin:0}
+/* photo cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:20px}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.pcard img{width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--soft)}
+.pcard .noimg{aspect-ratio:4/3;display:grid;place-items:center;background:var(--field);color:#fff;font-family:"Instrument Serif",serif;font-size:34px;padding:16px;text-align:center}
+.pcard .body{padding:18px 20px 22px}
+.pcard h3{font-size:22px;margin-bottom:4px}
+.pcard p{color:var(--muted);font-size:15px;margin:0}
 
-/* skills */
-.skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
-.skills h3{margin-bottom:14px}
+/* experience */
+.exp{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.exp li{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) auto;gap:6px 20px;align-items:baseline;padding:18px 4px;border-bottom:1px solid var(--line)}
+.exp strong{font-size:18px}
+.exp .where{color:var(--muted)}
+.exp .dur{font-family:"Instrument Serif",serif;font-size:22px;color:var(--accent);white-space:nowrap}
+
+/* certificates */
+.certs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px}
+.certs h3{margin-bottom:12px}
+.certs ul{list-style:none;margin:0;padding:0}
+.certs li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.certs li strong{display:block;font-size:16px}
+.certs li span{color:var(--muted);font-size:14px}
+.certs li time{font-size:14px;font-weight:700;color:var(--hl);white-space:nowrap}
+
+/* closing */
+.closing{background:var(--field);color:#fff;text-align:center}
+.closing h2{font-size:clamp(36px,5vw,60px);margin-bottom:14px}
+.closing p{color:var(--on2);max-width:52ch;margin:0 auto 28px}
+.closing .btns{justify-content:center}
+footer{background:var(--field2);color:#c9d6e3;text-align:center;font-size:13px;padding:18px}
+
+/* vision tab */
+.vhero{background:var(--field);color:#fff}
+.vhero .wrap{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:center}
+.vhero img{width:clamp(110px,16vw,180px);aspect-ratio:1;border-radius:50%;object-fit:cover;border:3px solid var(--mol)}
+.vhero h1{font-size:clamp(40px,6vw,72px);margin-bottom:14px}
+.vhero p{color:var(--on2);font-size:18px;max-width:58ch;margin:0}
+.reasons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.reason{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 26px 24px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 18px}
+.reason .n{grid-row:span 2;font-family:"Instrument Serif",serif;font-size:56px;line-height:.9;color:var(--accent)}
+.reason h3{font-size:23px}
+.reason p{color:var(--muted);margin:0;font-size:15.5px}
+.duties{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 28px}
+.duties li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.duties li::before{content:"";width:24px;height:24px;border-radius:50%;background:var(--field) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat;margin-top:2px}
+.duties strong{display:block}
+.duties span{color:var(--muted);font-size:15px}
+.hub{background:var(--card);border:1.5px solid var(--ink);border-radius:22px;padding:clamp(22px,3vw,36px);box-shadow:8px 8px 0 var(--hl);margin-bottom:34px}
+.hub h3{font-size:clamp(26px,3vw,34px);margin-bottom:8px}
+.hub>p{color:var(--muted);max-width:66ch}
+.features{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:14px;margin-top:20px}
+.feat{border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--soft)}
+.feat strong{display:block;font-size:15.5px;margin-bottom:4px}
+.feat span{color:var(--muted);font-size:14.5px;line-height:1.55}
+.plans{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:20px}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px}
+.plan h3{font-size:23px;margin-bottom:8px}
+.plan p{color:var(--muted);margin:0;font-size:15.5px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{padding:8px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:14px;font-weight:600}
-.langs{margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:14px}
-.lang{display:flex;justify-content:space-between;gap:10px;padding:14px 18px;border-radius:12px;background:var(--card);border:1px solid var(--line)}
-.lang span{color:var(--muted);font-size:14px}
+.chip{padding:9px 15px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:14px;font-weight:600}
+[hidden]{display:none!important}
 
-/* awards */
-.awards{list-style:none;padding:0;margin:0;display:grid;gap:0}
-.awards li{display:grid;grid-template-columns:5em minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
-.awards b{font-family:"Instrument Serif",serif;font-weight:400;font-size:24px;color:var(--accent)}
-.awards strong{display:block;font-size:17px}
-.awards span{color:var(--muted);font-size:14px}
-
-/* contact */
-.contact{background:var(--field);color:var(--on);text-align:center}
-.contact h2{font-size:clamp(40px,6vw,72px);margin-bottom:14px}
-.contact p{color:var(--on2);max-width:48ch;margin:0 auto 30px}
-.contact .btns{justify-content:center}
-.contact small{display:block;margin-top:26px;color:var(--on2);font-size:14px;word-break:break-word}
-footer{background:var(--field2);color:var(--navon);text-align:center;font-size:13px;padding:18px}
-.sample{font-size:13px;color:var(--on2);margin-top:22px}
-
-
-/* language switch + Arabic */
-.lang-btn{min-height:40px;padding:0 16px;border-radius:999px;border:1.5px solid var(--ghost);background:transparent;color:var(--navon);font:600 14px "IBM Plex Sans Arabic",Manrope,sans-serif;cursor:pointer}
-.lang-btn:hover{background:var(--ghosth)}
+/* Arabic */
 html[lang=ar] body{font-family:"IBM Plex Sans Arabic",Manrope,system-ui,sans-serif;line-height:1.8}
-html[lang=ar] h2,html[lang=ar] h3,html[lang=ar] .story p:first-of-type,html[lang=ar] .t-when,html[lang=ar] .awards b{font-family:Amiri,"Instrument Serif",serif}
-html[lang=ar] h2{line-height:1.35}html[lang=ar] h3{line-height:1.4}
-html[lang=ar] .story p:first-of-type{line-height:1.6}
-[lang=en]{font-family:inherit}
-html[dir=rtl] h1[dir=ltr]{text-align:right}
+html[lang=ar] h2,html[lang=ar] h3,html[lang=ar] .story p:first-of-type,html[lang=ar] .exp .dur,html[lang=ar] .vhero h1{font-family:Amiri,"Instrument Serif",serif}
+html[lang=ar] h2,html[lang=ar] .vhero h1{line-height:1.35}html[lang=ar] h3{line-height:1.45}
+html[lang=ar] .story p:first-of-type{line-height:1.65}
 html[lang=ar] h1[lang=en],html[lang=ar] .brand{font-family:"Instrument Serif",Georgia,serif}
-html[lang=ar] .kicker,html[lang=ar] .lede{line-height:1.8}
+html[dir=rtl] h1[dir=ltr]{text-align:right}
+html[dir=rtl] .label{box-shadow:-6px 6px 0 var(--hl)}html[dir=rtl] .hub{box-shadow:-8px 8px 0 var(--hl)}
 
 /* entrance */
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
 .reveal.in{opacity:1;transform:none}
 
-@media(max-width:860px){
- .hero .wrap,.about{grid-template-columns:minmax(0,1fr)}
+@media(max-width:900px){
+ .hero .wrap,.about,.screen{grid-template-columns:minmax(0,1fr)}
  .pic{max-width:380px;order:-1}
- .skills{grid-template-columns:minmax(0,1fr)}
  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
- .stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+ .stat:nth-child(2){border-inline-end:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+ .certs,.reasons,.duties{grid-template-columns:minmax(0,1fr)}
 }
 @media(max-width:600px){
- nav .links{width:100%;overflow-x:auto;flex-wrap:nowrap;order:2}nav .links a{flex:none}.lang-btn{order:1}
- .t-head{grid-template-columns:minmax(0,1fr) 28px}.t-when{grid-column:1;font-size:22px}
- .t-head .t-title{grid-column:1}.t-icon{grid-row:1/3;grid-column:2}
- .t-body>div{padding-inline-start:0}
+ nav .links{width:100%;overflow-x:auto;flex-wrap:nowrap;order:4}nav .links a{flex:none}
+ .exp li{grid-template-columns:minmax(0,1fr) auto}.exp .where{grid-column:1;grid-row:2}
+ .vhero .wrap{grid-template-columns:minmax(0,1fr)}
+ .label dl>div{grid-template-columns:7em minmax(0,1fr)}
 }
 @media(prefers-reduced-motion:reduce){
  *,*::before,*::after{animation:none!important;transition:none!important}
- .bond,.ring{stroke-dashoffset:0}.atom,.sym,.cap{opacity:1}.reveal{opacity:1;transform:none}
+ .bond,.ring{stroke-dashoffset:0}.atom,.sym,.cap,.face{opacity:1}.reveal{opacity:1;transform:none}
  html{scroll-behavior:auto}
 }
 @media print{
- nav,.btns,.pic,.sample,footer{display:none!important}
- body{background:#fff;color:#000}
- .hero,.contact{background:#fff;color:#000}.hero h1 em{color:#000}.lede,.kicker,.contact p,.contact small{color:#333}
+ nav,.btns,.pic,footer,.closing,video{display:none!important}
+ body{background:#fff;color:#000}.hero{background:#fff;color:#000}.kicker,.lede{color:#333}
  .band{padding:18px 0}.reveal{opacity:1;transform:none}
- li .t-body{grid-template-rows:1fr!important}.card{break-inside:avoid}
+ .pcard,.reason,.plan,.show{break-inside:avoid}
 }
 </style>
 </head>
@@ -198,27 +220,30 @@ html[lang=ar] .kicker,html[lang=ar] .lede{line-height:1.8}
 <nav aria-label="Main">
  <div class="wrap">
   <a class="brand" href="#top" lang="en" dir="ltr">Madonna Nasser</a>
+  <a class="tab-btn" href="#vision" id="visionTab" data-i="tabVision">My vision</a>
+  <button class="lang-btn" type="button" id="langBtn" lang="en">English</button>
   <div class="links">
-   <a href="#about" data-i="nAbout">About</a><a href="#journey" data-i="nJourney">Journey</a><a href="#impact" data-i="nImpact">Impact</a><a href="#skills" data-i="nSkills">Skills</a><a href="#awards" data-i="nAwards">Recognition</a><a href="#contact" data-i="nContact">Contact</a>
+   <a href="#about" data-i="nAbout">About</a><a href="#screen" data-i="nScreen">On screen</a><a href="#training" data-i="nTraining">Training</a><a href="#experience" data-i="nExp">Experience</a><a href="#leadership" data-i="nLead">Leadership</a><a href="#certificates" data-i="nCerts">Certificates</a>
   </div>
-  <button class="lang-btn" type="button" id="langBtn" lang="ar">العربية</button>
  </div>
 </nav>
 
+<!-- ================= PROFILE TAB ================= -->
+<main id="profile">
 <header class="band hero" id="top">
  <div class="wrap">
   <div>
    <div class="uni"><img src="bue-logo.png" alt="The British University in Egypt" width="672" height="247"></div>
-   <div class="kicker" data-i="kicker">Clinical Pharmacy student · Faculty of Pharmacy</div>
+   <div class="kicker" data-i="kicker"></div>
    <h1 lang="en" dir="ltr">Madonna Nasser</h1>
+   <div class="badge" data-i="badge"></div>
    <p class="lede" id="statement"></p>
    <div class="btns">
-    <a class="btn primary" href="#about" data-i="bKnow">Get to know me</a>
-    <button class="btn ghost" type="button" id="printBtn" data-i="bPdf">Save as PDF</button>
+    <a class="btn primary" href="#about" data-i="bKnow"></a>
+    <a class="btn ghost" href="#vision" data-i="bVision"></a>
    </div>
-   <p class="sample" id="sampleNote" data-i="sample">Sample wording shown below her name; her real details replace it.</p>
   </div>
-  <div class="pic" aria-hidden="true"><svg id="mol" viewBox="0 0 500 500"></svg></div>
+  <div class="pic" aria-hidden="true"><svg id="mol" viewBox="0 0 500 500" direction="ltr"></svg></div>
  </div>
 </header>
 
@@ -227,229 +252,399 @@ html[lang=ar] .kicker,html[lang=ar] .lede{line-height:1.8}
 <section class="band" id="about">
  <div class="wrap about">
   <div class="story reveal">
-   <h2 data-i="hAbout">Who I am</h2>
+   <h2 data-i="hAbout"></h2>
    <div id="story"></div>
   </div>
-  <aside class="label reveal" aria-label="Quick facts">
-   <div class="label-top"><strong>Rx</strong><span data-i="rxSub">Dispensed with care</span></div>
+  <aside class="label reveal" id="factsBox">
+   <div class="label-top"><strong>Rx</strong><span data-i="rxSub"></span></div>
    <dl id="facts"></dl>
-   <div class="label-foot" data-i="rxFoot">Use as directed: talk to her, she listens.</div>
+   <div class="label-foot" data-i="rxFoot"></div>
   </aside>
  </div>
 </section>
 
-<section class="band alt" id="journey">
+<section class="band alt" id="screen">
  <div class="wrap">
-  <h2 class="reveal" data-i="hJourney">My journey so far</h2>
-  <ol class="journey reveal" id="timeline"></ol>
+  <h2 class="reveal" data-i="hScreen"></h2>
+  <p class="intro reveal" data-i="screenIntro"></p>
+  <div class="screen" id="shows"></div>
  </div>
 </section>
 
-<section class="band" id="impact">
+<section class="band" id="training">
  <div class="wrap">
-  <h2 class="reveal" data-i="hImpact">Where I give my time</h2>
-  <div class="cards" id="cards"></div>
+  <h2 class="reveal" data-i="hTraining"></h2>
+  <p class="intro reveal" data-i="trainingIntro"></p>
+  <div class="grid" id="trainingGrid"></div>
  </div>
 </section>
 
-<section class="band alt" id="skills">
+<section class="band alt" id="experience">
  <div class="wrap">
-  <h2 class="reveal" data-i="hSkills">What I bring</h2>
-  <div class="skills reveal" id="skillGroups"></div>
-  <div class="langs reveal" id="langs"></div>
+  <h2 class="reveal" data-i="hExp"></h2>
+  <p class="intro reveal" data-i="expIntro"></p>
+  <ul class="exp reveal" id="expList"></ul>
  </div>
 </section>
 
-<section class="band" id="awards">
+<section class="band" id="leadership">
  <div class="wrap">
-  <h2 class="reveal" data-i="hAwards">Recognition</h2>
-  <ul class="awards reveal" id="awardList"></ul>
+  <h2 class="reveal" data-i="hLead"></h2>
+  <p class="intro reveal" data-i="leadIntro"></p>
+  <div class="grid" id="leadGrid"></div>
  </div>
 </section>
 
-<section class="band contact" id="contact">
+<section class="band alt" id="certificates">
  <div class="wrap">
-  <h2 data-i="hContact">Let's talk</h2>
-  <p data-i="contactP">I would be glad to meet, share more about my work, or answer any question.</p>
-  <div class="btns" id="contactBtns"></div>
-  <small id="contactText"></small>
+  <h2 class="reveal" data-i="hCerts"></h2>
+  <div class="certs reveal" id="certGroups"></div>
  </div>
 </section>
 
-<footer>© <span id="yr"></span> <span lang="en">Madonna Nasser</span> · <span data-i="foot">Clinical Pharmacy, The British University in Egypt</span></footer>
+<section class="band closing">
+ <div class="wrap">
+  <h2 data-i="closeH"></h2>
+  <p data-i="closeP"></p>
+  <div class="btns"><a class="btn primary" href="#vision" data-i="bVision"></a></div>
+ </div>
+</section>
+</main>
+
+<!-- ================= VISION TAB ================= -->
+<main id="vision" hidden>
+<header class="band vhero">
+ <div class="wrap">
+  <img src="img/portrait.webp" alt="Madonna Nasser" width="180" height="180">
+  <div>
+   <div class="kicker" data-i="vKicker"></div>
+   <h1 data-i="vTitle"></h1>
+   <p data-i="vIntro"></p>
+  </div>
+ </div>
+</header>
+
+<section class="band">
+ <div class="wrap">
+  <h2 data-i="vWhy"></h2>
+  <p class="intro" data-i="vWhyIntro"></p>
+  <div class="reasons" id="reasons"></div>
+ </div>
+</section>
+
+<section class="band alt">
+ <div class="wrap">
+  <h2 data-i="vRole"></h2>
+  <p class="intro" data-i="vRoleIntro"></p>
+  <ul class="duties" id="duties"></ul>
+ </div>
+</section>
+
+<section class="band">
+ <div class="wrap">
+  <h2 data-i="vPlans"></h2>
+  <p class="intro" data-i="vPlansIntro"></p>
+  <div class="hub">
+   <h3 data-i="hubTitle"></h3>
+   <p data-i="hubIntro"></p>
+   <div class="features" id="features"></div>
+  </div>
+  <div class="plans" id="plans"></div>
+ </div>
+</section>
+
+<section class="band alt">
+ <div class="wrap">
+  <h2 data-i="vPartners"></h2>
+  <p class="intro" data-i="vPartnersIntro"></p>
+  <div class="chips" id="partners" dir="ltr"></div>
+ </div>
+</section>
+
+<section class="band closing">
+ <div class="wrap">
+  <h2 data-i="vCloseH"></h2>
+  <p data-i="vCloseP"></p>
+  <div class="btns"><a class="btn ghost" href="#top" data-i="bProfile"></a></div>
+ </div>
+</section>
+</main>
+
+<footer>© <span id="yr"></span> <span lang="en">Madonna Nasser</span> · <span data-i="foot"></span></footer>
 
 <script>
 {
-/* ================= EDIT HER DETAILS HERE =================
-   Every text can be plain "text" (same in both languages)
-   or {en: "...", ar: "..."}.
-   Arabic rule: her name, BUE, and all medical / pharmacy terms stay in English inside the Arabic text.
-   Set sample:false once the real content is in. */
+/* =====================================================================
+   ALL CONTENT LIVES HERE.  Text is either "same in both languages"
+   or {en: "...", ar: "..."}.  Rule for Arabic: her name, organisation
+   names and medical / pharmacy terms stay in English.
+   ===================================================================== */
 const P = {
- sample: true,
- photo: "",            // e.g. "photo.jpg" (upload the image to the repo). Empty = initials.
+ photo: "img/portrait.webp",
  statement: {
-  en: "I want every patient to understand their medicine, not just receive it.",
-  ar: "أريد أن يفهم كل مريض دواءه، لا أن يستلمه فقط."
+  en: "I bridge clinical knowledge, organisation and real industry partnerships, and I love making science simple for everyone.",
+  ar: "أجمع بين المعرفة الإكلينيكية والتنظيم وشراكات حقيقية مع الصناعة، وأحب أن أجعل العلم بسيطاً للجميع."
  },
  stats: [
-  {n: 3.7, dec: 1, label: {en: "Cumulative GPA", ar: "المعدل التراكمي GPA"}},
-  {n: 12, label: {en: "Events organised or hosted", ar: "فعالية نظّمتها أو قدّمتها"}},
-  {n: 150, suffix: "+", label: {en: "Volunteer hours", ar: "ساعة تطوع"}},
-  {n: 3, label: {en: "Languages", ar: "لغات"}}
+  {n: 5, label: {en: "Years in community pharmacy", ar: "سنوات في Community Pharmacy"}},
+  {n: 4, label: {en: "Years in the Student Union", ar: "سنوات في اتحاد الطلبة"}},
+  {n: 5, label: {en: "Years as a Scout Leader", ar: "سنوات كـ Scout Leader"}},
+  {n: 6, label: {en: "Industry & hospital trainings", ar: "تدريبات في شركات أدوية ومستشفيات"}}
  ],
  story: [
-  {en: "I chose clinical pharmacy because I believe the safest medicine is the one a patient truly understands.",
-   ar: "اخترت Clinical Pharmacy لأنني أؤمن بأن أكثر دواء آمن هو الدواء الذي يفهمه المريض فعلاً."},
-  {en: "At BUE I have learned that pharmacy is as much about people as it is about pharmacology. Whether I am in a lab, on a hospital ward or speaking at a student event, I try to bring the same thing: clear explanations, patience and genuine care.",
-   ar: "تعلّمت في BUE أن الصيدلة تتعلق بالناس بقدر ما تتعلق بالـ Pharmacology. سواء كنت في المعمل، أو في أقسام المستشفى، أو أتحدث في فعالية طلابية، أحاول أن أقدّم الشيء نفسه: شرحاً واضحاً، وصبراً، واهتماماً حقيقياً."},
-  {en: "Outside lectures I spend my time on awareness campaigns, student activities and helping new students find their way in the faculty.",
-   ar: "خارج المحاضرات أقضي وقتي في حملات التوعية والأنشطة الطلابية، ومساعدة الطلاب الجدد على إيجاد طريقهم في الكلية."}
+  {en: "I am a fifth-year pharmacy student at BUE on an academic excellence scholarship, and for five years I have worked in community pharmacy alongside my studies.",
+   ar: "أنا طالبة في السنة الخامسة بكلية الصيدلة في BUE بمنحة التفوق الأكاديمي (Academic Excellence Scholarship)، وأعمل منذ خمس سنوات في Community Pharmacy بجانب دراستي."},
+  {en: "For four years I have served on the Student Union's Scientific Committee. Outside the faculty I am a Scout Leader, a Youth Ambassador for the World Literacy Foundation, and a participant in the Harvard-founded Aspire Leaders Program.",
+   ar: "على مدار أربع سنوات كنت عضوة في Scientific Committee باتحاد الطلبة. وخارج الكلية أنا Scout Leader، و Youth Ambassador في World Literacy Foundation، ومشاركة في Aspire Leaders Program الذي تأسس في Harvard."},
+  {en: "Since 2023 I have presented science segments for children on Al-Hayah TV. Whether I am behind a pharmacy counter, in front of a camera or leading a team, my aim is the same: make science clear, useful and close to people.",
+   ar: "ومنذ 2023 أقدّم فقرات علمية للأطفال على قناة Al-Hayah TV. سواء كنت خلف كاونتر الصيدلية، أو أمام الكاميرا، أو أقود فريقاً، هدفي واحد: أن يكون العلم واضحاً ومفيداً وقريباً من الناس."}
  ],
  facts: [
-  [{en: "Name", ar: "الاسم"}, "Madonna Nasser"],
-  [{en: "Programme", ar: "البرنامج"}, "Clinical Pharmacy (PharmD)"],
+  [{en: "Full name", ar: "الاسم"}, "Madonna Nasser Adly"],
+  [{en: "Programme", ar: "البرنامج"}, "Clinical Pharmacy"],
   [{en: "University", ar: "الجامعة"}, "The British University in Egypt"],
-  [{en: "Year", ar: "السنة"}, {en: "4th year", ar: "الفرقة الرابعة"}],
-  [{en: "Languages", ar: "اللغات"}, {en: "Arabic, English, French", ar: "العربية، الإنجليزية، الفرنسية"}],
-  [{en: "Based in", ar: "المدينة"}, {en: "Cairo, Egypt", ar: "القاهرة، مصر"}]
+  [{en: "Year", ar: "السنة"}, {en: "5th year", ar: "السنة الخامسة"}],
+  [{en: "Scholarship", ar: "المنحة"}, "Academic Excellence"],
+  [{en: "Student Union", ar: "اتحاد الطلبة"}, {en: "Scientific Committee, 4 years", ar: "Scientific Committee، أربع سنوات"}],
+  [{en: "Languages", ar: "اللغات"}, {en: "Arabic, English", ar: "العربية، الإنجليزية"}]
  ],
- journey: [
-  {when: "2022", title: {en: "Joined the Faculty of Pharmacy", ar: "التحقت بـ Faculty of Pharmacy"}, where: "The British University in Egypt",
-   text: {en: "Started the Clinical Pharmacy programme and joined the faculty's student activities in my first semester.", ar: "بدأت برنامج Clinical Pharmacy وانضممت إلى الأنشطة الطلابية بالكلية من أول فصل دراسي."}},
-  {when: "2023", title: {en: "Organised a medication awareness campaign", ar: "نظّمت حملة توعية عن Medication Safety"}, where: {en: "BUE student activity", ar: "نشاط طلابي في BUE"},
-   text: {en: "Helped plan and run a campus campaign on safe use of antibiotics, preparing material and speaking with students and staff.", ar: "شاركت في تخطيط وتنفيذ حملة داخل الجامعة عن الاستخدام الآمن للـ Antibiotics، وأعددت المحتوى وتحدثت مع الطلاب والعاملين."}},
-  {when: "2024", title: {en: "Summer training in a hospital pharmacy", ar: "تدريب صيفي في Hospital Pharmacy"}, where: {en: "Hospital name", ar: "اسم المستشفى"},
-   text: {en: "Observed clinical pharmacists on the wards, reviewed prescriptions and learned how drug interactions are checked in practice.", ar: "رافقت الـ Clinical Pharmacists في الأقسام، وراجعت الـ Prescriptions، وتعلّمت كيف تُفحص الـ Drug Interactions عملياً."}},
-  {when: "2025", title: {en: "Research project and poster", ar: "مشروع بحثي و Poster"}, where: "Faculty of Pharmacy, BUE",
-   text: {en: "Worked with a supervisor on a project and presented the results as a poster at a student conference.", ar: "عملت مع مشرف على مشروع بحثي وعرضت النتائج في صورة Poster في مؤتمر طلابي."}},
-  {when: {en: "Now", ar: "الآن"}, title: {en: "Fourth year, Clinical Pharmacy", ar: "الفرقة الرابعة، Clinical Pharmacy"}, where: "The British University in Egypt",
-   text: {en: "Focusing on clinical rotations and patient counselling while continuing to lead student activities.", ar: "أركّز على الـ Clinical Rotations والـ Patient Counselling، مع الاستمرار في قيادة الأنشطة الطلابية."}}
+ shows: [
+  {main: "img/tv-studio.webp", thumbs: ["img/tv-lab.webp", "img/tv-alhayah.webp"],
+   meta: {en: "Al-Hayah TV · since 2023", ar: "Al-Hayah TV · منذ 2023"},
+   title: {en: "Science presenter for children", ar: "مقدّمة فقرات علمية للأطفال"},
+   text: {en: "I prepare and present interactive science experiments and educational segments for children, from Space and Astronomy to awareness on Antibiotics, Hygiene and Healthy Nutrition. New episodes are being filmed now.",
+          ar: "أُعدّ وأقدّم تجارب علمية تفاعلية وفقرات تعليمية للأطفال، من Space و Astronomy إلى التوعية عن الـ Antibiotics والـ Hygiene والـ Healthy Nutrition. ويجري الآن تصوير حلقات جديدة."}},
+  {video: "img/abakera.mp4", poster: "img/abakera.webp",
+   meta: {en: "Al-Qahera Wal Nas TV · 2019", ar: "Al-Qahera Wal Nas TV · 2019"},
+   title: {en: "Contestant on “Al-Abakera”", ar: "متسابقة في برنامج «العباقرة»"},
+   text: {en: "Featured on Al-Abakera (The Geniuses), the national knowledge competition hosted by Essam Youssef.",
+          ar: "شاركت في برنامج «العباقرة»، مسابقة المعلومات الشهيرة التي يقدّمها عصام يوسف."}}
  ],
- impact: [
-  {title: {en: "Student activities", ar: "الأنشطة الطلابية"}, role: {en: "Team member / leader", ar: "عضوة / قائدة فريق"}, text: {en: "Planning faculty events, welcoming new students and representing the faculty at university events.", ar: "تنظيم فعاليات الكلية، واستقبال الطلاب الجدد، وتمثيل الكلية في فعاليات الجامعة."}},
-  {title: {en: "Health awareness", ar: "التوعية الصحية"}, role: {en: "Campaign organiser", ar: "منظِّمة حملات"}, text: {en: "Running awareness days on medication safety and healthy living for students and the community.", ar: "تنظيم أيام توعية عن Medication Safety ونمط الحياة الصحي للطلاب والمجتمع."}},
-  {title: {en: "Volunteering", ar: "العمل التطوعي"}, role: {en: "Volunteer", ar: "متطوعة"}, text: {en: "Supporting medical convoys and charity work where pharmacy knowledge helps people directly.", ar: "المشاركة في القوافل الطبية والعمل الخيري حيث تفيد المعرفة الصيدلية الناس مباشرة."}},
-  {title: {en: "Peer support", ar: "دعم الزملاء"}, role: {en: "Mentor", ar: "Mentor"}, text: {en: "Helping younger students with study plans, labs and settling into university life.", ar: "مساعدة الطلاب الأصغر في خطط المذاكرة والمعامل والتأقلم مع الحياة الجامعية."}}
+ training: [
+  {img: "", mark: "Sandoz", title: "Sandoz", meta: {en: "Internship", ar: "Internship"},
+   text: {en: "Internship at Sandoz, a global leader in generic pharmaceuticals and biosimilars.", ar: "Internship في Sandoz، الشركة العالمية الرائدة في الـ Generic Pharmaceuticals والـ Biosimilars."}},
+  {img: "img/gnp.webp", title: "Global Napi Pharmaceuticals (GNP)", meta: {en: "Summer training · 2026", ar: "تدريب صيفي · 2026"},
+   text: {en: "Quality Control (QC) at GNP and GAP, and Research & Development (R&D) at GIP.", ar: "Quality Control (QC) في GNP و GAP، و Research & Development (R&D) في GIP."}},
+  {img: "img/parkville.webp", title: "Parkville Pharmaceuticals", meta: {en: "Internship · 2026", ar: "Internship · 2026"},
+   text: {en: "Completed my internship and was named a 2026 “Learning Champion”.", ar: "أتممت فترة الـ Internship وحصلت على لقب «Learning Champion» لعام 2026."}},
+  {img: "img/eva.webp", title: "Eva Cosmetics", meta: {en: "Training", ar: "تدريب"},
+   text: {en: "Training in cosmetics and skincare products.", ar: "تدريب في منتجات الـ Cosmetics والـ Skincare."}},
+  {img: "img/c57357.webp", title: "57357 Children’s Cancer Hospital", meta: {en: "Clinical training · Feb 2024", ar: "تدريب إكلينيكي · فبراير 2024"},
+   text: {en: "14-hour training in the Infection Prevention and Control department, plus a Nutrition course.", ar: "تدريب 14 ساعة في قسم Infection Prevention and Control، بالإضافة إلى Nutrition Course."}},
+  {img: "img/baheya-zayed.webp", title: "Baheya Hospital", meta: {en: "Clinical training", ar: "تدريب إكلينيكي"},
+   text: {en: "Trained at Baheya, the hospital for early detection and treatment of breast cancer, and was invited to the opening of Baheya Zayed.", ar: "تدرّبت في مستشفى بهية للاكتشاف المبكر وعلاج سرطان الثدي، ودُعيت لحضور افتتاح Baheya Zayed."}}
  ],
- skills: [
-  {group: {en: "Clinical", ar: "Clinical"}, items: ["Patient counselling", "Drug interaction checks", "Prescription review", "Pharmacology", "Pharmaceutical care"]},
-  {group: {en: "People", ar: "مهارات شخصية"}, items: [{en: "Public speaking", ar: "التحدث أمام الجمهور"}, {en: "Event organising", ar: "تنظيم الفعاليات"}, {en: "Teamwork", ar: "العمل الجماعي"}, {en: "Leadership", ar: "القيادة"}, {en: "Clear communication", ar: "التواصل الواضح"}]},
-  {group: {en: "Digital", ar: "مهارات رقمية"}, items: ["Microsoft Office", "Canva", {en: "Presentation design", ar: "تصميم العروض التقديمية"}, {en: "Social media content", ar: "محتوى Social Media"}]}
+ experience: [
+  {role: {en: "Pharmacist", ar: "Pharmacist"}, where: "Cura Pharmacy", dur: {en: "3.5 years", ar: "3.5 سنوات"}},
+  {role: {en: "Pharmacist", ar: "Pharmacist"}, where: "Saad Pharmacy", dur: {en: "1 year", ar: "سنة"}},
+  {role: {en: "Cosmetics & Beauty Specialist (Beauty Section Manager)", ar: "Cosmetics & Beauty Specialist (مديرة قسم التجميل)"}, where: {en: "Cura Pharmacy bazaar event", ar: "بازار Cura Pharmacy"}, dur: ""},
+  {role: "HR", where: "Science Land · OBM Educational Company", dur: ""},
+  {role: {en: "Biology Teaching Assistant", ar: "Biology Teaching Assistant"}, where: {en: "3rd-year secondary school students", ar: "طلاب الصف الثالث الثانوي"}, dur: ""},
+  {role: {en: "Sales Associate", ar: "Sales Associate"}, where: {en: "Skincare & cosmetics boutique", ar: "متجر Skincare & Cosmetics"}, dur: {en: "2 years", ar: "سنتان"}},
+  {role: {en: "Laser Technician", ar: "Laser Technician"}, where: {en: "Beauty clinic", ar: "عيادة تجميل"}, dur: ""}
  ],
- languages: [
-  [{en: "Arabic", ar: "العربية"}, {en: "Native", ar: "اللغة الأم"}],
-  [{en: "English", ar: "الإنجليزية"}, {en: "Fluent", ar: "بطلاقة"}],
-  [{en: "French", ar: "الفرنسية"}, {en: "Intermediate", ar: "متوسط"}]
+ leadership: [
+  {img: "img/union.webp", title: {en: "Student Union · Scientific Committee", ar: "اتحاد الطلبة · Scientific Committee"}, meta: {en: "4 years", ar: "أربع سنوات"},
+   text: {en: "Active member for four years; worked with a sponsor on scientific awareness campaigns in the faculty.", ar: "عضوة فعّالة لأربع سنوات، وتعاونت مع راعٍ (Sponsor) في حملات توعية علمية داخل الكلية."}},
+  {img: "img/scouts.webp", title: "Scout Leader", meta: {en: "5 years as leader", ar: "5 سنوات كقائدة"},
+   text: {en: "My scouting journey started in 3rd grade. Leading for five years taught me leadership, teamwork, resilience and community service.", ar: "بدأت رحلتي في الكشافة من الصف الثالث الابتدائي، وقيادتي لخمس سنوات علّمتني القيادة والعمل الجماعي والصمود وخدمة المجتمع."}},
+  {img: "img/wlf.webp", title: "World Literacy Foundation", meta: {en: "Youth Ambassador · 2022 & 2026", ar: "Youth Ambassador · 2022 و 2026"},
+   text: {en: "Completed the Youth Ambassador Program in 2022 and again in 2026.", ar: "أتممت Youth Ambassador Program في 2022 ثم مرة أخرى في 2026."}},
+  {img: "", mark: "Aspire", title: "Aspire Leaders Program", meta: {en: "Aspire Institute · Cohort 4, 2026", ar: "Aspire Institute · Cohort 4، 2026"},
+   text: {en: "An international leadership program founded at Harvard, connecting a global community of emerging leaders.", ar: "برنامج قيادي دولي تأسس في Harvard، يجمع مجتمعاً عالمياً من القادة الشباب."}},
+  {img: "", mark: "PRME · COP30", title: "PRME COP30 Program", meta: {en: "Selected · 2025", ar: "تم اختياري · 2025"},
+   text: {en: "Four-month virtual program on climate literacy, with workshops by experts from institutions such as the University of Oxford and MIT Sloan.", ar: "برنامج افتراضي لمدة أربعة أشهر عن الوعي المناخي (Climate Literacy)، بورش عمل يقدّمها خبراء من مؤسسات مثل University of Oxford و MIT Sloan."}},
+  {img: "img/redcrescent.webp", title: "Egyptian Red Crescent", meta: {en: "Volunteer", ar: "متطوعة"},
+   text: {en: "Volunteered with the Egyptian Red Crescent, where I keep strong connections with many of its officials.", ar: "تطوعت مع الهلال الأحمر المصري، وتربطني علاقات قوية بعدد من مسؤوليه."}}
  ],
- awards: [
-  {year: "2025", title: "Dean's List", org: "Faculty of Pharmacy, BUE"},
-  {year: "2024", title: {en: "Certificate of appreciation for student activities", ar: "شهادة تقدير عن الأنشطة الطلابية"}, org: "The British University in Egypt"},
-  {year: "2023", title: {en: "Course or training certificate", ar: "شهادة دورة أو تدريب"}, org: {en: "Issuing organisation", ar: "الجهة المانحة"}}
+ certs: [
+  {group: {en: "Clinical & healthcare", ar: "Clinical & Healthcare"}, items: [
+   {t: "Infection Prevention & Quality Control Course", o: "American Association of Continuing Medical Education (AACME)", d: "2026"},
+   {t: "Good Clinical Practice (GCP)", o: "NIDA Clinical Trials Network", d: "2025"},
+   {t: "Infection Prevention and Control training (14 hours)", o: "57357 Children’s Cancer Hospital Egypt", d: "2024"},
+   {t: "Nutrition Course", o: "57357 Children’s Cancer Hospital Egypt", d: ""},
+   {t: "Limitless Nutrition Course", o: "Limitless", d: ""}
+  ]},
+  {group: {en: "Quality, management & leadership", ar: "Quality, Management & Leadership"}, items: [
+   {t: "Lean Six Sigma Foundations", o: "LinkedIn Learning · NASBA CPE credit", d: "2026"},
+   {t: "Six Sigma Yellow Belt", o: "LinkedIn Learning", d: "2026"},
+   {t: "Quality Management Foundations", o: "LinkedIn Learning", d: "2026"},
+   {t: "Building an Integrated Online Marketing Plan", o: "LinkedIn Learning · PMI® PDUs", d: "2026"},
+   {t: "Selling into Industries: Healthcare", o: "LinkedIn Learning", d: "2026"},
+   {t: "How to Become a Thought Leader and Advance Your Career", o: "LinkedIn Learning", d: "2026"}
+  ]}
  ],
- contact: {
-  email: "madonna.nasser@example.com",
-  linkedin: "https://www.linkedin.com/in/",
-  phone: ""
- }
+
+ /* ---------- VISION TAB ---------- */
+ reasons: [
+  {h: {en: "I know the Union from the inside", ar: "أفهم شغل الاتحاد من الداخل"},
+   p: {en: "Four years in the Union taught me the details of preparing events, where committees clash, and what delays work and builds pressure before an event, so I can stop these problems before they happen.",
+       ar: "قضيت 4 سنوات في الاتحاد، ففاهمة كويس تفاصيل التحضير للإيفنتات، ونقاط الاحتكاك بين اللجان، وإيه اللي بيأخر الشغل وبيسبب ضغط قبل أي حدث، وبالتالي أقدر أمنع المشاكل دي قبل ما تحصل."}},
+  {h: {en: "Field leadership and crisis management", ar: "القيادة الميدانية وإدارة الأزمات"},
+   p: {en: "Five years as a Scout Leader taught me to split a team into patrols with clear responsibilities and to act under pressure with a Plan B ready at any moment.",
+       ar: "دوري كـ Scout Leader لمدة 5 سنوات علّمني أقسّم الفريق لطلائع بمسؤوليات واضحة، وأتحرك تحت الضغط بخطة بديلة (Plan B) جاهزة في أي لحظة."}},
+  {h: {en: "Building one team", ar: "بناء فريق واحد"},
+   p: {en: "From my HR work at Science Land and OBM, I believe the Union's success is never one person's effort: it is a team where everyone gives their best and we agree on the vision together.",
+       ar: "من خلال عملي في HR في Science Land و OBM Educational Company، أؤمن أن نجاح الاتحاد مش مجهود فرد واحد، لكنه عمل جماعي متكامل، كل شخص فيه بيقدّم أقوى ما عنده وبنتفق على الرؤية سوا."}},
+  {h: {en: "Real opportunities for students", ar: "فرص حقيقية للطلبة"},
+   p: {en: "I am in direct contact with HR teams at Global Napi, Eva Pharma, Sandoz, AstraZeneca and Parkville, and with Baheya, 57357, Lions and High Team, so we can offer real internships, medical convoys and community initiatives.",
+       ar: "عندي تواصل مباشر مع إدارات الـ HR في Global Napi و Eva Pharma و Sandoz و AstraZeneca و Parkville، ومع مستشفى بهية و 57357 و Lions و High Team، وده يخلينا نوفّر Internships حقيقية وقوافل طبية ومبادرات مجتمعية."}}
+ ],
+ duties: [
+  {h: {en: "One Master Calendar", ar: "توحيد المواعيد"}, p: {en: "Combine every committee's schedule into one calendar so events never clash.", ar: "نجمع جداول كل اللجان في Master Calendar واحد عشان الإيفنتات متضربش في بعض."}},
+  {h: {en: "Fast, organised follow-up", ar: "متابعة سريعة ومنظمة"}, p: {en: "Short weekly meetings and one task board, so problems are caught early and deadlines are met.", ar: "اجتماعات أسبوعية سريعة وبورد واحدة للتاسكات عشان نلحق أي مشكلة بدري ونسلّم في ميعادنا."}},
+  {h: {en: "A Plan B ready in seconds", ar: "Plan B جاهزة في ثواني"}, p: {en: "Every event has a backup plan before it starts.", ar: "كل إيفنت له خطة بديلة جاهزة قبل ما يبدأ."}},
+  {h: {en: "Fair workload, no burnout", ar: "توزيع المجهود ومنع الضغط"}, p: {en: "Spread volunteers well at busy times and calmly resolve any misunderstanding.", ar: "نوزّع المتطوعين صح وقت الزحمة عشان محدش يتحرق، ونحل أي سوء تفاهم بهدوء."}},
+  {h: {en: "Real opportunities", ar: "فرص حقيقية للطلبة"}, p: {en: "Bring internships, trainings and partnerships to students.", ar: "نجيب Internships وتدريبات وشراكات حقيقية للطلبة."}},
+  {h: {en: "Evaluate and hand over", ar: "التقييم وتسليم الشغل"}, p: {en: "Review every event and write SOPs, leaving a ready system for the next Union.", ar: "نقيّم كل إيفنت بعد ما يخلص ونكتب SOPs عشان نسيب سيستم جاهز للاتحاد اللي جاي."}},
+  {h: {en: "Attendance and team wellbeing", ar: "الحضور وراحة الفريق"}, p: {en: "Follow everyone's attendance and make sure all members are comfortable and take part in events.", ar: "أتابع الـ Attendance لكل عضو، وأتأكد إن الكل مرتاح في الشغل وبيشارك في الإيفنتات."}}
+ ],
+ features: [
+  {h: "Tasks & Deadlines", p: {en: "Live follow-up of every task, its deadline and who owns it, in every committee.", ar: "متابعة لحظية لكل تاسك وميعاد تسليمه والمسؤول عنه في كل لجنة."}},
+  {h: "Committee Directory", p: {en: "Every committee, its Head, its members and each person's role.", ar: "عرض واضح لكل لجنة ومين الـ Head والأعضاء وأدوار كل واحد."}},
+  {h: "Committee Leaderboard", p: {en: "A transparent points system that honours the most committed committee each month.", ar: "نظام نقاط شفاف يحفّز اللجان، ونكرّم اللجنة الأكثر تميزاً والتزاماً كل شهر."}},
+  {h: "Achievements Wall", p: {en: "A running record of each committee's successes and events all year.", ar: "توثيق مستمر لنجاحات كل لجنة وإيفنتاتها طول السنة عشان مجهود الكل يبان."}},
+  {h: "Attendance Tracker", p: {en: "Accurate attendance for meetings and events, for fairness and exact volunteer hours.", ar: "تسجيل دقيق لحضور الاجتماعات والإيفنتات لضمان العدالة وتوثيق ساعات التطوع."}},
+  {h: "Master Event Planner", p: {en: "One timeline of upcoming events and their preparation steps, away from exam dates.", ar: "جدول زمني موحّد لكل الإيفنتات القادمة وخطوات تحضيرها بعيداً عن مواعيد الامتحانات."}},
+  {h: "Templates & Media Kit Vault", p: {en: "Union and faculty logos, email formats for pharma companies, hall requests and Silver/Gold sponsorship packages, for one visual identity.", ar: "كل القوالب الثابتة: لوجو الاتحاد والكلية، فورمات إيميلات شركات الأدوية، نماذج طلب القاعات، وعروض الرعاية Silver و Gold، لهوية بصرية موحّدة."}},
+  {h: "Post-Event Scorecard", p: {en: "24 hours after each event: real attendance, student satisfaction, fastest committee and three lessons learned.", ar: "بعد كل إيفنت بـ 24 ساعة: عدد الحضور الفعلي، نسبة رضا الطلبة، أسرع لجنة في التنفيذ، وأهم 3 دروس مستفادة."}},
+  {h: "Peer Shift & Task Swap Board", p: {en: "A member with an emergency posts their shift, and any available member takes it in one click and earns the points.", ar: "العضو اللي عنده ظرف طارئ يحط الشيفت على البورد، وأي عضو متاح ياخده بضغطة زر ويتحسب له في نقاطه وحضوره."}},
+  {h: "Speaker & VIP CRM", p: {en: "A record of every doctor and speaker who worked with the Union, with student feedback, to invite and thank them again.", ar: "قاعدة بيانات لكل دكتور أو متحدث شارك مع الاتحاد وتقييم تفاعل الطلبة معاه، لتسهيل دعوته مستقبلاً أو شكره رسمياً."}}
+ ],
+ plans: [
+  {h: "Committee of the Month", p: {en: "A transparent monthly points system that measures each committee's commitment and achievements, with certified recognition for the best team.", ar: "نظام نقاط شفاف يقيس التزام وإنجازات كل لجنة شهرياً، لتكريم الفريق الأكثر تميزاً بشهادات موثّقة."}},
+  {h: {en: "Summer internship track", ar: "مسار التدريب الصيفي"}, p: {en: "Working directly with HR at Global Napi, Eva Pharma, Sandoz, AstraZeneca, Parkville, Novartis and Sanofi to offer real internships to students.", ar: "تفعيل التواصل المباشر مع إدارات الـ HR في Global Napi و Eva Pharma و Sandoz و AstraZeneca و Parkville و Novartis و Sanofi لتوفير Internships حقيقية للطلبة."}},
+  {h: "MetLife Career Track", p: {en: "Practical workshops with MetLife Egypt on Medical Approvals & Claims, including simulations of insurance prescriptions in pharmacies.", ar: "ورش عمل تطبيقية مع MetLife Egypt عن الـ Medical Approvals & Claims، ومحاكاة التعامل مع روشتات التأمين في الصيدليات."}},
+  {h: {en: "Medical convoys and awareness", ar: "القوافل الطبية والتوعية"}, p: {en: "Field initiatives with Lions and High Team, and early-detection and awareness campaigns on campus with Baheya Hospital and 57357.", ar: "مبادرات ميدانية مع Lions و High Team، وحملات كشف مبكر وتوعية داخل الحرم الجامعي بالشراكة مع مستشفى بهية و 57357."}},
+  {h: {en: "Emergency and first-aid training", ar: "ندوات الطوارئ والإسعافات"}, p: {en: "Hands-on training with the Egyptian Red Crescent and crisis-management specialists, so students can act fast in emergencies.", ar: "تدريبات عملية بالتعاون مع الهلال الأحمر المصري ومتخصصين في إدارة الأزمات، لتأهيل الطلبة للتصرّف السريع في المواقف الطارئة."}}
+ ],
+ partners: ["Global Napi", "Eva Pharma", "Sandoz", "AstraZeneca", "Parkville", "Novartis", "Sanofi", "MetLife Egypt", "Baheya Hospital", "57357", "Egyptian Red Crescent", "Lions", "High Team"]
 };
 
-/* fixed page wording */
 const UI = {
- nAbout: {en: "About", ar: "عنّي"}, nJourney: {en: "Journey", ar: "مسيرتي"}, nImpact: {en: "Impact", ar: "أنشطتي"},
- nSkills: {en: "Skills", ar: "مهاراتي"}, nAwards: {en: "Recognition", ar: "التكريمات"}, nContact: {en: "Contact", ar: "تواصل"},
- kicker: {en: "Clinical Pharmacy student · Faculty of Pharmacy", ar: "طالبة Clinical Pharmacy · Faculty of Pharmacy"},
- bKnow: {en: "Get to know me", ar: "تعرّف عليّ"}, bPdf: {en: "Save as PDF", ar: "حفظ كـ PDF"},
- sample: {en: "Sample wording shown below her name; her real details replace it.", ar: "النصوص الحالية مثال فقط، وستُستبدل ببياناتها الحقيقية."},
+ tabVision: {en: "My vision", ar: "رؤيتي"}, tabProfile: {en: "Profile", ar: "الملف الشخصي"},
+ nAbout: {en: "About", ar: "عنّي"}, nScreen: {en: "On screen", ar: "على الشاشة"}, nTraining: {en: "Training", ar: "التدريب"},
+ nExp: {en: "Experience", ar: "الخبرات"}, nLead: {en: "Leadership", ar: "القيادة"}, nCerts: {en: "Certificates", ar: "الشهادات"},
+ kicker: {en: "5th-year Clinical Pharmacy student · Faculty of Pharmacy", ar: "طالبة Clinical Pharmacy في السنة الخامسة · Faculty of Pharmacy"},
+ badge: {en: "Academic Excellence Scholarship", ar: "منحة التفوق الأكاديمي · Academic Excellence"},
+ bKnow: {en: "Get to know me", ar: "تعرّف عليّ"}, bVision: {en: "My vision as General Coordinator", ar: "رؤيتي كـ General Coordinator"},
+ bProfile: {en: "Back to my profile", ar: "العودة إلى ملفي"},
  hAbout: {en: "Who I am", ar: "من أنا"}, rxSub: {en: "Dispensed with care", ar: "يُصرف بعناية"},
  rxFoot: {en: "Use as directed: talk to her, she listens.", ar: "طريقة الاستخدام: تحدّث معها، فهي تُنصت."},
- hJourney: {en: "My journey so far", ar: "مسيرتي حتى الآن"}, hImpact: {en: "Where I give my time", ar: "أين أمنح وقتي"},
- hSkills: {en: "What I bring", ar: "ما أقدّمه"}, hAwards: {en: "Recognition", ar: "التكريمات"},
- hContact: {en: "Let's talk", ar: "لنتحدث"},
- contactP: {en: "I would be glad to meet, share more about my work, or answer any question.", ar: "يسعدني اللقاء، ومشاركة المزيد عن عملي، أو الإجابة عن أي سؤال."},
+ hScreen: {en: "On screen", ar: "على الشاشة"},
+ screenIntro: {en: "Making science simple and fun, on national television.", ar: "أجعل العلم بسيطاً وممتعاً، على شاشات التلفزيون."},
+ hTraining: {en: "Industry and clinical training", ar: "التدريب في الصناعة والمستشفيات"},
+ trainingIntro: {en: "From quality control labs to hospital wards: where I learned pharmacy beyond the lecture hall.", ar: "من معامل الـ Quality Control إلى أقسام المستشفيات: هنا تعلّمت الصيدلة خارج قاعة المحاضرات."},
+ hExp: {en: "Work experience", ar: "الخبرات العملية"},
+ expIntro: {en: "Five years of real work with patients, customers and teams, alongside my studies.", ar: "خمس سنوات من العمل الحقيقي مع المرضى والعملاء وفرق العمل، بجانب دراستي."},
+ hLead: {en: "Leadership and community", ar: "القيادة وخدمة المجتمع"},
+ leadIntro: {en: "Leading teams, representing young people, and showing up where help is needed.", ar: "قيادة الفرق، وتمثيل الشباب، والتواجد حيث نحتاج إلى المساعدة."},
+ hCerts: {en: "Courses and certificates", ar: "الدورات والشهادات"},
+ closeH: {en: "Ready to serve the Union", ar: "مستعدة لخدمة الاتحاد"},
+ closeP: {en: "See how I would run the Student Union as General Coordinator.", ar: "تعرّف على خطتي لإدارة اتحاد الطلبة كـ General Coordinator."},
+ vKicker: {en: "Student Union · Faculty of Pharmacy, BUE", ar: "اتحاد الطلبة · Faculty of Pharmacy، BUE"},
+ vTitle: {en: "My vision as General Coordinator", ar: "رؤيتي كـ General Coordinator"},
+ vIntro: {en: "Clinical knowledge, organisational discipline and real industry partnerships, ready to move our Student Union forward from day one.", ar: "معرفة إكلينيكية، وانضباط تنظيمي، وشراكات حقيقية مع الصناعة، جاهزة للارتقاء باتحاد الطلبة من اليوم الأول."},
+ vWhy: {en: "Why I'm ready for this role", ar: "ليه أنا مناسبة للمنصب"},
+ vWhyIntro: {en: "I combine an inside understanding of the Union, field leadership, team management and a strong network.", ar: "بجمع بين فهم الاتحاد من جوه، والقيادة الميدانية، وإدارة الفرق، وشبكة علاقات قوية."},
+ vRole: {en: "The role as I see it", ar: "دور الـ General Coordinator كما أراه"},
+ vRoleIntro: {en: "What I understand of the role so far, and I'm eager to learn the rest.", ar: "ده اللي أعرفه عن الدور حتى الآن، وأكيد في مسؤوليات تانية أحب أتعلّمها."},
+ vPlans: {en: "Plans for the Union", ar: "خطط للاتحاد"},
+ vPlansIntro: {en: "Concrete ideas to organise our work and bring more value to every student.", ar: "أفكار عملية لتنظيم شغلنا وتقديم قيمة أكبر لكل طالب."},
+ hubTitle: "The Digital Union Hub",
+ hubIntro: {en: "Instead of our work getting lost in chat groups, one website to run the Union:", ar: "بدل ما الشغل يتوه في جروبات الشات، موقع متكامل لإدارة الاتحاد يضم:"},
+ vPartners: {en: "Partners I plan to work with", ar: "جهات أخطط للتعاون معها"},
+ vPartnersIntro: {en: "Companies, hospitals and organisations I am connected with or plan to reach for students.", ar: "شركات ومستشفيات ومؤسسات تربطني بها علاقات أو أخطط للتواصل معها لصالح الطلبة."},
+ vCloseH: {en: "Together, one team", ar: "معاً، فريق واحد"},
+ vCloseP: {en: "The Union's success is the work of all of us. I'm ready to give it my best.", ar: "نجاح الاتحاد هو مجهودنا كلنا، وأنا مستعدة أقدّم أقوى ما عندي."},
  foot: {en: "Clinical Pharmacy, The British University in Egypt", ar: "Clinical Pharmacy، The British University in Egypt"},
- email: {en: "Email me", ar: "راسلني"}, langBtn: {en: "العربية", ar: "English"},
- facts: {en: "Quick facts", ar: "معلومات سريعة"}
+ facts: {en: "Quick facts", ar: "معلومات سريعة"}, play: {en: "Play the clip", ar: "شاهد المقطع"}
 };
-/* ========================================================== */
+/* ===================================================================== */
 
-let lang = "ar";   /* Arabic is the default landing language */
+let lang = "ar";
 try { if (localStorage.getItem("mn-lang") === "en") lang = "en"; } catch(e) {}
 const t = v => (v && typeof v === "object" && !Array.isArray(v)) ? (v[lang] ?? v.en) : v;
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const $ = id => document.getElementById(id);
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+/* counters + reveal (play once, never touch scrolling) */
 const count = el => {
- const n = +el.dataset.n, dec = +el.dataset.dec, suf = el.dataset.suf;
- if (reduce || el.dataset.done){ el.textContent = n.toFixed(dec)+suf; return; }
+ const n = +el.dataset.n;
+ if (reduce || el.dataset.done){ el.textContent = n; return; }
  el.dataset.done = 1;
- const t0 = performance.now(), dur = 1400;
- const step = tm => { const p = Math.min(1,(tm-t0)/dur), v = n*(1-(1-p)**3); el.textContent = v.toFixed(dec)+suf; if (p<1) requestAnimationFrame(step); };
+ const t0 = performance.now(), dur = 1300;
+ const step = tm => { const p = Math.min(1,(tm-t0)/dur); el.textContent = Math.round(n*(1-(1-p)**3)); if (p<1) requestAnimationFrame(step); };
  requestAnimationFrame(step);
 };
-
-/* ---- reveal + counters (play once, never touch scrolling) ---- */
-const show = el => { el.classList.add("in"); el.querySelectorAll("b[data-n]").forEach(count);
- const sec = el.closest("#stats,#cards"); if (sec) sec.dataset.seen = 1; };
+const seen = new Set();
+const show = el => { el.classList.add("in"); el.querySelectorAll("b[data-n]").forEach(count); if (el.dataset.k) seen.add(el.dataset.k); };
 const io = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(e => {
  if (!e.isIntersecting) return; show(e.target); io.unobserve(e.target);
-}), {threshold:.15}) : null;
+}), {threshold:.12}) : null;
 const watch = () => document.querySelectorAll(".reveal:not(.in)").forEach(el => io ? io.observe(el) : show(el));
+const rv = k => `reveal${seen.has(k) ? " in" : ""}" data-k="${k}`;
+
+const card = (c, k) => `<article class="pcard ${rv(k)}">
+ ${c.img ? `<img src="${esc(c.img)}" alt="${esc(t(c.title))}" loading="lazy">` : `<div class="noimg" lang="en" dir="ltr">${esc(c.mark)}</div>`}
+ <div class="body"><div class="meta">${esc(t(c.meta))}</div><h3>${esc(t(c.title))}</h3><p>${esc(t(c.text))}</p></div></article>`;
 
 function render(){
  const root = document.documentElement;
  root.lang = lang; root.dir = lang === "ar" ? "rtl" : "ltr";
  document.querySelectorAll("[data-i]").forEach(el => { const v = UI[el.dataset.i]; if (v) el.textContent = t(v); });
- $("langBtn").textContent = t(UI.langBtn);
+ $("langBtn").textContent = lang === "ar" ? "English" : "العربية";
  $("langBtn").lang = lang === "ar" ? "en" : "ar";
- $("langBtn").setAttribute("aria-label", lang === "ar" ? "Switch to English" : "التبديل إلى العربية");
+ $("factsBox").setAttribute("aria-label", t(UI.facts));
 
  $("statement").textContent = t(P.statement);
- if (!P.sample && $("sampleNote")) $("sampleNote").remove();
-
- const seen = $("stats").dataset.seen;
- $("stats").innerHTML = P.stats.map(s =>
-  `<div class="stat reveal${seen?" in":""}"><b dir="ltr" data-n="${+s.n}" data-dec="${s.dec||0}" data-suf="${esc(s.suffix||"")}" ${seen?'data-done="1"':""}>${seen?(+s.n).toFixed(s.dec||0)+esc(s.suffix||""):"0"}</b><span>${esc(t(s.label))}</span></div>`).join("");
-
+ $("stats").innerHTML = P.stats.map((s,i) =>
+  `<div class="stat ${rv("s"+i)}"><b data-n="${+s.n}" ${seen.has("s"+i)?'data-done="1"':""}>${seen.has("s"+i)?+s.n:0}</b><span>${esc(t(s.label))}</span></div>`).join("");
  $("story").innerHTML = P.story.map(x => `<p>${esc(t(x))}</p>`).join("");
  $("facts").innerHTML = P.facts.map(([k,v]) => `<div><dt>${esc(t(k))}</dt><dd>${esc(t(v))}</dd></div>`).join("");
- document.querySelector(".label").setAttribute("aria-label", t(UI.facts));
 
- const open = [...document.querySelectorAll("#timeline li")].map(li => li.classList.contains("open"));
- $("timeline").innerHTML = P.journey.map((j,i) => {
-  const o = open.length ? open[i] : i === P.journey.length-1;
-  return `<li class="${o?"open":""}">
-  <button class="t-head" type="button" aria-expanded="${o}" aria-controls="tb${i}">
-   <span class="t-when">${esc(t(j.when))}</span>
-   <span class="t-title">${esc(t(j.title))}<span class="t-where">${esc(t(j.where))}</span></span>
-   <span class="t-icon"></span>
-  </button>
-  <div class="t-body" id="tb${i}"><div><p>${esc(t(j.text))}</p></div></div>
- </li>`}).join("");
+ $("shows").innerHTML = P.shows.map((s,i) => `<article class="show ${rv("tv"+i)}">
+  <div class="media">${s.video
+   ? `<video src="${esc(s.video)}" poster="${esc(s.poster)}" controls preload="none" playsinline aria-label="${esc(t(UI.play))}"></video>`
+   : `<img src="${esc(s.main)}" alt="${esc(t(s.title))}" loading="lazy">`}</div>
+  ${s.thumbs ? `<div class="thumbs">${s.thumbs.map(src => `<img src="${esc(src)}" alt="" loading="lazy">`).join("")}</div>` : ""}
+  <div class="txt"><div class="meta">${esc(t(s.meta))}</div><h3>${esc(t(s.title))}</h3><p>${esc(t(s.text))}</p></div></article>`).join("");
 
- $("cards").innerHTML = P.impact.map(c =>
-  `<article class="card reveal${$("cards").dataset.seen?" in":""}"><div class="pill"></div><h3>${esc(t(c.title))}</h3><div class="role">${esc(t(c.role))}</div><p>${esc(t(c.text))}</p></article>`).join("");
+ $("trainingGrid").innerHTML = P.training.map((c,i) => card(c,"tr"+i)).join("");
+ $("expList").innerHTML = P.experience.map(e => `<li><strong>${esc(t(e.role))}</strong><span class="where">${esc(t(e.where))}</span><span class="dur">${esc(t(e.dur))}</span></li>`).join("");
+ $("leadGrid").innerHTML = P.leadership.map((c,i) => card(c,"ld"+i)).join("");
+ $("certGroups").innerHTML = P.certs.map(g => `<div><h3>${esc(t(g.group))}</h3><ul>${g.items.map(c =>
+  `<li><div><strong lang="en" dir="ltr">${esc(c.t)}</strong><span lang="en" dir="ltr">${esc(c.o)}</span></div><time>${esc(c.d)}</time></li>`).join("")}</ul></div>`).join("");
 
- $("skillGroups").innerHTML = P.skills.map(g =>
-  `<div><h3>${esc(t(g.group))}</h3><div class="chips">${g.items.map(s=>`<span class="chip">${esc(t(s))}</span>`).join("")}</div></div>`).join("");
- $("langs").innerHTML = P.languages.map(([l,v]) => `<div class="lang"><strong>${esc(t(l))}</strong><span>${esc(t(v))}</span></div>`).join("");
-
- $("awardList").innerHTML = P.awards.map(a =>
-  `<li><b>${esc(t(a.year))}</b><div><strong>${esc(t(a.title))}</strong><span>${esc(t(a.org))}</span></div></li>`).join("");
-
- const C = P.contact, btns = [], txt = [];
- if (C.email){ btns.push(`<a class="btn primary" href="mailto:${esc(C.email)}">${esc(t(UI.email))}</a>`); txt.push(`<span dir="ltr">${esc(C.email)}</span>`); }
- if (C.linkedin){ btns.push(`<a class="btn ghost" href="${esc(C.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>`); }
- if (C.phone){ txt.push(`<span dir="ltr">${esc(C.phone)}</span>`); }
- $("contactBtns").innerHTML = btns.join("");
- $("contactText").innerHTML = txt.join(" · ");
+ $("reasons").innerHTML = P.reasons.map((r,i) => `<div class="reason"><span class="n">${i+1}</span><h3>${esc(t(r.h))}</h3><p>${esc(t(r.p))}</p></div>`).join("");
+ $("duties").innerHTML = P.duties.map(d => `<li><div><strong>${esc(t(d.h))}</strong><span>${esc(t(d.p))}</span></div></li>`).join("");
+ $("features").innerHTML = P.features.map(f => `<div class="feat"><strong lang="en" dir="ltr">${esc(f.h)}</strong><span>${esc(t(f.p))}</span></div>`).join("");
+ $("plans").innerHTML = P.plans.map(p => `<div class="plan"><h3>${esc(t(p.h))}</h3><p>${esc(t(p.p))}</p></div>`).join("");
+ $("partners").innerHTML = P.partners.map(x => `<span class="chip">${esc(x)}</span>`).join("");
+ setTab(false);
  watch();
 }
 
+/* tabs: #vision shows the vision page, anything else shows the profile */
+function setTab(scroll){
+ const vision = location.hash === "#vision";
+ $("profile").hidden = vision; $("vision").hidden = !vision;
+ const tab = $("visionTab");
+ tab.textContent = t(vision ? UI.tabProfile : UI.tabVision);
+ tab.href = vision ? "#top" : "#vision";
+ document.querySelector("nav .links").hidden = vision;
+ if (scroll){
+  if (vision) window.scrollTo(0,0);
+  else { const el = location.hash && document.querySelector(location.hash); if (el) el.scrollIntoView(); }
+  watch();
+ }
+}
+window.addEventListener("hashchange", () => setTab(true));
+
 render();
 $("yr").textContent = new Date().getFullYear();
-
+if (location.hash === "#vision") window.scrollTo(0,0);
 
 $("langBtn").addEventListener("click", () => {
  lang = lang === "en" ? "ar" : "en";
@@ -457,57 +652,38 @@ $("langBtn").addEventListener("click", () => {
  render();
 });
 
-$("timeline").addEventListener("click", e => {
- const b = e.target.closest(".t-head"); if (!b) return;
- const li = b.parentElement, o = !li.classList.contains("open");
- li.classList.toggle("open", o); b.setAttribute("aria-expanded", o);
-});
-
-$("printBtn").addEventListener("click", () => { try { document.querySelectorAll(".reveal").forEach(r=>r.classList.add("in")); window.print(); } catch(e){} });
-
 /* ---- molecule portrait ---- */
-const svg = $("mol");
 const cx = 250, cy = 250, R = 128;
 let out = `<defs><clipPath id="clip"><circle cx="${cx}" cy="${cy}" r="${R-8}"/></clipPath>
- <radialGradient id="glow"><stop offset="0" style="stop-color:var(--glow1)"/><stop offset="1" style="stop-color:var(--glow2)"/></radialGradient></defs>`;
+ <radialGradient id="glow"><stop offset="0" stop-color="#1f4570"/><stop offset="1" stop-color="#0f2a44"/></radialGradient></defs>`;
 const hexPts = (x,y,r) => Array.from({length:6},(_,k)=>{const a=Math.PI/180*(60*k+30);return [x+r*Math.cos(a), y+r*Math.sin(a)]});
 const hexes = [
- {a:-140, d:196, r:34, aro:true, sym:"OH"},
- {a:-75, d:200, r:28, sym:"N"},
- {a:-20, d:205, r:36, aro:true},
- {a:40, d:196, r:30, sym:"O"},
- {a:110, d:205, r:34, aro:true},
- {a:170, d:198, r:28, sym:"NH₂"}
+ {a:-140, d:196, r:34, aro:true, sym:"OH"}, {a:-75, d:200, r:28, sym:"N"}, {a:-20, d:205, r:36, aro:true},
+ {a:40, d:196, r:30, sym:"O"}, {a:110, d:205, r:34, aro:true}, {a:170, d:198, r:28, sym:"NH₂"}
 ];
+const f1 = v => v.toFixed(1);
 hexes.forEach((h,i) => {
- const ang = h.a*Math.PI/180, x = cx + h.d*Math.cos(ang), y = cy + h.d*Math.sin(ang);
- const sx = cx + R*Math.cos(ang), sy = cy + R*Math.sin(ang);
- const ex = cx + (h.d-h.r)*Math.cos(ang), ey = cy + (h.d-h.r)*Math.sin(ang);
- out += `<path class="bond" pathLength="1" style="animation-delay:${.3+i*.15}s" d="M${sx.toFixed(1)} ${sy.toFixed(1)}L${ex.toFixed(1)} ${ey.toFixed(1)}"/>`;
+ const ang = h.a*Math.PI/180, c = Math.cos(ang), s = Math.sin(ang), x = cx + h.d*c, y = cy + h.d*s;
+ out += `<path class="bond" pathLength="1" style="animation-delay:${.3+i*.15}s" d="M${f1(cx+R*c)} ${f1(cy+R*s)}L${f1(cx+(h.d-h.r)*c)} ${f1(cy+(h.d-h.r)*s)}"/>`;
  const pts = hexPts(x,y,h.r);
- out += `<path class="bond" pathLength="1" style="animation-delay:${.7+i*.15}s" d="M${pts.map(p=>p.map(v=>v.toFixed(1)).join(" ")).join("L")}Z"/>`;
- if (h.aro) out += `<circle class="ring" pathLength="1" style="animation-delay:${1.2+i*.15}s" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(h.r*.55).toFixed(1)}"/>`;
- pts.forEach((p,k) => { if (k%2===0) out += `<circle class="atom${k===0&&i%2?" hot":""}" style="animation-delay:${1.4+i*.12}s" cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="3.6"/>`; });
+ out += `<path class="bond" pathLength="1" style="animation-delay:${.7+i*.15}s" d="M${pts.map(p=>p.map(f1).join(" ")).join("L")}Z"/>`;
+ if (h.aro) out += `<circle class="ring" pathLength="1" style="animation-delay:${1.2+i*.15}s" cx="${f1(x)}" cy="${f1(y)}" r="${f1(h.r*.55)}"/>`;
+ pts.forEach((p,k) => { if (k%2===0) out += `<circle class="atom${k===0&&i%2?" hot":""}" style="animation-delay:${1.4+i*.12}s" cx="${f1(p[0])}" cy="${f1(p[1])}" r="3.6"/>`; });
  if (h.sym){
-  const fx = cx + (h.d+h.r+20)*Math.cos(ang), fy = cy + (h.d+h.r+20)*Math.sin(ang);
-  out += `<line class="bond" pathLength="1" style="animation-delay:${1.5+i*.12}s" x1="${(cx+(h.d+h.r)*Math.cos(ang)).toFixed(1)}" y1="${(cy+(h.d+h.r)*Math.sin(ang)).toFixed(1)}" x2="${(cx+(h.d+h.r+10)*Math.cos(ang)).toFixed(1)}" y2="${(cy+(h.d+h.r+10)*Math.sin(ang)).toFixed(1)}"/>`;
-  out += `<text class="sym" style="animation-delay:${1.8+i*.1}s" x="${fx.toFixed(1)}" y="${(fy+4).toFixed(1)}" text-anchor="middle">${esc(h.sym)}</text>`;
+  out += `<line class="bond" pathLength="1" style="animation-delay:${1.5+i*.12}s" x1="${f1(cx+(h.d+h.r)*c)}" y1="${f1(cy+(h.d+h.r)*s)}" x2="${f1(cx+(h.d+h.r+10)*c)}" y2="${f1(cy+(h.d+h.r+10)*s)}"/>`;
+  out += `<text class="sym" style="animation-delay:${1.8+i*.1}s" x="${f1(cx+(h.d+h.r+20)*c)}" y="${f1(cy+(h.d+h.r+20)*s+4)}" text-anchor="middle">${esc(h.sym)}</text>`;
  }
 });
 const capsule = (x,y,rot,s,d) => `<g class="cap" style="animation-delay:${d}s" transform="translate(${x} ${y}) rotate(${rot}) scale(${s})">
- <rect x="-26" y="-10" width="52" height="20" rx="10" style="fill:var(--capw)"/><path d="M0 -10H-16a10 10 0 0 0 0 20H0Z" style="fill:var(--cap)"/>
+ <rect x="-26" y="-10" width="52" height="20" rx="10" fill="#fff"/><path d="M0 -10H-16a10 10 0 0 0 0 20H0Z" fill="#d9232b"/>
  <rect x="-22" y="-6" width="16" height="3" rx="1.5" fill="#fff" opacity=".45"/></g>`;
 out += capsule(78,410,-30,1,2.1) + capsule(430,88,25,.8,2.3) + capsule(345,470,60,.65,2.5);
-out += `<circle cx="${cx}" cy="${cy}" r="${R}" fill="none" style="stroke:var(--mol)" stroke-width="2"/>`;
+out += `<circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="#9fb6cf" stroke-width="2"/>`;
 out += `<circle cx="${cx}" cy="${cy}" r="${R-8}" fill="url(#glow)"/>`;
-if (P.photo){
- out += `<image href="${esc(P.photo)}" x="${cx-R+8}" y="${cy-R+8}" width="${2*(R-8)}" height="${2*(R-8)}" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip)"/>`;
-} else {
- out += `<text x="${cx}" y="${cy+28}" text-anchor="middle" font-family="Instrument Serif, Georgia, serif" font-size="96" style="fill:var(--mono)">MN</text>`;
-}
-svg.setAttribute("direction","ltr");
-svg.innerHTML = out;
-
+out += P.photo
+ ? `<image class="face" href="${esc(P.photo)}" x="${cx-R+8}" y="${cy-R+8}" width="${2*(R-8)}" height="${2*(R-8)}" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip)"/>`
+ : `<text x="${cx}" y="${cy+28}" text-anchor="middle" font-family="Instrument Serif, Georgia, serif" font-size="96" fill="#fff">MN</text>`;
+$("mol").innerHTML = out;
 }
 </script>
 </body>
